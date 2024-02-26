@@ -1,6 +1,5 @@
-controllers/bloodController.js
 
-const event = require('../models/eventevent');
+const event = require('../models/eventModel');
 
 const eventController = {
   getAllEvent: (req, res) => {
@@ -65,4 +64,4 @@ const eventController = {
   }
 };
 
-module.exports = eventController;
+module.exports = eventController

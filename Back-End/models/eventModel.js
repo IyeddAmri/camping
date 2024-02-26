@@ -1,27 +1,45 @@
-models/event.js
+const connection = require("../database/index");
 
-const db = require('../database/index');
-
-const event = {
-  getAll: (callback) => {
-    db.query('SELECT * FROM events', callback);
-  },
-  
-  getById: (id, callback) => {
-    db.query('SELECT * FROM events WHERE id = ?', [id], callback);
-  },
-  
-  create: (eventData, callback) => {
-    db.query('INSERT INTO events SET ?', eventData, callback);
-  },
-  
-  update: (id, eventData, callback) => {
-    db.query('UPDATE events SET ? WHERE id = ?', [eventData, id], callback);
-  },
-  
+module.exports = {
   delete: (id, callback) => {
-    db.query('DELETE FROM events WHERE id = ?', [id], callback);
+    const sql = "DELETE FROM events WHERE id=?";
+    connection.query(sql, [id], (err, results) => {
+      if (err) {
+        callback(err, null);
+      } else if (results.affectedRows === 0) {
+        callback({ status: 404, message: 'Event not found' }, null);
+      } else {
+        callback(null, results);
+      }
+    });
+  },
+  getAll: (callback) => {
+    const query = "SELECT * FROM events";
+    connection.query(query, (err, results) => {
+      callback(err, results);
+    });
+  },
+  create: (data, callback) => {
+    const sql = 'INSERT INTO events SET ?';
+    connection.query(sql, data, (err, results) => {
+      callback(err, results);
+    });
+  },
+  update: (id, updatedData, callback) => {
+    const sql = "UPDATE events SET ? WHERE id=?";
+    connection.query(sql, [updatedData, id], (err, results) => {
+      if (err) {
+        console.error('Error during update:', err);
+      }
+      console.log('SQL Query:', sql, [updatedData, id]);
+      callback(err, results);
+    });
+  },
+
+  getById: (id, callback) => {
+    const query = "SELECT * FROM events where id=?";
+    connection.query(query, [id], (err, results) => {
+      callback(err, results);
+    });
   }
 };
-
-module.exports = event;

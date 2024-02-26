@@ -27,7 +27,7 @@ const App = () => {
             <Image source={{ uri: item.ImageURL }} style={{ width: 100, height: 100 }} />
             <Text>{item.Name}</Text>
             <Text>{item.Description}</Text>
-            <Text>Price: ${item.Price.toFixed(2)}</Text>
+            <Text>Price: {typeof item.Price === 'number' ? `$${item.Price.toFixed(2)}` : 'N/A'}</Text>
             <Text>Availability: {item.Availability ? 'Available' : 'Not Available'}</Text>
             <Text>Category: {item.Category}</Text>
           </View>

@@ -1,12 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
+const productRoutes = require('../routes/productsroute');
 
 
+app.use(cors());
 app.use(express.json()); 
-app.use(cors({
-  origin: 'http://localhost:3000' 
-}));
+app.use('/api', productRoutes);
+
 
 
 const PORT = process.env.PORT || 5000;

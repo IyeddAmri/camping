@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -26,7 +24,7 @@ const EventList = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Event List</Text>
+      <Text style={styles.header}>Explore Tunisia⛺</Text>
       <FlatList
         data={events}
         keyExtractor={(item) => item.id} 

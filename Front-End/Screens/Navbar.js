@@ -1,4 +1,5 @@
 // Navbar.js
+
 import React from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
@@ -7,22 +8,24 @@ const Navbar = ({ categories, selectedCategory, onSelectCategory }) => {
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <View style={styles.navbar}>
         <TouchableOpacity 
-          onPress={() => onSelectCategory(null)} // Set selected category to null to render all products
+          onPress={() => onSelectCategory(null)} 
           style={[
             styles.navItem,
-            selectedCategory === null && styles.selectedNavItem // Apply selected style
+            selectedCategory === null && styles.selectedNavItem 
           ]}
+          activeOpacity={0.8} // Adjust the opacity for the hover effect
         >
           <Text style={styles.navText}>All</Text>
         </TouchableOpacity>
         {categories.map((category, index) => (
           <TouchableOpacity 
             key={index} 
-            onPress={() => onSelectCategory(category)} // Update selected category onPress
+            onPress={() => onSelectCategory(category)} 
             style={[
               styles.navItem,
-              selectedCategory === category && styles.selectedNavItem // Apply selected style
+              selectedCategory === category && styles.selectedNavItem 
             ]}
+            activeOpacity={0.8} // Adjust the opacity for the hover effect
           >
             <Text style={styles.navText}>{category}</Text>
           </TouchableOpacity>
@@ -50,8 +53,8 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   selectedNavItem: {
-    borderBottomWidth: 2, // Add bottom border for selected category
-    borderBottomColor: 'blue', // Change color for selected category
+    borderBottomWidth: 2,
+    borderBottomColor: 'blue',
   },
 });
 

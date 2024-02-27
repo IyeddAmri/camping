@@ -1,9 +1,14 @@
+// ProductListScreen.js
+
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import Navbar from './Navbar';
 
+
 const ProductListScreen = () => {
+  const navigation = useNavigation();
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const categories = [
@@ -16,7 +21,7 @@ const ProductListScreen = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://192.168.100.61:5000/api')
+    axios.get('http:// 192.168.100.61:5000/api')
       .then(response => {
         setProducts(response.data);
       })
@@ -35,17 +40,19 @@ const ProductListScreen = () => {
   };
 
   const renderItem = ({ item }) => (
-    <View style={styles.productItem}>
-      <Image source={{ uri: item.ImageURL }} style={styles.image} />
-      <Text style={styles.name}>{item.Name}</Text>
-      <Text style={styles.price}>Price: {item.Price}</Text>
-      <TouchableOpacity
-        style={styles.buyButton}
-        onPress={() => handleBuy(item.id)}
-      >
-        <Text style={styles.buyButtonText}>Buy</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity
+      style={styles.productItem}
+      onPress={() => handleBuy(item.id)}
+    >
+      <View>
+        <Image source={{ uri: item.ImageURL }} style={styles.image} />
+        <Text style={styles.name}>{item.Name}</Text>
+        <Text style={styles.price}>Price: {item.Price}</Text>
+        <TouchableOpacity style={styles.buyButton} onPress={() => handleBuy(item.id)}>
+          <Text style={styles.buyButtonText}>Buy</Text>
+        </TouchableOpacity>
+      </View>
+    </TouchableOpacity>
   );
 
   return (
@@ -56,11 +63,17 @@ const ProductListScreen = () => {
         onSelectCategory={setSelectedCategory} 
       /> 
       <Text style={styles.heading}>Product List</Text>
+      <View style={styles.shoppingCartContainer}>
+        <TouchableOpacity onPress={() => console.log("Shopping Cart Pressed")}>
+          <Text style={styles.shoppingCartIcon}>🛒</Text>
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={filteredProducts}
         keyExtractor={(item) => item.Name}
         renderItem={renderItem}
         numColumns={2}
+        contentContainerStyle={styles.productList}
       />
     </View>
   );
@@ -78,40 +91,56 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginLeft: 10,
   },
+  productList: {
+    paddingHorizontal: 10,
+    paddingBottom: 20,
+  },
   productItem: {
-    width: '48%', 
-    aspectRatio: 1, // Maintain aspect ratio (1:1)
-    borderWidth: 1,
-    borderColor: '#ccc',
+    flex: 1,
+    aspectRatio: 0.9, // Adjusted aspect ratio for better spacing
     margin: 5,
-    padding: 10,
-    marginBottom: 50, // Adjusted marginBottom for more vertical space
+    borderRadius: 10,
+    backgroundColor: '#f9f9f9',
+    overflow: 'hidden',
   },
   image: {
     width: '100%',
-    height: '70%', // Adjusted height
-    marginBottom: 10, // Increased margin for better spacing
+    height: 100, // Adjusted height for bigger product boxes
+    resizeMode: 'cover',
   },
   name: {
     fontWeight: 'bold',
-    marginBottom: 5,
+    marginVertical: 5,
+    marginHorizontal: 10,
   },
   price: {
-    fontWeight: 'bold',
-    marginBottom: 5,
+    marginHorizontal: 10,
+    marginBottom: 10,
+    color: '#888',
+  },
+  shoppingCartContainer: {
+    position: 'absolute',
+    top: 50,
+    right: 10,
+    zIndex: 1, // Ensure the cart icon is above the FlatList
+  },
+  shoppingCartIcon: {
+    fontSize: 24,
   },
   buyButton: {
     backgroundColor: 'blue',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
     borderRadius: 5,
-    marginTop: 10,
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
   },
   buyButtonText: {
     color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center',
   },
 });
 
 export default ProductListScreen;
+

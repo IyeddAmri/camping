@@ -1,8 +1,19 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView, TextInput, TouchableOpacity, Text } from 'react-native';
 import Navbar from './Navbar';
+import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
 
 const HomePage = () => {
+  const navigation = useNavigation(); // Initialize the navigation object
+  
+  const handleCategoryPress = (category) => {
+    if (category === 'Store') {
+      navigation.navigate('storehome');
+    } else if (category=== "Activities"){
+        navigation.navigate('activities')
+    }
+  };
+
   return (
     <View style={styles.container}>
       {/* Search Bar */}
@@ -18,22 +29,26 @@ const HomePage = () => {
       </View>
       
       {/* Navbar */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.navbarContainer}>
+      <View style={styles.navbarContainer}>
         <Navbar
           categories={['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language']}
-          selectedCategory={null} // Assuming no category selected initially
-          onSelectCategory={(category) => console.log(category)} // Placeholder function
+          selectedCategory={null}
+          onSelectCategory={handleCategoryPress} // Pass the handleCategoryPress function
         />
-      </ScrollView>
+      </View>
       
       {/* Multiple Boxes */}
-      <View style={styles.boxesContainer}>
-        {/* Insert your boxes here */}
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        <View style={styles.box}></View>
-        {/* Add more boxes as needed */}
-      </View>
+      <ScrollView contentContainerStyle={styles.middleContainer}>
+        <View style={styles.boxRow}>
+          <View style={styles.bigBox}></View>
+          <View style={styles.bigBox}></View>
+        </View>
+        <View style={styles.boxRow}>
+          <View style={styles.bigBox}></View>
+          <View style={styles.bigBox}></View>
+        </View>
+        {/* Add more box rows as needed */}
+      </ScrollView>
       
       {/* Tabbar */}
       <View style={styles.tabbar}>
@@ -78,21 +93,23 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
     paddingHorizontal: 10,
     paddingBottom: 10,
-    marginTop: 10,
   },
-  boxesContainer: {
+  middleContainer: {
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  boxRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    marginVertical: 10,
+    width: '100%',
     paddingHorizontal: 10,
-    marginTop: 10,
   },
-  box: {
-    width: '30%',
-    height: 100,
+  bigBox: {
+    width: '48%',
+    height: 200,
     backgroundColor: '#f0f0f0',
     borderRadius: 10,
-    marginBottom: 10,
-    // Add styling for the boxes as needed
   },
   tabbar: {
     flexDirection: 'row',
@@ -100,7 +117,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    paddingVertical: 10,
+    paddingVertical: 20, // Increased padding
   },
   tabItem: {
     // Style your tab items as needed

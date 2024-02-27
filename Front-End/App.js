@@ -1,8 +1,10 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ProductListScreen from './Screens/products'; // Assuming ProductListScreen is in the Screens folder
-import HomePage from './Screens/storehome'; // Assuming HomePage is in the Screens folder
+import HomePage from './Screens/home'; 
+import StoreHome from './Screens/storehome'; 
+import product from "./Screens/products";
+import activity from "./Screens/activities"
 
 const Stack = createStackNavigator();
 
@@ -16,9 +18,19 @@ const App = () => {
           options={{ title: 'Home' }}
         />
         <Stack.Screen
+          name="storehome"
+          component={StoreHome}
+          options={{ title: 'Store' }}
+        />
+        <Stack.Screen
           name="products"
-          component={ProductListScreen}
-          options={{ title: 'Product List' }}
+          component={product}
+          options={{ title: 'Store' }}
+        />
+        <Stack.Screen
+          name="activities"
+          component={activity}
+          options={{ title: 'Activities' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

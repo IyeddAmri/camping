@@ -102,8 +102,6 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
-
-
 -- -----------------------------------------------------
 -- Table `camping`.`events`
 -- -----------------------------------------------------
@@ -212,7 +210,6 @@ DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
-
 -- -----------------------------------------------------
 -- Table `camping`.`wishlist`
 -- -----------------------------------------------------
@@ -238,3 +235,6 @@ COLLATE = utf8mb4_0900_ai_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
+

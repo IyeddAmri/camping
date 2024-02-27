@@ -22,7 +22,7 @@ useEffect(()=>{
     <Text>event list</Text>
     <FlatList
       data={events}
-      keyExtractor={(item) => item.id.toString()} 
+      keyExtractor={(item) => item.id} 
       renderItem={({ item }) => (
         <View>
           <Image source={{ uri: item.ImageURL }} style={{ width: 100, height: 100 }} />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import ProductListScreen from './Screens/products'; // Assuming ProductListScreen is in the Screens folder
+import ProductListScreen from './Screens/products'; 
 import EventList from './Screens/events/EventList';
   
 

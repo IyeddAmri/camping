@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import ProductListScreen from './Screens/products'; // Assuming ProductListScreen is in the Screens folder
 import EventList from './Screens/events/EventList';
   
+
 const Stack = createStackNavigator();
 
 const App = () => {

@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ProductListScreen from './Screens/products'; 
 import EventList from './Screens/events/EventList';
+import EventDetails from './Screens/events/EventDetails';
   
 
 const Stack = createStackNavigator();
@@ -20,6 +21,11 @@ const App = () => {
           name="ProductList"
           component={ProductListScreen}
           options={{ title: 'Product List' }}
+        />
+        <Stack.Screen
+          name="EventDetails"
+          component={EventDetails}
+          options={{ title: 'EventDetails'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

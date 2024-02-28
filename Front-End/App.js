@@ -8,7 +8,7 @@ import HomePage from './Screens/home';
 import StoreHome from './Screens/storehome'; 
 import product from "./Screens/products";
 import activity from "./Screens/activities"
-// import HomeCommunity from "./Screens/HomeCommunity"; 
+import HomeCommunity from "./Screens/HomeCommunity"; 
 
 const Stack = createStackNavigator();
 
@@ -36,12 +36,12 @@ const App = () => {
           component={activity}
           options={{ title: 'Activities' }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name="HomeCommunity"
           component={HomeCommunity}
           options={{ title: 'HomeCommunity' }}
-        /> */}
-        <Stack.Screen
+        />
+        {/* <Stack.Screen
           name="EventList"
           component={eventList}
           options={{ title: 'Community' }}
@@ -50,7 +50,7 @@ const App = () => {
           name="EventDetails"
           component={EventDetails}
           options={{ title: 'Event Details'}}
-        />
+        /> */}
       </Stack.Navigator>
     </NavigationContainer>
   );

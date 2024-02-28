@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "251376054021",
+    "project_id": "camping-mobile-app",
+    "storage_bucket": "camping-mobile-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251376054021:android:41ce6504c7083859fa916c",
+        "android_client_info": {
+          "package_name": "com.camping.tunisia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRhZmk_NUJn_G-5LhKROkgfEJ8ykbQ_HE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251376054021:android:5f92dfeb969aa326fa916c",
+        "android_client_info": {
+          "package_name": "com.tunisia.camping"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRhZmk_NUJn_G-5LhKROkgfEJ8ykbQ_HE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

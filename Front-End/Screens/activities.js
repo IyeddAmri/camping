@@ -9,9 +9,15 @@ import wol from "../assets/wolf.webp";
 const HomePage = () => {
   const navigation = useNavigation();
 
-  const handleExploreMore = () => {
-    navigation.navigate('products'); 
+  const handleCategoryPress = (category) => {
+    if (category === 'Games') {
+      navigation.navigate('Games');
+    } else if (category === 'Outdoor Adventures') {
+        navigation.navigate("outdoor")
+    }  
   };
+
+  
 
   return (
     <View style={styles.container}>
@@ -23,7 +29,7 @@ const HomePage = () => {
         <Navbar
           categories={['Games', 'Outdoor Adventures', 'Radio']}
           selectedCategory={null}
-          onSelectCategory={(category) => console.log(category)} // Placeholder function, you can replace it with your logic
+          onSelectCategory={handleCategoryPress}
         />
       </View>
 
@@ -47,10 +53,8 @@ const HomePage = () => {
         </Text>
       </View>
 
-      {/* Explore button */}
-      <TouchableOpacity style={styles.exploreButton} onPress={handleExploreMore}>
-        <Text style={styles.exploreButtonText}>Explore More</Text>
-      </TouchableOpacity>
+     
+     
     </View>
   );
 };

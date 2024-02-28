@@ -4,7 +4,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
 import product from "./Screens/products";
-import activity from "./Screens/activities"
+import activity from "./Screens/activities";
+import GamesScreen from './Screens/Games'; // Import the GamesScreen component
+import outdoor from "./Screens/outdoor"
 
 const Stack = createStackNavigator();
 
@@ -31,6 +33,16 @@ const App = () => {
           name="activities"
           component={activity}
           options={{ title: 'Activities' }}
+        />
+        <Stack.Screen
+          name="Games"
+          component={GamesScreen}
+          options={{ title: 'Games' }} 
+        />
+        <Stack.Screen
+          name="outdoor"
+          component={outdoor}
+          options={{ title: 'OutDoor' }} 
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -2,30 +2,54 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import ProductListScreen from './Screens/products'; 
-import EventList from './Screens/events/EventList';
+import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
-  
+import HomePage from './Screens/home'; 
+import StoreHome from './Screens/storehome'; 
+import product from "./Screens/products";
+import activity from "./Screens/activities"
+// import HomeCommunity from "./Screens/HomeCommunity"; 
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-    <Stack.Navigator>
-      <Stack.Screen
-        name="EventList"
-        component={EventList}
-        options={{ title: 'event List' }}
-      />
+      <Stack.Navigator initialRouteName="HomePage">
         <Stack.Screen
-          name="ProductList"
-          component={ProductListScreen}
-          options={{ title: 'Product List' }}
+          name="HomePage"
+          component={HomePage}
+          options={{ title: 'Home' }}
+        />
+        <Stack.Screen
+          name="storehome"
+          component={StoreHome}
+          options={{ title: 'Store' }}
+        />
+        <Stack.Screen
+          name="products"
+          component={product}
+          options={{ title: 'Store' }}
+        />
+        <Stack.Screen
+          name="activities"
+          component={activity}
+          options={{ title: 'Activities' }}
+        />
+        {/* <Stack.Screen
+          name="HomeCommunity"
+          component={HomeCommunity}
+          options={{ title: 'HomeCommunity' }}
+        /> */}
+        <Stack.Screen
+          name="EventList"
+          component={eventList}
+          options={{ title: 'Community' }}
         />
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}
-          options={{ title: 'EventDetails'}}
+          options={{ title: 'Event Details'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -9,7 +9,7 @@ const HomePage = () => {
   const handleCategoryPress = (category) => {
     if (category === 'Store') {
       navigation.navigate('storehome');
-    } else if (category=== "Activities"){
+    } else if (category=== "Activities"){   
         navigation.navigate('activities')
     }
   };

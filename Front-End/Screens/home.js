@@ -12,6 +12,9 @@ const HomePage = () => {
     } else if (category=== "Activities"){   
         navigation.navigate('activities')
     }
+    else if (category === "Community") {
+      navigation.navigate("HomeCommunity")
+    }
   };
 
   return (

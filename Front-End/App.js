@@ -1,12 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+
+import eventList from './Screens/events/EventList';
+import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
 import product from "./Screens/products";
 import activity from "./Screens/activities";
 import GamesScreen from './Screens/Games'; // Import the GamesScreen component
 import outdoor from "./Screens/outdoor"
+
+import HomeCommunity from "./Screens/HomeCommunity"; 
 
 const Stack = createStackNavigator();
 
@@ -43,6 +48,22 @@ const App = () => {
           name="outdoor"
           component={outdoor}
           options={{ title: 'OutDoor' }} 
+          />
+          <Stack.Screen
+          name="HomeCommunity"
+          component={HomeCommunity}
+          options={{ title: 'HomeCommunity' }}
+        />
+    <Stack.Screen
+          name="EventList"
+          component={eventList}
+          options={{ title: 'Community' }}
+        />
+             
+        <Stack.Screen
+          name="EventDetails"
+          component={EventDetails}
+          options={{ title: 'Event Details'}}
         />
       </Stack.Navigator>
     </NavigationContainer>

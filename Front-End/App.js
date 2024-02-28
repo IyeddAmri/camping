@@ -41,16 +41,17 @@ const App = () => {
           component={HomeCommunity}
           options={{ title: 'HomeCommunity' }}
         />
-        {/* <Stack.Screen
+    <Stack.Screen
           name="EventList"
           component={eventList}
           options={{ title: 'Community' }}
         />
+             
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}
           options={{ title: 'Event Details'}}
-        /> */}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

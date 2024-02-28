@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Navbar from './Navbar'; // Assuming you have a Navbar component
+import Navbar from './Navbar';
 
 import cam from "../assets/camping.jpg";
 import wol from "../assets/wolf.webp";

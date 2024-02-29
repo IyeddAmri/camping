@@ -18,8 +18,6 @@ const HomeCommunity = () => {
     }  
   };
 
-  
-
   return (
     <View style={styles.container}>
       {/* Top picture */}
@@ -28,7 +26,7 @@ const HomeCommunity = () => {
       {/* Navbar */}
       <View style={styles.navbarContainer}>
         <Navbar
-          categories={['EventList', 'Chatroom', 'Radio']}
+          categories={['EventList', 'Chatroom', 'photoGallery']}
           selectedCategory={null}
           onSelectCategory={handleCategoryPress}
         />
@@ -36,17 +34,18 @@ const HomeCommunity = () => {
 
       {/* Boxes */}
       <View style={styles.boxContainer}>
-        {/* First box */}
+        {/* First box
+        <View style={styles.box}>
+          <Image source={test} style={styles.boxImage} />
+        </View> */}
+
+        {/* Second box */}
         <View style={styles.box}>
           <Image source={test} style={styles.boxImage} />
         </View>
 
-        {/* Second box */}
+        {/* Third box */}
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
-        </View>
-        {/* third box */}
-        <View style={styles.bo}>
           <Image source={feu} style={styles.boxImage} />
         </View>
       </View>
@@ -54,8 +53,9 @@ const HomeCommunity = () => {
       {/* Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-        Many camping destinations are located in remote or secluded areas that are not easily accessible by foot</Text>
-        </View>
+          Many camping destinations are located in remote or secluded areas that are not easily accessible by foot
+        </Text>
+      </View>
     </View>
   );
 };
@@ -66,33 +66,31 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: '100%',
-    height: 300, // Adjust the height as needed
+    height: 300,
     resizeMode: 'cover',
     height: 250,
   },
   navbarContainer: {
     marginVertical: 5,
-    
     marginHorizontal: 10,
     position: 'relative',
-    left: 27,
-
+    left: 30,
   },
   boxContainer: {
     flexDirection: 'row',
-    // justifyContent: 'space-around',
-    marginTop: 20,
+    justifyContent: 'space-around',
+    marginTop: 5,
   },
   box: {
     width: '40%',
-    borderRadius: 80,
+    borderRadius: 15,
     overflow: 'hidden',
   },
   boxImage: {
     width: '100%',
     height: 200,
     resizeMode: 'cover',
-    borderRadius: 10,
+    borderRadius: 15,
   },
   detailsContainer: {
     paddingHorizontal: 20,
@@ -114,13 +112,6 @@ const styles = StyleSheet.create({
   exploreButtonText: {
     color: 'white',
     fontWeight: 'bold',
-  },
-  bo:{
-    width: '40%',
-    borderRadius: 50,
-    overflow: 'hidden',
-    marginLeft: -100,
-    marginTop: -5,
   },
 });
 

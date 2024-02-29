@@ -1,23 +1,59 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import Resources from './Screens/resources.jsx'
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import HomePage from './Screens/home'; 
+import StoreHome from './Screens/storehome'; 
+import product from "./Screens/products";
+import activity from "./Screens/activities";
+import Reshome from './Screens/reshome';
+import Resourcess from "./Screens/resources"
+import Guide from "./Screens/guide";
+const Stack = createStackNavigator();
 
-export default function App() {
+const App = () => {
   return (
-    <View style={styles.container}>
-      
-      <Resources/>
-      <StatusBar style="auto" />
-      
-    </View>
-  );
-}
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="HomePage">
+        <Stack.Screen
+          name="HomePage"
+          component={HomePage}
+          options={{ title: 'Home' }}
+        />
+        <Stack.Screen
+          name="storehome"
+          component={StoreHome}
+          options={{ title: 'Store' }}
+        />
+        <Stack.Screen
+          name="products"
+          component={product}
+          options={{ title: 'Store' }}
+        />
+        <Stack.Screen
+          name="activities"
+          component={activity}
+          options={{ title: 'Activities' }}
+        />
+        <Stack.Screen
+          name="reshome"
+          component={Reshome}
+          options={{ title: 'Resources' }}
+        />
+        <Stack.Screen
+          name="resources"
+          component={Resourcess}
+          options={{ title: 'Resourcesss' }}
+        />
+          
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+          <Stack.Screen
+          name="guide"
+          component={Guide}
+          options={{ title: 'Guide' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default App;

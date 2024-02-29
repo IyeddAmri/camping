@@ -1,33 +1,39 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import hometent from "../assets/hometents.webp";
+import materialcamp from "../assets/materialcamp.webp";
+import tool from "../assets/tools.webp";
 
-const resHome = () => {
+const HomePage = () => {
   const navigation = useNavigation();
 
   const handleExploreMore = () => {
-    navigation.navigate('resources'); 
+    navigation.navigate('products'); 
   };
 
   return (
     <View style={styles.container}>
+      {/* Top picture */}
+      <Image source={hometent} style={styles.topImage} />
+
       {/* Boxes */}
       <View style={styles.boxContainer}>
         {/* First box */}
-        <TouchableOpacity style={styles.box} onPress={handleExploreMore}>
-          <Text style={styles.boxText}>Camping Gear</Text>
-        </TouchableOpacity>
+        <View style={styles.box}>
+          <Image source={materialcamp} style={styles.boxImage} />
+        </View>
 
         {/* Second box */}
-        <TouchableOpacity style={styles.box} onPress={handleExploreMore}>
-          <Text style={styles.boxText}>Tools</Text>
-        </TouchableOpacity>
+        <View style={styles.box}>
+          <Image source={tool} style={styles.boxImage} />
+        </View>
       </View>
 
       {/* Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-          Welcome to our camping resources! We offer a wide range of resources to help you prepare for your camping adventures. Whether you're looking for survival tips, gear recommendations, or camping hacks, we've got you covered.
+          Welcome to our store! We offer a wide range of products to cater to your needs. Whether you're looking for camping gear, tools, or anything in between, we've got you covered.
         </Text>
       </View>
 
@@ -42,30 +48,32 @@ const resHome = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  topImage: {
+    width: '100%',
+    height: 300, // Adjust the height as needed
+    resizeMode: 'cover',
+    height:250
   },
   boxContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: 20,
+    marginTop: 20,
   },
   box: {
-    width: 150,
-    height: 150,
-    backgroundColor: '#f0f0f0',
+    width: '40%',
     borderRadius: 10,
-    alignItems: 'center',
-    justifyContent: 'center',
+    overflow: 'hidden',
   },
-  boxText: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'center',
+  boxImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 10,
   },
   detailsContainer: {
     paddingHorizontal: 20,
-    marginBottom: 20,
+    marginTop: 20,
   },
   detailsText: {
     textAlign: 'center',
@@ -75,9 +83,10 @@ const styles = StyleSheet.create({
   exploreButton: {
     backgroundColor: 'blue',
     paddingVertical: 10,
-    paddingHorizontal: 20,
     borderRadius: 5,
+    marginHorizontal: 20,
     alignItems: 'center',
+    marginTop: 20,
   },
   exploreButtonText: {
     color: 'white',
@@ -85,4 +94,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default resHome;
+export default HomePage;

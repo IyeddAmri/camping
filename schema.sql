@@ -29,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`activities` (
   `Category` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ActivityID`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -46,6 +47,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`users` (
   `LastLogin` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`UserID`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 16
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -73,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`campsites` (
   `PaidStatus` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`CampsiteID`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 11
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -107,14 +110,14 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `camping`.`events` (
   `EventID` INT NOT NULL AUTO_INCREMENT,
-  `CampsiteID` INT NULL DEFAULT NULL,
-  `OrganizerID` INT NULL DEFAULT NULL,
-  `Name` VARCHAR(255) NULL DEFAULT NULL,
-  `DateTime` DATETIME NULL DEFAULT NULL,
-  `Description` TEXT NULL DEFAULT NULL,
-  `ImageURL` VARCHAR(255) NULL DEFAULT NULL,
-  `Category` VARCHAR(255) NULL DEFAULT NULL,
-  `ActivityID` INT NULL DEFAULT NULL,
+  `CampsiteID` INT NOT NULL,
+  `OrganizerID` INT NOT NULL,
+  `Name` VARCHAR(255) NOT NULL,
+  `DateTime` VARCHAR(255) NOT NULL,
+  `Description` TEXT NOT NULL,
+  `ImageURL` VARCHAR(2000) NOT NULL,
+  `Category` VARCHAR(255) NOT NULL,
+  `ActivityID` INT NOT NULL,
   PRIMARY KEY (`EventID`),
   INDEX `CampsiteID` (`CampsiteID` ASC) VISIBLE,
   INDEX `OrganizerID` (`OrganizerID` ASC) VISIBLE,
@@ -129,6 +132,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`events` (
     FOREIGN KEY (`ActivityID`)
     REFERENCES `camping`.`activities` (`ActivityID`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 46
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -169,6 +173,18 @@ CREATE TABLE IF NOT EXISTS `camping`.`orders` (
   CONSTRAINT `orders_ibfk_2`
     FOREIGN KEY (`ProductID`)
     REFERENCES `camping`.`products` (`ProductID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `camping`.`photogallery`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `camping`.`photogallery` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `image_url` VARCHAR(2000) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -235,6 +251,3 @@ COLLATE = utf8mb4_0900_ai_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
-

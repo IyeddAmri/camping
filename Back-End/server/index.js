@@ -4,6 +4,7 @@ const app = express();
 const eventroute = require('../routes/eventRoute.js');
 const productRoutes = require('../routes/productsroute');
 const activityRoutes = require('../routes/activitiesroute');
+const photoroute = require('../routes/photogalleryroute.js');
 
 app.use(cors());
 app.use(express.json()); 
@@ -11,6 +12,7 @@ app.use(cors());
 app.use('/event', eventroute); 
 app.use('/api', productRoutes);
 app.use('/activities', activityRoutes);
+app.use("/photo", photoroute);
 
 
 const PORT = process.env.PORT || 5000;

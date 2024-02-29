@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { View, Text, Image , StyleSheet} from 'react-native';
 
@@ -7,15 +6,16 @@ const EventDetails = ({ route }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Event Details</Text>
-      <Image source={{ uri: event.ImageURL }} style={{ width: 200, height: 200 }} />
-      <Text>{event.Name}</Text>
-      <Text>{event.DateTime}</Text>
-      <Text>{event.Description}</Text>
-      {/* <Text>Category: {event.Category}</Text> */}
+      <Text style={styles.heading}>Let's discover ✨</Text>
+      <Image source={{ uri: event.ImageURL }} style={styles.image} />
+      <Text style={styles.eventName}>{event.Name}</Text>
+      <Text style={styles.dateTime}>{event.DateTime}</Text>
+      <Text style={styles.description}>{event.Description}</Text>
+      {/* <Text style={styles.category}>Category: {event.Category}</Text> */}
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#444', // Change color to a darker shade
   },
   image: {
     width: 200,
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 5,
+    color: '#1a73e8', // Change color to a primary color
   },
   dateTime: {
     fontSize: 16,
@@ -48,6 +50,8 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     marginBottom: 20,
+    lineHeight: 24, // Improve text readability with increased line height
+    color: '#666',
   },
   // category: {
   //   fontSize: 16,

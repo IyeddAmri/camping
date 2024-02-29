@@ -28,7 +28,7 @@ const HomeCommunity = () => {
       {/* Navbar */}
       <View style={styles.navbarContainer}>
         <Navbar
-          categories={['EventList', 'Chatroom', 'Radio']}
+          categories={['EventList', 'Chatroom', 'photoGallery']}
           selectedCategory={null}
           onSelectCategory={handleCategoryPress}
         />
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     
     marginHorizontal: 10,
     position: 'relative',
-    left: 27,
+    left: 30,
 
   },
   boxContainer: {

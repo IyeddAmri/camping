@@ -7,15 +7,10 @@ const PhotogalleryController = require('../controllers/photogallery');
 router.post('/add', PhotogalleryController.createPhoto);
 
 // Get all photos
-router.get('/get', PhotogalleryController.getAllPhotos);
+router.get('/get', PhotogalleryController.getAllPhoto);
 
 // Get a photo by ID
-router.get('/:id', PhotogalleryController.getPhotoById);
+router.get('/get/:id', PhotogalleryController.getPhotoById);
 
-// Update a photo by ID
-router.put('/:id', PhotogalleryController.updatePhoto);
-
-// Delete a photo by ID
-router.delete('/:id', PhotogalleryController.deletePhoto);
 
 module.exports = router;

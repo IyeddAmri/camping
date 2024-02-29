@@ -1,76 +1,39 @@
-const PhotogalleryModel = require('../models/photogallerymodel');
+const Photo = require('../models/photogallerymodel');
 
-class PhotogalleryController {
-  static async createPhoto(req, res) {
-    const { image_url } = req.body;
-
-    try {
-      const newPhotoId = await PhotogalleryModel.createPhoto(image_url);
-      res.json({ id: newPhotoId, message: 'Photo created successfully' });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  }
-
-  static async getAllPhotos(req, res) {
-    try {
-      const photos = await PhotogalleryModel.getAllPhotos();
-      res.json(photos);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  }
+const PhotogalleryController = {
+  getAllPhoto: (req, res) => {
+    Photo.getAll((err, results) => {
+      if (err) {
+        res.status(500).json({ message: 'Internal server error' });
+      } else {
+        res.status(200).json(results);
+      }
+    });
+  },
   
-  static async getPhotoById(req, res) {
-    const { id } = req.params;
-
-    try {
-      const photo = await PhotogalleryModel.getPhotoById(id);
-      if (photo) {
-        res.json(photo);
-      } else {
+  getPhotoById: (req, res) => {
+    const id = req.params.id;
+    Photo.getById(id, (err, result) => {
+      if (err) {
+        res.status(500).json({ message: 'Internal server error' });
+      } else if (!result) {
         res.status(404).json({ message: 'Photo not found' });
-      }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  }
-
-  static async updatePhoto(req, res) {
-    const { id } = req.params;
-    const { image_url } = req.body;
-
-    try {
-      const success = await PhotogalleryModel.updatePhoto(id, image_url);
-      if (success) {
-        res.json({ message: 'Photo updated successfully' });
       } else {
-        res.status(404).json({ message: 'Photo not found' });
+        res.status(200).json(result);
       }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  }
-
-  static async deletePhoto(req, res) {
-    const { id } = req.params;
-
-    try {
-      const success = await PhotogalleryModel.deletePhoto(id);
-      if (success) {
-        res.json({ message: 'Photo deleted successfully' });
+    });
+  },
+  
+  createPhoto: (req, res) => {
+    const PhotoData = req.body;
+    Photo.add(PhotoData, (err, result) => {
+      if (err) {
+        res.status(500).json({ message: 'Internal server error' });
       } else {
-        res.status(404).json({ message: 'Photo not found' });
+        res.status(201).json({ message: 'Photo created successfully' });
       }
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Internal server error' });
-    }
-  }
-}
+    });
+  },
+};
 
 module.exports = PhotogalleryController;

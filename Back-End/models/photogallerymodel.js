@@ -1,70 +1,25 @@
-// photogallerymodel.js
 const db = require('../database/index');
-class PhotogalleryModel {
-  // Create a new photo entry
-  static createPhoto(imageUrl) {
-    return new Promise((resolve, reject) => {
-      db.query('INSERT INTO photogallery (image_url) VALUES (?)', [imageUrl], (error, results) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(results.insertId);
-        }
-      });
-    });
-  }
 
-  // Get all photos
-  static getAllPhotos() {
-    return new Promise((resolve, reject) => {
-      db.query('SELECT * FROM photogallery', (error, results) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(results);
-        }
-      });
+module.exports = {
+  getAll(callback) {
+    const query = "SELECT * FROM photogallery";
+    db.query(query, (err, results) => {
+      callback(err, results);
     });
-  }
+  },
 
-  // Get a photo by ID
-  static getPhotoById(photoId) {
-    return new Promise((resolve, reject) => {
-      db.query('SELECT * FROM photogallery WHERE id = ?', [photoId], (error, results) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(results[0]);
-        }
-      });
+  add(data, callback) {
+    const sql = 'INSERT INTO photogallery SET ?';
+    db.query(sql, data, (err, results) => {
+      callback(err, results);
     });
-  }
+  },
 
-  // Update a photo by ID
-  static updatePhoto(photoId, imageUrl) {
-    return new Promise((resolve, reject) => {
-      db.query('UPDATE photogallery SET image_url = ? WHERE id = ?', [imageUrl, photoId], (error, results) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(results.affectedRows > 0);
-        }
-      });
-    });
-  }
-
-  // Delete a photo by ID
-  static deletePhoto(photoId) {
-    return new Promise((resolve, reject) => {
-      db.query('DELETE FROM photogallery WHERE id = ?', [photoId], (error, results) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(results.affectedRows > 0);
-        }
-      });
+  getById(id, callback) {
+    const query = "SELECT * FROM photogallery where id=?";
+    db.query(query, [id], (err, results) => {
+      callback(err, results);
     });
   }
 }
 
-module.exports = PhotogalleryModel;

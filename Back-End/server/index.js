@@ -8,7 +8,6 @@ const photoroute = require('../routes/photogalleryroute.js');
 
 app.use(cors());
 app.use(express.json()); 
-app.use(cors());
 app.use('/event', eventroute); 
 app.use('/api', productRoutes);
 app.use('/activities', activityRoutes);

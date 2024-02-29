@@ -14,7 +14,7 @@ const HomePage = () => {
     } else if (category === 'Resources') {
       navigation.navigate('reshome');
     } else if (category === 'Services') {
-      navigation.navigate('guide');
+      navigation.navigate('Serhome');
     }
   };
 

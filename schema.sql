@@ -134,6 +134,23 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
+-- Table `camping`.`guide`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `camping`.`guide` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(255) NOT NULL,
+  `experience` VARCHAR(20) NULL DEFAULT NULL,
+  `location` VARCHAR(255) NULL DEFAULT NULL,
+  `price` DECIMAL(10,3) NULL DEFAULT NULL,
+  `imageUrl` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
 -- Table `camping`.`products`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `camping`.`products` (
@@ -206,6 +223,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`resources` (
   `ImageURL` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ResourceID`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 26
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -235,7 +253,5 @@ COLLATE = utf8mb4_0900_ai_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-
 
 

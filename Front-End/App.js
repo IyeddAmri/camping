@@ -8,7 +8,10 @@ import activity from "./Screens/activities";
 import Reshome from './Screens/reshome';
 import Resourcess from "./Screens/resources"
 import Guide from "./Screens/guide";
+import Transport from './Screens/Transport';
+import Serhome from './Screens/serhome'
 const Stack = createStackNavigator();
+
 
 const App = () => {
   return (
@@ -47,10 +50,12 @@ const App = () => {
           
 
           <Stack.Screen
-          name="guide"
-          component={Guide}
-          options={{ title: 'Guide' }}
+          name="Serhome"
+          component={Serhome}
+          options={{ title: 'Serhome' }}
         />
+         <Stack.Screen name="Transport" component={Transport} options={{ title: 'Transport' }} />
+         <Stack.Screen name="Guide" component={Guide} options={{ title: 'Guide' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -2,16 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import axios from 'axios';
 
-const Guide = () => {
-  const [guides, setGuides] = useState([]);
+const Transport = () => {
+  const [transportData, setTransportData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.59:5000/guide/getAll');
-        setGuides(response.data);
+        const response = await axios.get('http://192.168.1.59:5000/trans/getAll');
+        setTransportData(response.data);
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('Error fetching transport data:', error);
       }
     };
 
@@ -20,14 +20,14 @@ const Guide = () => {
 
   return (
     <View style={styles.container}>
-      {guides.map((guide) => (
-        <View key={guide.id} style={styles.guideContainer}>
-          <Image source={{ uri: guide.imageUrl }} style={styles.image} />
+      {transportData.map((transport) => (
+        <View key={transport.id} style={styles.transportContainer}>
+          <Image source={{ uri: transport.imageUrl }} style={styles.image} />
           <View style={styles.textContainer}>
-            <Text style={styles.name}>{guide.name}</Text>
-            <Text style={styles.experience}>{guide.experience}</Text>
-            <Text style={styles.location}>{guide.location}</Text>
-            <Text style={styles.price}>Price: ${guide.price}</Text>
+            <Text style={styles.name}>Name: {transport.driver_name}</Text>
+            <Text style={styles.option}>Car Option: {transport.car_option}</Text>
+            <Text style={styles.places}>Available Places: {transport.available_places}</Text>
+            <Text style={styles.price}>Price: {transport.price}</Text>
           </View>
         </View>
       ))}
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 10,
   },
-  guideContainer: {
+  transportContainer: {
     flexDirection: 'row',
     backgroundColor: '#fff',
     borderRadius: 10,
@@ -66,22 +66,26 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     padding: 10,
-    flexDirection: 'column', // Changed to column layout
+    flexDirection: 'column',
   },
   name: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
   },
-  detailText: {
+  option: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  places: {
     fontSize: 16,
     marginBottom: 5,
   },
   price: {
     fontSize: 16,
     fontWeight: 'bold',
-    color: '#007bff', // Blue color for price
+    color: '#007bff',
   },
 });
 
-export default Guide;
+export default Transport;

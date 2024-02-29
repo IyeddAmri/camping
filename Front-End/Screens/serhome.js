@@ -2,18 +2,19 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Navbar from './Navbar'; // Assuming you have a Navbar component
-import cam from '../assets/explore.jpg'
-import water from '../assets/water.webp'
-import fire from "../assets/fire.jpg";
+import cam from '../assets/camp.jpg'
+import water from '../assets/Guide.jpg'
+import fire from "../assets/transport.jpg";
 
 const HomePage = () => {
   const navigation = useNavigation();
 
   const handleCategorySelect = (category) => {
-    if (category === 'Survival Tips') {
-      navigation.navigate('resources');
+    if (category === 'Transport') {
+      navigation.navigate('Transport');
+    } else if (category === 'Guide') {
+      navigation.navigate('Guide');
     }
-    // You can handle navigation for other categories here
   };
 
   return (
@@ -24,7 +25,7 @@ const HomePage = () => {
       {/* Navbar */}
       <View style={styles.navbarContainer}>
         <Navbar
-          categories={['Survival Tips', 'Ai Tools', 'Checklist']}
+          categories={['Transport', 'Guide']}
           selectedCategory={null}
           onSelectCategory={handleCategorySelect}
         />
@@ -46,7 +47,7 @@ const HomePage = () => {
       {/* Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-        Welcome to the Resources section ! Here, you'll find a curated collection of essential tools and information to enhance your camping experience. From survival tips to handy AI tools and comprehensive checklists, this section is designed to equip you with everything you need for a safe, enjoyable, and hassle-free adventure in the great outdoors. Explore, learn, and make the most out of your camping trip with our carefully selected resources.
+        Welcome to the Services Home section ! Here, you'll discover a range of essential services tailored to enhance your camping experience. Whether you're seeking reliable transport options to reach your destination hassle-free or professional guides to lead you through the wilderness with expertise, our Services Home provides all the necessary resources to make your camping trip memorable and stress-free.
         </Text>
       </View>
     </View>

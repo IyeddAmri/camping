@@ -12,7 +12,7 @@ const EventDetails = ({ route }) => {
       <Text>{event.Name}</Text>
       <Text>{event.DateTime}</Text>
       <Text>{event.Description}</Text>
-      {/* <Text>Category: {event.Category}</Text> */}
+      {}
     </View>
   );
 };
@@ -49,10 +49,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginBottom: 20,
   },
-  // category: {
-  //   fontSize: 16,
-  //   color: '#888',
-  // },
+
 });
 
 export default EventDetails;

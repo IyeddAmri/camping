@@ -22,10 +22,10 @@ const HomeCommunity = () => {
 
   return (
     <View style={styles.container}>
-      {/* Top picture */}
+      {}
       <Image source={campingg} style={styles.topImage} />
 
-      {/* Navbar */}
+      {}
       <View style={styles.navbarContainer}>
         <Navbar
           categories={['EventList', 'Chatroom', 'Radio']}
@@ -34,24 +34,24 @@ const HomeCommunity = () => {
         />
       </View>
 
-      {/* Boxes */}
+      {}
       <View style={styles.boxContainer}>
-        {/* First box */}
+        {}
         <View style={styles.box}>
           <Image source={test} style={styles.boxImage} />
         </View>
 
-        {/* Second box */}
+        {}
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
+          {}
         </View>
-        {/* third box */}
+        {}
         <View style={styles.bo}>
           <Image source={feu} style={styles.boxImage} />
         </View>
       </View>
 
-      {/* Details */}
+      {}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
         Many camping destinations are located in remote or secluded areas that are not easily accessible by foot</Text>
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: '100%',
-    height: 300, // Adjust the height as needed
+    height: 300,
     resizeMode: 'cover',
     height: 250,
   },
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     flexDirection: 'row',
-    // justifyContent: 'space-around',
+    
     marginTop: 20,
   },
   box: {

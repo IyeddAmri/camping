@@ -9,8 +9,8 @@ const OutdoorAdventuresScreen = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await axios.get('http://192.168.1.16:5000/activities');
-        // Filter activities to include only those with the "Outdoor Adventures" category
+        const response = await axios.get('http://192.168.218.188:5000/activities');
+        
         const outdoorActivities = response.data.filter(activity => activity.Category === 'Outdoor Adventures');
         setActivities(outdoorActivities);
       } catch (error) {
@@ -40,7 +40,7 @@ const OutdoorAdventuresScreen = () => {
           <View style={styles.textContainer}>
             <Text style={styles.activityName}>{activity.Name}</Text>
             <Text style={styles.description}>{activity.Description}</Text>
-            {/* Display other activity details as needed */}
+            {}
           </View>
         </View>
       ))}

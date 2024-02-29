@@ -1,4 +1,3 @@
-// Navbar.js
 
 import React from 'react';
 import { ScrollView, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
@@ -13,7 +12,7 @@ const Navbar = ({ categories, selectedCategory, onSelectCategory }) => {
             styles.navItem,
             selectedCategory === null && styles.selectedNavItem 
           ]}
-          activeOpacity={0.8} // Adjust the opacity for the hover effect
+          activeOpacity={0.8} 
         >
           <Text style={styles.navText}>All</Text>
         </TouchableOpacity>
@@ -25,7 +24,7 @@ const Navbar = ({ categories, selectedCategory, onSelectCategory }) => {
               styles.navItem,
               selectedCategory === category && styles.selectedNavItem 
             ]}
-            activeOpacity={0.8} // Adjust the opacity for the hover effect
+            activeOpacity={0.8}
           >
             <Text style={styles.navText}>{category}</Text>
           </TouchableOpacity>

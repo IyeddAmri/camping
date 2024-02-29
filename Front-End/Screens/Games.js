@@ -9,8 +9,8 @@ const GamesScreen = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/activities');
-        // Filter activities to include only those with the "Games" category
+        const response = await axios.get('http://192.168.218.188:5000/activities');
+        
         const gamesActivities = response.data.filter(activity => activity.Category === 'Games');
         setActivities(gamesActivities);
       } catch (error) {
@@ -40,7 +40,7 @@ const GamesScreen = () => {
           <View style={styles.textContainer}>
             <Text style={styles.activityName}>{activity.Name}</Text>
             <Text style={styles.description}>{activity.Description}</Text>
-            {/* Display other activity details as needed */}
+            {}
           </View>
         </View>
       ))}

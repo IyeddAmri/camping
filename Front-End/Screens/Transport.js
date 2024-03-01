@@ -118,8 +118,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   emailLabel: {
-    fontSize: 16,
-    marginBottom: 5,
+    fontSize: 20, // Increase font size
+    marginBottom: 10, // Increase bottom margin for spacing
+    fontWeight: 'bold', // Make the text bold
+    textAlign: 'center', // Align text to the center
+    color: 'black', // Change text color to blue
+    textDecorationLine: 'underline', // Add underline decoration
   },
   emailButton: {
     backgroundColor: '#007bff',

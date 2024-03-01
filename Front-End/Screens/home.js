@@ -13,8 +13,24 @@ const HomePage = () => {
       navigation.navigate('activities');
     } else if (category === 'Resources') {
       navigation.navigate('reshome');
-    } else if (category === 'Services') {
-      navigation.navigate('Serhome');
+    }
+  };
+
+  const handleTabPress = (tabName) => {
+    if (tabName === 'Home') {
+      // Handle navigation to the home screen
+    } else if (tabName === 'Whishlist') {
+      // Handle navigation to the wishlist screen
+    } else if (tabName === 'Services') {
+      navigation.navigate('serhome'); // Navigate to the Services screen
+    } else if (tabName === 'Inbox') {
+      // Handle navigation to the inbox screen
+    } else if (tabName === 'Emergency') {
+      // Handle navigation to the emergency screen
+    } else if (tabName === 'Settings') {
+      // Handle navigation to the settings screen
+    } else if (tabName === 'Profile') {
+      // Handle navigation to the profile screen
     }
   };
 
@@ -32,7 +48,7 @@ const HomePage = () => {
       
       <View style={styles.navbarContainer}>
         <Navbar
-          categories={['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Services', 'Language']}
+          categories={['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language']}
           selectedCategory={null}
           onSelectCategory={handleCategoryPress}
         />
@@ -52,7 +68,9 @@ const HomePage = () => {
       <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem}><Text>Home</Text></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Whishlist</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}><Text>Services</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Services')}>
+          <Text>Services</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Inbox</Text></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Emergency</Text></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Settings</Text></TouchableOpacity>

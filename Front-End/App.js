@@ -47,15 +47,17 @@ const App = () => {
           component={Resourcess}
           options={{ title: 'Resourcesss' }}
         />
-          
-
           <Stack.Screen
-          name="Serhome"
+          name="serhome"
           component={Serhome}
           options={{ title: 'Serhome' }}
         />
-         <Stack.Screen name="Transport" component={Transport} options={{ title: 'Transport' }} />
-         <Stack.Screen name="Guide" component={Guide} options={{ title: 'Guide' }} />
+         <Stack.Screen name="Transport" 
+         component={Transport} 
+         options={{ title: 'Transport' }} />
+         <Stack.Screen name="Guide" 
+         component={Guide} 
+         options={{ title: 'Guide' }} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'react-native';
 import axios from 'axios';
 
 const Transport = () => {
@@ -8,7 +8,7 @@ const Transport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.59:5000/trans/getAll');
+        const response = await axios.get('http://192.168.137.1:5000/trans/getAll');
         setTransportData(response.data);
       } catch (error) {
         console.error('Error fetching transport data:', error);
@@ -18,27 +18,54 @@ const Transport = () => {
     fetchData();
   }, []);
 
+  const sendEmail = () => {
+    const emailAddress = 'your.email@example.com'; // Replace with your email address
+    const subject = 'Transport Reservation';
+    const body = 'I would like to reserve a transport. Please provide me with more information.';
+    const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    Linking.openURL(mailtoLink);
+  };
+
   return (
-    <View style={styles.container}>
-      {transportData.map((transport) => (
-        <View key={transport.id} style={styles.transportContainer}>
-          <Image source={{ uri: transport.imageUrl }} style={styles.image} />
-          <View style={styles.textContainer}>
-            <Text style={styles.name}>Name: {transport.driver_name}</Text>
-            <Text style={styles.option}>Car Option: {transport.car_option}</Text>
-            <Text style={styles.places}>Available Places: {transport.available_places}</Text>
-            <Text style={styles.price}>Price: {transport.price}</Text>
+    <ScrollView contentContainerStyle={styles.scrollContainer}>
+      <View style={styles.container}>
+        {transportData.map((transport) => (
+          <View key={transport.id} style={styles.transportContainer}>
+            <Image source={{ uri: transport.imageUrl }} style={styles.image} />
+            <View style={styles.textContainer}>
+              <Text style={styles.name}>Name: {transport.driver_name}</Text>
+              <Text style={styles.option}>Car Option: {transport.car_option}</Text>
+              <Text style={styles.places}>Available Places: {transport.available_places}</Text>
+              <Text style={styles.price}>Price: {transport.price}</Text>
+            </View>
           </View>
+        ))}
+        <View style={styles.emailContainer}>
+          <Text style={styles.emailLabel}>Contact us to reserve a transport 😉:</Text>
+          <TouchableOpacity
+            style={styles.emailButton}
+            onPress={() => {
+              // Handle contact logic here, such as opening an email application with your email pre-filled
+              const emailAddress = 'your.email@example.com'; // Replace with your email address
+              const subject = 'Transport Reservation';
+              const body = 'I would like to reserve a transport. Please provide me with more information.';
+              const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+              Linking.openURL(mailtoLink);
+            }}
+          >
+            <Text style={styles.emailButtonText}>Reserve Now</Text>
+          </TouchableOpacity>
         </View>
-      ))}
-    </View>
+      </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
+  scrollContainer: {
     flexGrow: 1,
-    backgroundColor: '#f8f8f8',
+  },
+  container: {
     paddingVertical: 20,
     paddingHorizontal: 10,
   },
@@ -85,6 +112,26 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: '#007bff',
+  },
+  emailContainer: {
+    marginTop: 20,
+    alignSelf: 'center',
+  },
+  emailLabel: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  emailButton: {
+    backgroundColor: '#007bff',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  emailButtonText: {
+    color: '#fff',
+    textAlign: 'center',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

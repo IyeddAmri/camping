@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
     paddingVertical: 10,
-    paddingHorizontal: 5,
+    paddingHorizontal: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
   },
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
   navText: {
-    fontSize: 16,
+    fontSize: 50,
     color: '#333',
   },
   selectedNavItem: {

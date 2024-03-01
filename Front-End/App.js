@@ -10,7 +10,7 @@ import product from "./Screens/products";
 import activity from "./Screens/activities";
 import GamesScreen from './Screens/Games'; // Import the GamesScreen component
 import outdoor from "./Screens/outdoor"
-
+import photogallery from "./Screens/photogallery"
 import HomeCommunity from "./Screens/HomeCommunity"; 
 
 const Stack = createStackNavigator();
@@ -59,12 +59,16 @@ const App = () => {
           component={eventList}
           options={{ title: 'Community' }}
         />
-             
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}
           options={{ title: 'Event Details'}}
         />
+        <Stack.Screen
+          name="photogallery"
+          component={photogallery}
+          options={{ title: 'Community'}}
+/>
       </Stack.Navigator>
     </NavigationContainer>
   );

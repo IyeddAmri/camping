@@ -1,41 +1,48 @@
-import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import { signInWithGoogle, signInWithFacebook, signInWithEmailAndPassword } from '../config/firebase'
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { signInWithEmailAndPassword } from '../config/firebase'; // Import the signInWithEmailAndPassword function
 
 const SignInScreen = ({ navigation }) => {
-  const handleSignInWithGoogle = async () => {
-    try {
-      await signInWithGoogle();
-    } catch (error) {
-      console.error('Error signing in with Google:', error);
-    }
-  };
-
-  const handleSignInWithFacebook = async () => {
-    try {
-      await signInWithFacebook();
-    } catch (error) {
-      console.error('Error signing in with Facebook:', error);
-    }
-  };
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSignInWithEmailAndPassword = async () => {
-    // Navigate to the email/password sign-in page
-    navigation.navigate('EmailPasswordSignIn');
-  };
-
-  const handleSignUp = () => {
-    // Navigate to the sign-up page
-    navigation.navigate('SignUp');
+    try {
+      const userCredential = await signInWithEmailAndPassword(email, password);
+      // Navigate to the home page upon successful sign-in
+      navigation.navigate('HomePage');
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   return (
     <View style={styles.container}>
       <Text style={styles.heading}>Sign In</Text>
-      <Button title="Sign in with Google" onPress={handleSignInWithGoogle} />
-      <Button title="Sign in with Facebook" onPress={handleSignInWithFacebook} />
-      <Button title="Sign in with Email/Password" onPress={handleSignInWithEmailAndPassword} />
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <TextInput
+        style={styles.input}
+        placeholder="Email"
+        value={email}
+        onChangeText={setEmail}
+        keyboardType="email-address"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Password"
+        value={password}
+        onChangeText={setPassword}
+        secureTextEntry
+      />
+      {error ? <Text style={styles.error}>{error}</Text> : null}
+      <Button title="Sign in" onPress={handleSignInWithEmailAndPassword} />
+      <Text style={styles.signupText}>
+        Don't have an account?{' '}
+        <Text style={styles.signupLink} onPress={() => navigation.navigate('SignUp')}>
+          Sign Up
+        </Text>
+      </Text>
     </View>
   );
 };
@@ -51,6 +58,25 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 20,
+  },
+  input: {
+    width: '100%',
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    marginBottom: 10,
+  },
+  error: {
+    color: 'red',
+    marginBottom: 10,
+  },
+  signupText: {
+    marginTop: 20,
+  },
+  signupLink: {
+    color: 'blue',
   },
 });
 

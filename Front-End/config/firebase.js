@@ -21,4 +21,16 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 
-export { auth, firestore };
+
+
+
+const signInWithEmailAndPassword = async (email, password) => {
+  try {
+    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    return userCredential.user;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { auth, firestore, signInWithEmailAndPassword };

@@ -1,24 +1,41 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
-import product from "./Screens/products";
+import Product from "./Screens/products";
 import activity from "./Screens/activities";
-import GamesScreen from './Screens/Games'; // Import the GamesScreen component
-import outdoor from "./Screens/outdoor"
-
+import GamesScreen from './Screens/Games'; 
+import outdoor from "./Screens/outdoor";
+import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
+import SignUp from "./Screens/SingUp.js";
+
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomePage">
+      <Stack.Navigator>
+        <Stack.Screen
+          name='Signin'
+          component={Signin}
+          options={{ title: 'login'}}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          //options={{ title: 'Sign Up' }} 
+        />
+        <Stack.Screen
+          name="products"
+          component={Product}
+          options={{ title: 'Store' }}
+        />
         <Stack.Screen
           name="HomePage"
           component={HomePage}
@@ -27,11 +44,6 @@ const App = () => {
         <Stack.Screen
           name="storehome"
           component={StoreHome}
-          options={{ title: 'Store' }}
-        />
-        <Stack.Screen
-          name="products"
-          component={product}
           options={{ title: 'Store' }}
         />
         <Stack.Screen
@@ -48,18 +60,17 @@ const App = () => {
           name="outdoor"
           component={outdoor}
           options={{ title: 'OutDoor' }} 
-          />
-          <Stack.Screen
+        />
+        <Stack.Screen
           name="HomeCommunity"
           component={HomeCommunity}
           options={{ title: 'HomeCommunity' }}
         />
-    <Stack.Screen
+        <Stack.Screen
           name="EventList"
           component={eventList}
           options={{ title: 'Community' }}
         />
-             
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}

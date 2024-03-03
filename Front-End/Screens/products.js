@@ -1,5 +1,3 @@
-
-
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -21,7 +19,7 @@ const ProductListScreen = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://192.168.218.188:5000/api')
+    axios.get('http://192.168.1.16:5000/api')
       .then(response => {
         setProducts(response.data);
       })

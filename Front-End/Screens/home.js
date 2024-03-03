@@ -1,16 +1,28 @@
-// Import necessary modules
 import React from 'react';
-import { View, StyleSheet, ScrollView, TextInput, TouchableOpacity, Text, Image } from 'react-native';
+import { View, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image, Text } from 'react-native';
 import Navbar from './Navbar';
 import { useNavigation } from '@react-navigation/native'; 
 import hamm from "../assets/hm.jpg"; 
-import chat from '../assets/bhar.webp'
-// Define the HomePage component
+import chat from '../assets/bhar.webp';
+import maps from "../assets/map.png"; 
+import ta9ss from "../assets/ta9s.png"; // Import the new image
+import camp from "../assets/camppp.jpg"
+import club from "../assets/community.webp"
+import hanout from "../assets/7wint.jpg"
+import po from "../assets/la3b.jpg"
+import ss from "../assets/res.jpg"
+import lo from "../assets/lou8a.png"
+import dar from "../assets/home.jpg"
+import glayb from "../assets/glb.webp" // Import the glayb image for the tab bar
+import khdm from '../assets/srv.png'
+import tlf from "../assets/klm.png"
+import ur from "../assets/ml.jpg"
+import pr from "../assets/prm.png"
+import prffff from "../assets/prff.jpg"
+
 const HomePage = () => {
-  // Initialize navigation hook
   const navigation = useNavigation(); 
   
-  // Function to handle category press
   const handleCategoryPress = (category) => {
     if (category === 'Store') {
       navigation.navigate('storehome');
@@ -23,7 +35,6 @@ const HomePage = () => {
     }
   };
 
-  // Function to handle tab press
   const handleTabPress = (tab) => {
     if (tab === 'Home') {
       // Handle Home tab press
@@ -42,37 +53,33 @@ const HomePage = () => {
     }
   };
 
-  // Render the component
+  const icons = [maps, ta9ss, camp, club, hanout, po, ss, lo]; // Add 'ta9ss' icon at index 1 for above "Weather"
+
   return (
     <View style={styles.container}>
-      {/* Search Bar */}
       <View style={styles.searchBarContainer}>
         <TextInput
           style={styles.searchBar}
           placeholder="Search"
         />
         <TouchableOpacity style={styles.bookingLogoContainer}>
-          {/* Booking Logo */}
-          <Text>Booking Logo</Text>
+          <Text>el gafsi mahboul</Text>
         </TouchableOpacity>
       </View>
       
-      {/* Navbar */}
       <View style={styles.navbarContainer}>
         <Navbar
           categories={['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language']}
           selectedCategory={null}
           onSelectCategory={handleCategoryPress}
+          icons={icons} // Pass icons array to Navbar
         />
       </View>
       
-      {/* Middle Container */}
       <ScrollView contentContainerStyle={styles.middleContainer}>
         <View style={styles.boxRow}>
-          {/* Scrollable images */}
           <ScrollView horizontal={true}>
             <Image source={hamm} style={styles.image} />
-            {/* Add more images here if needed */}
           </ScrollView>
         </View>
         <View style={styles.boxRow}>
@@ -81,21 +88,34 @@ const HomePage = () => {
         </View>
       </ScrollView>
       
-      {/* Tabbar */}
       <View style={styles.tabbar}>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}><Text>Home</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Whishlist')}><Text>Whishlist</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Services')}><Text>Services</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Inbox')}><Text>Inbox</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Emergency')}><Text>Emergency</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Settings')}><Text>Settings</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Profile')}><Text>Profile</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}>
+          <Image source={dar} style={[styles.tabIcon, styles.homeIcon]} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Whishlist')}>
+          <Image source={glayb} style={[styles.tabIcon, styles.whishlistIcon]} /> 
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Services')}>
+          <Image source={khdm} style={[styles.tabIcon, styles.servicesIcon]} /> 
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Inbox')}>
+          <Image source={tlf} style={[styles.tabIcon, styles.inboxIcon]} /> 
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Emergency')}>
+          <Image source={ur} style={[styles.tabIcon, styles.emergencyIcon]} /> 
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Settings')}>
+        <Image source={pr} style={[styles.tabIcon, styles.settingsIcon]} /> 
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Profile')}>
+      <Image source={prffff} style={[styles.tabIcon, styles.profileIcon]} /> 
+    </TouchableOpacity>
+        
       </View>
     </View>
   );
 };
 
-// Define styles for the component
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -159,7 +179,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginHorizontal: 5,
   },
+  tabIcon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+  },
+  homeIcon: {
+    // Home icon styles
+  },
+  whishlistIcon: {
+    // Whishlist icon styles
+  },
+  servicesIcon: {
+    // Services icon styles
+  },
+  inboxIcon: {
+    // Inbox icon styles
+  },
+  emergencyIcon: {
+    // Emergency icon styles
+  },
+  settingsIcon: {
+    // Settings icon styles
+  },
+  profileIcon: {
+    width:20
+  },
 });
 
-// Export the component as default
 export default HomePage;

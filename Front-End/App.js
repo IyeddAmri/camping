@@ -14,7 +14,7 @@ import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
 import SignUp from "./Screens/SingUp.js";
 import photogallery from './Screens/photogallery'
-
+import settings from './Screens/settings'
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -82,6 +82,11 @@ const App = () => {
           component={photogallery}
           options={{ title: 'Community'}}
 />
+<Stack.Screen
+          name="Settings"
+          component={settings}
+          options={{ title: 'Settings' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

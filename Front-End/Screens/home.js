@@ -1,16 +1,36 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView, TextInput, TouchableOpacity, Text } from 'react-native';
 import Navbar from './Navbar';
-import { useNavigation } from '@react-navigation/native'; // Import the useNavigation hook
+import { useNavigation } from '@react-navigation/native';
 
 const HomePage = () => {
-  const navigation = useNavigation(); // Initialize the navigation object
+  const navigation = useNavigation();
   
   const handleCategoryPress = (category) => {
     if (category === 'Store') {
       navigation.navigate('storehome');
-    } else if (category=== "Activities"){   
-        navigation.navigate('activities')
+    } else if (category === 'Activities') {
+      navigation.navigate('activities');
+    } else if (category === 'Resources') {
+      navigation.navigate('reshome');
+    }
+  };
+
+  const handleTabPress = (tabName) => {
+    if (tabName === 'Home') {
+      // Handle navigation to the home screen
+    } else if (tabName === 'Whishlist') {
+      // Handle navigation to the wishlist screen
+    } else if (tabName === 'Services') {
+      navigation.navigate('serhome'); // Navigate to the Services screen
+    } else if (tabName === 'Inbox') {
+      // Handle navigation to the inbox screen
+    } else if (tabName === 'Emergency') {
+      navigation.navigate('Emergency'); // Navigate to the Emergency screen
+    } else if (tabName === 'Settings') {
+      // Handle navigation to the settings screen
+    } else if (tabName === 'Profile') {
+      // Handle navigation to the profile screen
     }
     else if (category === "Community") {
       navigation.navigate("HomeCommunity")
@@ -19,28 +39,24 @@ const HomePage = () => {
 
   return (
     <View style={styles.container}>
-      {/* Search Bar */}
       <View style={styles.searchBarContainer}>
         <TextInput
           style={styles.searchBar}
           placeholder="Search"
         />
         <TouchableOpacity style={styles.bookingLogoContainer}>
-          {/* Insert your booking logo here */}
           <Text>Booking Logo</Text>
         </TouchableOpacity>
       </View>
       
-      {/* Navbar */}
       <View style={styles.navbarContainer}>
         <Navbar
           categories={['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language']}
           selectedCategory={null}
-          onSelectCategory={handleCategoryPress} // Pass the handleCategoryPress function
+          onSelectCategory={handleCategoryPress}
         />
       </View>
       
-      {/* Multiple Boxes */}
       <ScrollView contentContainerStyle={styles.middleContainer}>
         <View style={styles.boxRow}>
           <View style={styles.bigBox}></View>
@@ -50,17 +66,18 @@ const HomePage = () => {
           <View style={styles.bigBox}></View>
           <View style={styles.bigBox}></View>
         </View>
-        {/* Add more box rows as needed */}
       </ScrollView>
       
-      {/* Tabbar */}
       <View style={styles.tabbar}>
-        {/* Insert your tab items here */}
         <TouchableOpacity style={styles.tabItem}><Text>Home</Text></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Whishlist</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}><Text>Services</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Services')}>
+          <Text>Services</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Inbox</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}><Text>Emergency</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Emergency')}>
+  <Text>Emergency</Text>
+</TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Settings</Text></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Profile</Text></TouchableOpacity>
       </View>
@@ -120,7 +137,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderTopWidth: 1,
     borderTopColor: '#ccc',
-    paddingVertical: 20, // Increased padding
+    paddingVertical: 20,
   },
   tabItem: {
     // Style your tab items as needed

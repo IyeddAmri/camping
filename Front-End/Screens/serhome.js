@@ -1,23 +1,21 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Navbar from './Navbar';
-
-import cam from "../assets/camping.jpg";
-import wol from "../assets/wolf.webp";
+import Navbar from './Navbar'; // Assuming you have a Navbar component
+import cam from '../assets/camp.jpg'
+import water from '../assets/Guide.jpg'
+import fire from "../assets/transport.jpg";
 
 const HomePage = () => {
   const navigation = useNavigation();
 
-  const handleCategoryPress = (category) => {
-    if (category === 'Games') {
-      navigation.navigate('Games');
-    } else if (category === 'Outdoor Adventures') {
-        navigation.navigate("outdoor")
-    }  
+  const handleCategorySelect = (category) => {
+    if (category === 'Transport') {
+      navigation.navigate('Transport');
+    } else if (category === 'Guide') {
+      navigation.navigate('Guide');
+    }
   };
-
-  
 
   return (
     <View style={styles.container}>
@@ -27,34 +25,31 @@ const HomePage = () => {
       {/* Navbar */}
       <View style={styles.navbarContainer}>
         <Navbar
-          categories={['Games', 'Outdoor Adventures', 'Radio']}
+          categories={['Transport', 'Guide']}
           selectedCategory={null}
-          onSelectCategory={handleCategoryPress}
+          onSelectCategory={handleCategorySelect}
         />
-      </View>  
+      </View>
 
       {/* Boxes */}
       <View style={styles.boxContainer}>
         {/* First box */}
         <View style={styles.box}>
-          <Image source={wol} style={styles.boxImage} />
+          <Image source={fire} style={styles.boxImage} />
         </View>
 
         {/* Second box */}
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
+        <Image source={water} style={styles.boxImage} />
         </View>
       </View>
 
       {/* Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-          Welcome to our store! We offer a wide range of products to cater to your needs. Whether you're looking for camping gear, tools, or anything in between, we've got you covered.
+        Welcome to the Services Home section ! Here, you'll discover a range of essential services tailored to enhance your camping experience. Whether you're seeking reliable transport options to reach your destination hassle-free or professional guides to lead you through the wilderness with expertise, our Services Home provides all the necessary resources to make your camping trip memorable and stress-free.
         </Text>
       </View>
-
-     
-     
     </View>
   );
 };
@@ -96,18 +91,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     lineHeight: 24,
-  },
-  exploreButton: {
-    backgroundColor: 'blue',
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginHorizontal: 20,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  exploreButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
   },
 });
 

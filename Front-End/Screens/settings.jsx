@@ -8,19 +8,15 @@ const Settings = () => {
 
   const handleMenuItemPress = (menuItem) => {
     switch (menuItem) {
-      // ... (unchanged)
     }
   };
 
 return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Premium Membership Box */}
       <View style={styles.premiumBox}>
         <Text style={styles.premiumTitle}>Premium Membership</Text>
         <Text style={styles.premiumSubtitle}>Upgrade for more features</Text>
       </View>
-
-      {/* Menu items */}
       <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItemPress('Profile')}>
         <Icon name="user" size={20} color="#000" />
         <Text> Profile</Text>

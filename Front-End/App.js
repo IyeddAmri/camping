@@ -6,16 +6,25 @@ import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
-import Product from "./Screens/products";
+import product from "./Screens/products";
+import outdoor from "./Screens/outdoor"
 import activity from "./Screens/activities";
+import Reshome from './Screens/reshome';
+import Resourcess from "./Screens/resources"
+import Guide from "./Screens/guide";
+import Transport from './Screens/Transport';
+import Serhome from './Screens/serhome'
+import Emergency from './Screens/Emergency'
+import Product from "./Screens/products";
 import GamesScreen from './Screens/Games'; 
-import outdoor from "./Screens/outdoor";
+import campsite from "./Screens/campsites"
 // import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
 // import SignUp from "./Screens/SingUp.js";
-import campsite from "./Screens/campsites"
+
 
 const Stack = createStackNavigator();
+
 
 const App = () => {
   return (
@@ -31,7 +40,6 @@ const App = () => {
           component={Product}
           options={{ title: 'Store' }}
         />
-
         <Stack.Screen
           name="storehome"
           component={StoreHome}
@@ -68,11 +76,39 @@ const App = () => {
           options={{ title: 'Event Details'}}
         />
         <Stack.Screen
-          name="campsites"
-          component={campsite}
-          options={{ title: 'campsites'}}
+          name="reshome"
+          component={Reshome}
+          options={{ title: 'Resources' }}
         />
+        <Stack.Screen
+          name="resources"
+          component={Resourcess}
+          options={{ title: 'Resourcesss' }}
+        />
+          <Stack.Screen
+          name="serhome"
+          component={Serhome}
+          options={{ title: 'Serhome' }}
+        />
+         <Stack.Screen name="Transport" 
+         component={Transport} 
+         options={{ title: 'Transport' }} />
+         <Stack.Screen name="Guide" 
+         component={Guide} 
+         options={{ title: 'Guide' }} />
+          <Stack.Screen
+          name="Emergency"
+          component={Emergency}  
+          options={{ title: 'Emergency' }}
+        />
+        <Stack.Screen
+        name="campsites"
+        component={campsite}  
+        options={{ title: 'campsitess' }}
+      />
+     
       </Stack.Navigator>
+      
     </NavigationContainer>
   );
 };

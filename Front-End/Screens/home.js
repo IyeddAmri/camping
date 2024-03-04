@@ -33,27 +33,35 @@ const HomePage = () => {
       navigation.navigate('HomeCommunity')
     } else if (category === 'Campsites') {
       navigation.navigate('campsites'); 
+    } else if (category === 'Activities') {
+      navigation.navigate('activities');
+    } else if (category === 'Resources') {
+      navigation.navigate('reshome');
     }
   };
 
-  const handleTabPress = (tab) => {
-    if (tab === 'Home') {
-      // Handle Home tab press
-    } else if (tab === 'Whishlist') {
-      // Handle Whishlist tab press
-    } else if (tab === 'Services') {
-      // Handle Services tab press
-    } else if (tab === 'Inbox') {
-      // Handle Inbox tab press
-    } else if (tab === 'Emergency') {
-      // Handle Emergency tab press
-    } else if (tab === 'Settings') {
-      // Handle Settings tab press
-    } else if (tab === 'Profile') {
-      // Handle Profile tab press
+  const handleTabPress = (tabName) => {
+    if (tabName === 'Home') {
+      // Handle navigation to the home screen
+    } else if (tabName === 'Whishlist') {
+      // Handle navigation to the wishlist screen
+    } else if (tabName === 'Services') {
+      navigation.navigate('serhome'); // Navigate to the Services screen
+    } else if (tabName === 'Inbox') {
+      // Handle navigation to the inbox screen
+    } else if (tabName === 'Emergency') {
+      navigation.navigate('Emergency'); // Navigate to the Emergency screen
+    } else if (tabName === 'Settings') {
+      // Handle navigation to the settings screen
+    } else if (tabName === 'Profile') {
+      // Handle navigation to the profile screen
+    }
+    else if (category === "Community") {
+      navigation.navigate("HomeCommunity")
     }
   };
 
+ 
   const icons = [maps, ta9ss, camp, club, hanout, po, ss, lo]; // Add 'ta9ss' icon at index 1 for above "Weather"
 
   return (
@@ -64,7 +72,7 @@ const HomePage = () => {
           placeholder="Search"
         />
         <TouchableOpacity style={styles.bookingLogoContainer}>
-          <Text>el gafsi mahboul</Text>
+          <Text>Booking Logo</Text>
         </TouchableOpacity>
       </View>
       

@@ -26,11 +26,14 @@ const HomePage = () => {
     } else if (tabName === 'Inbox') {
       // Handle navigation to the inbox screen
     } else if (tabName === 'Emergency') {
-      // Handle navigation to the emergency screen
+      navigation.navigate('Emergency'); // Navigate to the Emergency screen
     } else if (tabName === 'Settings') {
       // Handle navigation to the settings screen
     } else if (tabName === 'Profile') {
       // Handle navigation to the profile screen
+    }
+    else if (category === "Community") {
+      navigation.navigate("HomeCommunity")
     }
   };
 
@@ -72,7 +75,9 @@ const HomePage = () => {
           <Text>Services</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Inbox</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem}><Text>Emergency</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Emergency')}>
+  <Text>Emergency</Text>
+</TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Settings</Text></TouchableOpacity>
         <TouchableOpacity style={styles.tabItem}><Text>Profile</Text></TouchableOpacity>
       </View>

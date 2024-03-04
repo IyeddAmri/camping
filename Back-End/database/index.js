@@ -12,7 +12,7 @@ connection.connect((err)=>{
         console.log(err)
     }
     else {
-        console.log("db is connected ")
+        console.log("You're safe !!!!!!!!!!!!  ")
     }
 })
 

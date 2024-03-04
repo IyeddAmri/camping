@@ -229,6 +229,23 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
+-- Table `camping`.`transport`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `camping`.`transport` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `driver_name` VARCHAR(255) NOT NULL,
+  `car_option` VARCHAR(255) NOT NULL,
+  `available_places` INT NOT NULL,
+  `price` DECIMAL(10,3) NOT NULL,
+  `imageUrl` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
 -- Table `camping`.`wishlist`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `camping`.`wishlist` (
@@ -253,5 +270,3 @@ COLLATE = utf8mb4_0900_ai_ci;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
-

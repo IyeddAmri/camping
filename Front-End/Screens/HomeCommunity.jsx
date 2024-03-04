@@ -3,58 +3,59 @@ import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Navbar from './Navbar';
 
-import cam from "../assets/camping.jpg";
-import wol from "../assets/wolf.webp";
+import campingg from "../assets/community.jpg";
+import test from "../assets/events.jpg";
+import feu from "../assets/feu.jpg";
 
-const HomePage = () => {
+const HomeCommunity = () => {
   const navigation = useNavigation();
 
   const handleCategoryPress = (category) => {
-    if (category === 'Games') {
-      navigation.navigate('Games');
-    } else if (category === 'Outdoor Adventures') {
-        navigation.navigate("outdoor")
+    if (category === 'EventList') {
+      navigation.navigate('EventList');
+    } else if (category === 'Chatroom') {
+        navigation.navigate("Chatroom")
     }  
   };
-
-  
 
   return (
     <View style={styles.container}>
       {/* Top picture */}
-      <Image source={cam} style={styles.topImage} />
+      <Image source={campingg} style={styles.topImage} />
 
       {/* Navbar */}
       <View style={styles.navbarContainer}>
         <Navbar
-          categories={['Games', 'Outdoor Adventures', 'Radio']}
+          categories={['EventList', 'Chatroom', 'photoGallery']}
           selectedCategory={null}
           onSelectCategory={handleCategoryPress}
         />
-      </View>  
+      </View>
 
       {/* Boxes */}
       <View style={styles.boxContainer}>
-        {/* First box */}
+        {/* First box
         <View style={styles.box}>
-          <Image source={wol} style={styles.boxImage} />
-        </View>
+          <Image source={test} style={styles.boxImage} />
+        </View> */}
 
         {/* Second box */}
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
+          <Image source={test} style={styles.boxImage} />
+        </View>
+
+        {/* Third box */}
+        <View style={styles.box}>
+          <Image source={feu} style={styles.boxImage} />
         </View>
       </View>
 
       {/* Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-          Welcome to our store! We offer a wide range of products to cater to your needs. Whether you're looking for camping gear, tools, or anything in between, we've got you covered.
+          Many camping destinations are located in remote or secluded areas that are not easily accessible by foot
         </Text>
       </View>
-
-     
-     
     </View>
   );
 };
@@ -65,28 +66,31 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: '100%',
-    height: 300, // Adjust the height as needed
+    height: 300,
     resizeMode: 'cover',
     height: 250,
   },
   navbarContainer: {
-    marginVertical: 10,
+    marginVertical: 5,
+    marginHorizontal: 10,
+    position: 'relative',
+    left: 30,
   },
   boxContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: 5,
   },
   box: {
     width: '40%',
-    borderRadius: 10,
+    borderRadius: 15,
     overflow: 'hidden',
   },
   boxImage: {
     width: '100%',
     height: 200,
     resizeMode: 'cover',
-    borderRadius: 10,
+    borderRadius: 15,
   },
   detailsContainer: {
     paddingHorizontal: 20,
@@ -111,4 +115,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomePage;
+export default HomeCommunity;

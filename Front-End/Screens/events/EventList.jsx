@@ -9,7 +9,7 @@ const EventList = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    axios.get("http://192.168.1.16:5000/event/get")
+    axios.get("http://192.168.137.147:5000/event/get")
       .then(function (response) {
         setEvents(response.data);
       })

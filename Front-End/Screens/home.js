@@ -19,6 +19,7 @@ import tlf from "../assets/klm.png"
 import ur from "../assets/ml.jpg"
 import pr from "../assets/prm.png"
 import prffff from "../assets/prff.jpg"
+import prffImage from '../assets/prff.jpg';
 
 const HomePage = () => {
   const navigation = useNavigation(); 

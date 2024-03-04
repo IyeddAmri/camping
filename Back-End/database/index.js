@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
 const config = {
-    host: '192.168.1.40',
+    host: 'localhost',
     user: 'root',
     password: 'root',
     database: 'camping'

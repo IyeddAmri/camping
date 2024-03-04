@@ -1,105 +1,126 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, Image, Button, StyleSheet, ScrollView } from 'react-native';
-import * as ImagePicker from 'expo-image-picker';
-import axios from 'axios';
+import React, { useState, useEffect } from "react";
+import { ActivityIndicator, TouchableOpacity, Image, View, StyleSheet, Alert } from "react-native";
+import * as ImagePicker from "expo-image-picker";
+import axios from "axios";
 
-function PhotoGallery() {
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [images, setImages] = useState([]);
+const cloudName = "dhy6nhgot"; // Replace with your Cloudinary cloud name
+const uploadPreset = "camping";
 
-  const serverBaseUrl = 'http://192.168.1.40:5000';
+const Photogallery = ({ changeImage }) => {
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
-    fetchImages();
-  }, []);
+    if (selectedImg) {
+      setUploading(false);
+    }
+  }, [selectedImg]);
 
-  const fetchImages = async () => {
-    try {
-      const response = await axios.get(`${serverBaseUrl}/photo/get`);
-      setImages(response.data);
-      console.log("Fetched images:", response.data);
-    } catch (error) {
-      console.error("Error fetching images:", error);
+  const openImagePicker = async () => {
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [9, 16],
+      quality: 1,
+    });
+
+    if (!result.cancelled) {
+      setUploading(true);
+      uploadToCloudinary(result.uri);
     }
   };
 
-  const pickImage = async () => {
-    try {
-      const result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
-        allowsEditing: true,
-        aspect: [4, 3],
-        quality: 1,
-      });
+  const handleCameraLaunch = async () => {
+    const result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [1, 1],
+      quality: 1,
+    });
 
-      if (!result.cancelled) {
-        setSelectedImage(result.assets[0].uri);
+    if (!result.cancelled) {
+      setUploading(true);
+      uploadToCloudinary(result.uri);
+    }
+  };
+
+  const uploadToCloudinary = async (uri) => {
+    try {
+      const data = new FormData();
+      data.append("file", { uri, type: "image/jpeg", name: "image.jpg" });
+      data.append("upload_preset", uploadPreset);
+
+      const response = await axios.post(
+        `http://localhost:5000/photo/add`,
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      if (response.status === 200) {
+        const cloudinaryUrl = response.data.secure_url;
+        changeImage(cloudinaryUrl);
+        setSelectedImg(cloudinaryUrl);
+        console.log("Selected image (upload)", cloudinaryUrl);
+        Alert.alert('Image Uploaded', 'Your image has been uploaded successfully.');
+      } else {
+        console.error("Error uploading image to Cloudinary. Response:", response);
       }
     } catch (error) {
-      console.error("Error picking image:", error);
-    }
-  };
-
-  const uploadImage = async () => {
-    if (!selectedImage) {
-      console.log("No image selected");
-      return;
-    }
-
-    try {
-      const response = await axios.post(`${serverBaseUrl}/photo/add`, { image_url: selectedImage });
-      console.log("Upload response:", response.data);
-      fetchImages();
-    } catch (error) {
-      console.error("Error uploading image:", error);
-      console.error("Error details:", error.response);
+      console.error("Error uploading image to Cloudinary:", error);
+      console.error("Error details:", error.response.data);
     }
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.heading}>Camping Photo Gallery</Text>
-      <Button title="Pick an image from gallery" onPress={pickImage} />
-      {selectedImage && <Image source={{ uri: selectedImage }} style={styles.selectedImage} />}
-      <Button title="Upload" onPress={uploadImage} />
-
-      <View style={styles.galleryContainer}>
-        {images.map((imageItem, index) => (
-          <Image key={index} source={{ uri: imageItem.image_url }} style={styles.uploadedImage} />
-        ))}
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center", paddingVertical: 30 }}>
+      {uploading && <ActivityIndicator size="large" color="#4CAF50" />}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.customButtonFolder} onPress={openImagePicker}>
+          <Image source={require('../assets/feu.jpg')} style={styles.buttonImage} />
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.customButtonCamera} onPress={handleCameraLaunch}>
+          <Image source={require('../assets/feu.jpg')} style={styles.buttonImage} />
+        </TouchableOpacity>
       </View>
-    </ScrollView>
+    </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 50,
-    backgroundColor: '#f5f5f5',
-    alignItems: 'center',
-  },
-  heading: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  selectedImage: {
-    width: 300,
-    height: 300,
-    borderRadius: 10,
-    marginVertical: 20,
-  },
-  uploadedImage: {
-    width: 100,
-    height: 100,
-    borderRadius: 10,
-    margin: 5,
-  },
-  galleryContainer: {
+  buttonContainer: {
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    justifyContent: 'space-around',
+    marginTop: 5,
+    alignItems: "center"
+  },
+  customButtonCamera: {
+    alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: '#0000', // Button background color
+    borderRadius: 10,
+    width: 40, // Adjust button width as needed
+    height: 40,
+    paddingHorizontal: 10,
+    marginLeft: 20
+  },
+  customButtonFolder: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#0000', // Button background color
+    borderRadius: 10,
+    width: 40, // Adjust button width as needed
+    height: 40,
+    paddingHorizontal: 10
+  },
+  buttonImage: {
+    width: 25, // Adjust image width as needed
+    height: 25, // Adjust image height as needed
+    resizeMode: 'contain',
   },
 });
-export default PhotoGallery;
+
+export default Photogallery;

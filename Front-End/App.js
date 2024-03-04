@@ -13,7 +13,7 @@ import outdoor from "./Screens/outdoor";
 import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
 import SignUp from "./Screens/SingUp.js";
-
+import photogallery from './Screens/photogallery'
 
 const Stack = createStackNavigator();
 
@@ -21,7 +21,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
+        {/* <Stack.Screen
           name='Signin'
           component={Signin}
           options={{ title: 'login'}}
@@ -30,17 +30,18 @@ const App = () => {
           name="SignUp"
           component={SignUp}
           //options={{ title: 'Sign Up' }} 
+        /> */}
+         <Stack.Screen
+          name="HomePage"
+          component={HomePage}
+          options={{ title: 'Home' }}
         />
         <Stack.Screen
           name="products"
           component={Product}
           options={{ title: 'Store' }}
         />
-        <Stack.Screen
-          name="HomePage"
-          component={HomePage}
-          options={{ title: 'Home' }}
-        />
+       
         <Stack.Screen
           name="storehome"
           component={StoreHome}

@@ -53,10 +53,9 @@ const styles = StyleSheet.create({
     lineHeight: 24, // Improve text readability with increased line height
     color: '#666',
   },
-  // category: {
-  //   fontSize: 16,
-  //   color: '#888',
-  // },
+
 });
 
 export default EventDetails;
+
+

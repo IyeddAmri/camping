@@ -22,7 +22,7 @@ const getOne=(id,callback)=>{
 }
 const create=(transportData,callback)=>{
     const {driver_name,  car_option, available_places,  price, imageUrl}=transportData
-    const query='INSERT INTO transport(name, experience, location, price, imageUrl) VALUES(?,?,?,?,?)'
+    const query='INSERT INTO transport(driver_name,  car_option, available_places,  price, imageUrl) VALUES(?,?,?,?,?)'
     connection.query(query,[driver_name,  car_option, available_places,  price, imageUrl,transportData],(err,result)=>{
         if(err){
             callback(err,null)

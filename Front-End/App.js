@@ -17,9 +17,10 @@ import Serhome from './Screens/serhome'
 import Emergency from './Screens/Emergency'
 import Product from "./Screens/products";
 import GamesScreen from './Screens/Games'; 
-import Signin from  './Screens/Signin.js' ;
+import campsite from "./Screens/campsites"
+// import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
-import SignUp from "./Screens/SingUp.js";
+// import SignUp from "./Screens/SingUp.js";
 
 
 const Stack = createStackNavigator();
@@ -29,7 +30,6 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-       
       <Stack.Screen
           name="HomePage"
           component={HomePage}
@@ -40,7 +40,6 @@ const App = () => {
           component={Product}
           options={{ title: 'Store' }}
         />
-        
         <Stack.Screen
           name="storehome"
           component={StoreHome}
@@ -102,6 +101,11 @@ const App = () => {
           component={Emergency}  
           options={{ title: 'Emergency' }}
         />
+        <Stack.Screen
+        name="campsites"
+        component={campsite}  
+        options={{ title: 'campsitess' }}
+      />
      
       </Stack.Navigator>
       

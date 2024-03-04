@@ -21,10 +21,10 @@ const HomePage = () => {
 
   return (
     <View style={styles.container}>
-      {/* Top picture */}
+      {}
       <Image source={cam} style={styles.topImage} />
 
-      {/* Navbar */}
+      {}
       <View style={styles.navbarContainer}>
         <Navbar
           categories={['Games', 'Outdoor Adventures', 'Radio']}
@@ -33,20 +33,20 @@ const HomePage = () => {
         />
       </View>  
 
-      {/* Boxes */}
+      {}
       <View style={styles.boxContainer}>
-        {/* First box */}
+        {}
         <View style={styles.box}>
           <Image source={wol} style={styles.boxImage} />
         </View>
 
-        {/* Second box */}
+        {}
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
+          {}
         </View>
       </View>
 
-      {/* Details */}
+      {}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
           Welcome to our store! We offer a wide range of products to cater to your needs. Whether you're looking for camping gear, tools, or anything in between, we've got you covered.
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: '100%',
-    height: 300, // Adjust the height as needed
+    height: 300, 
     resizeMode: 'cover',
     height: 250,
   },

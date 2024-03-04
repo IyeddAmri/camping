@@ -3,16 +3,20 @@ const cors = require('cors');
 const app = express();
 const eventroute = require('../routes/eventRoute.js');
 const productRoutes = require('../routes/productsroute');
-const resource =require('../routes/resources')
-const guide=require('../routes/guide.js')
-const transport=require('../routes/transport.js')
-
-
+const activityRoutes = require('../routes/activitiesroute');
+const campsitesRoutes = require('../routes/campsitesRoutes.js');
+const whislistRoutes = require('../routes/whishlistroute.js');
+const guide =require("../routes/guide.js");
+const transport=require ("../routes/transport.js");
+const resource=require("../routes/resources.js")
 app.use(cors());
 app.use(express.json()); 
 app.use(cors());
 app.use('/event', eventroute); 
 app.use('/api', productRoutes);
+app.use('/activities', activityRoutes);
+app.use('/campsites', campsitesRoutes);
+app.use('/whish', whislistRoutes)
 app.use('/res',resource)
 app.use('/guide',guide)
 app.use('/trans',transport)

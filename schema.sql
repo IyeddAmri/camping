@@ -29,7 +29,6 @@ CREATE TABLE IF NOT EXISTS `camping`.`activities` (
   `Category` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ActivityID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -47,7 +46,6 @@ CREATE TABLE IF NOT EXISTS `camping`.`users` (
   `LastLogin` TIMESTAMP NULL DEFAULT NULL,
   PRIMARY KEY (`UserID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 16
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -75,7 +73,6 @@ CREATE TABLE IF NOT EXISTS `camping`.`campsites` (
   `PaidStatus` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`CampsiteID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 11
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -132,7 +129,6 @@ CREATE TABLE IF NOT EXISTS `camping`.`events` (
     FOREIGN KEY (`ActivityID`)
     REFERENCES `camping`.`activities` (`ActivityID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 46
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -150,6 +146,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`products` (
   `Category` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ProductID`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 42
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -222,6 +219,23 @@ CREATE TABLE IF NOT EXISTS `camping`.`resources` (
   `ImageURL` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ResourceID`))
 ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `camping`.`transport`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `camping`.`transport` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `driver_name` VARCHAR(255) NOT NULL,
+  `car_option` VARCHAR(255) NOT NULL,
+  `available_places` INT NOT NULL,
+  `price` DECIMAL(10,3) NOT NULL,
+  `imageUrl` VARCHAR(255) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB
+AUTO_INCREMENT = 5
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 

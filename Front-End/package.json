@@ -41,6 +41,7 @@
     "react-native-screens": "~3.29.0",
     "react-native-unimodules": "^0.14.10",
     "react-native-url-polyfill": "^2.0.0",
+    "react-native-vector-icons": "^10.0.3",
     "react-native-web": "^0.19.10",
     "vlq": "^2.0.4"
   },

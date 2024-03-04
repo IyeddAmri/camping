@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import the FontAwesome icon
 
 const Settings = () => {
   const navigation = useNavigation();
@@ -10,27 +10,21 @@ const Settings = () => {
     // Handle the navigation based on the selected menu item
     switch (menuItem) {
       case 'Profile':
-        // Navigate to the Profile page
         navigation.navigate('Profile');
         break;
       case 'Password':
-        // Navigate to the Password page
         navigation.navigate('Password');
         break;
       case 'Notification':
-        // Navigate to the Notification page
         navigation.navigate('Notification');
         break;
       case 'Language':
-        // Navigate to the Language page
         navigation.navigate('Language');
         break;
       case 'RateAndReview':
-        // Navigate to the Rate & Review page
         navigation.navigate('RateAndReview');
         break;
       case 'Help':
-        // Navigate to the Help page
         navigation.navigate('Help');
         break;
       default:
@@ -42,22 +36,28 @@ const Settings = () => {
     <View style={styles.container}>
       {/* Menu items */}
       <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItemPress('Profile')}>
-        <Text>Profile</Text>
+        <Icon name="user" size={20} color="#000" /> {/* Icon */}
+        <Text> Profile</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItemPress('Password')}>
-        <Text>Password</Text>
+        <Icon name="lock" size={20} color="#000" /> {/* Icon */}
+        <Text> Password</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItemPress('Notification')}>
-        <Text>Notification</Text>
+        <Icon name="bell" size={20} color="#000" /> {/* Icon */}
+        <Text> Notification</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItemPress('Language')}>
-        <Text>Language</Text>
+        <Icon name="language" size={20} color="#000" /> {/* Icon */}
+        <Text> Language</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItemPress('RateAndReview')}>
-        <Text>Rate & Review</Text>
+        <Icon name="star" size={20} color="#000" /> {/* Icon */}
+        <Text> Rate & Review</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItemPress('Help')}>
-        <Text>Help</Text>
+        <Icon name="question-circle" size={20} color="#000" /> {/* Icon */}
+        <Text> Help</Text>
       </TouchableOpacity>
     </View>
   );
@@ -70,6 +70,8 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   menuItem: {
+    flexDirection: 'row', // Add flexDirection to align icon and text horizontally
+    alignItems: 'center', // Align items in the center vertically
     paddingVertical: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',

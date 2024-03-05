@@ -33,7 +33,7 @@ const wishlistModel = {
       }
     });
   },
-  getWishlist: (callback) => {
+  getWishliste: (callback) => {
     const query = 'SELECT * FROM wishlist ';
     connection.query(query,(err, results) => {
       if (err) {

@@ -37,7 +37,7 @@ const wishlistController = {
     });
   },
   getWishlist: (req, res) => {
-    wishlistModel.getWishlist( (err, results) => {
+    wishlistModel.getWishliste( (err, results) => {
       if (err) {
         console.error('Error fetching wishlist:', err);
         res.status(500).json({ error: 'Failed to fetch wishlist' });

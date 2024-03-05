@@ -19,7 +19,8 @@ import tlf from "../assets/klm.png"
 import ur from "../assets/ml.jpg"
 import pr from "../assets/prm.png"
 import prffff from "../assets/prff.jpg"
-import hh from "../assets/jaw.jpg"
+import hh from "../assets/jaw.jpg" // Import the hh image
+import abc from "../assets/stores.avif"
 import prffImage from '../assets/prff.jpg';
 
 const HomePage = () => {
@@ -93,8 +94,13 @@ const HomePage = () => {
           </ScrollView>
         </View>
         <View style={styles.boxRow}>
-          <View style={styles.bigBox}></View>
-          <View style={styles.bigBox}></View>
+        
+          <View style={styles.bigBox}>
+            <Image source={hh} style={{ width: '100%', height: '100%', borderRadius: 10 }} />
+          </View>
+          <View style={styles.bigBox}>
+            <Image source={abc} style={{ width: '100%', height: '100%', borderRadius: 10 }} />
+          </View>
         </View>
       </ScrollView>
       

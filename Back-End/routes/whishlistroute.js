@@ -10,5 +10,8 @@ router.delete('/:id', wishlistController.removeFromWishlist);
 
 // Get wishlist by user ID
 router.get('/:id', wishlistController.getWishlistByUserID);
+router.get('/get', wishlistController.getWishlist);
+
+
 
 module.exports = router;

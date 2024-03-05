@@ -32,6 +32,17 @@ const wishlistModel = {
         callback(null, results);
       }
     });
+  },
+  getWishlist: (callback) => {
+    const query = 'SELECT * FROM wishlist ';
+    connection.query(query,(err, results) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, results);
+      }
+    });
+
   }
 };
 

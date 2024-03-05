@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Linking } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity, ScrollView, Linking, ImageBackground } from 'react-native';
 import axios from 'axios';
 
 const Guide = () => {
@@ -8,7 +8,7 @@ const Guide = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.72:5000/guide/getAll');
+        const response = await axios.get('http://192.168.1.101:5000/guide/getAll');
         setGuides(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -19,41 +19,59 @@ const Guide = () => {
   }, []);
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <View style={styles.container}>
-        {guides.map((guide) => (
-          <View key={guide.id} style={styles.guideContainer}>
-            <Image source={{ uri: guide.imageUrl }} style={styles.image} />
-            <View style={styles.textContainer}>
-              <Text style={styles.name}>{guide.name}</Text>
-              <Text style={styles.experience}>{guide.experience}</Text>
-              <Text style={styles.location}>{guide.location}</Text>
-              <Text style={styles.price}>Price: ${guide.price}</Text>
+    <View style={styles.backgroundContainer}>
+      <ImageBackground
+        source={{ uri: 'https://i.pinimg.com/564x/b8/60/66/b86066b8326ae8f52c86d9cd899012cc.jpg' }}
+        style={styles.backgroundImage}
+        blurRadius={2} // Adjust the blur radius as needed
+      >
+        <ScrollView contentContainerStyle={styles.scrollContainer}>
+          <View style={styles.container}>
+            {guides.map((guide) => (
+              <View key={guide.id} style={styles.guideContainer}>
+                <Image source={{ uri: guide.imageUrl }} style={styles.image} />
+                <View style={styles.textContainer}>
+                  <Text style={styles.name}>{guide.name}</Text>
+                  <Text style={styles.experience}>{guide.experience}</Text>
+                  <Text style={styles.location}>{guide.location}</Text>
+                  <Text style={styles.price}>Price: ${guide.price}</Text>
+                </View>
+              </View>
+            ))}
+            <View style={styles.emailContainer}>
+              <Text style={styles.emailLabel}>Contact us to reserve a guide 😉:</Text>
+              <TouchableOpacity
+                style={styles.emailButton}
+                onPress={() => {
+                  const emailAddress = 'your.email@example.com'; // Replace with your email address
+                  const subject = 'Guide Reservation';
+                  const body = 'I would like to reserve a guide. Please provide me with more information.';
+                  const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                  Linking.openURL(mailtoLink);
+                }}
+              >
+                <Text style={styles.emailButtonText}>Reserve Now</Text>
+              </TouchableOpacity>
             </View>
           </View>
-        ))}
-        <View style={styles.emailContainer}>
-          <Text style={styles.emailLabel}>Contact us to reserve a guide 😉:</Text>
-          <TouchableOpacity
-            style={styles.emailButton}
-            onPress={() => {
-              // Handle contact logic here, such as opening an email application with your email pre-filled
-              const emailAddress = 'your.email@example.com'; // Replace with your email address
-              const subject = 'Guide Reservation';
-              const body = 'I would like to reserve a guide. Please provide me with more information.';
-              const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-              Linking.openURL(mailtoLink);
-            }}
-          >
-            <Text style={styles.emailButtonText}>Reserve Now</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </ScrollView>
+        </ScrollView>
+      </ImageBackground>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  backgroundContainer: {
+    flex: 1,
+    backgroundColor: 'black', // Set a background color as fallback
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover', // or 'stretch'
+    justifyContent: 'center',
+    width: '100%',
+    height: '100%',
+  },
   scrollContainer: {
     flexGrow: 1,
   },
@@ -63,9 +81,10 @@ const styles = StyleSheet.create({
   },
   guideContainer: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)', // Transparent white background for better contrast
     borderRadius: 10,
     marginBottom: 20,
+    paddingRight: 0,
     overflow: 'hidden',
     elevation: 3,
     shadowColor: '#000',
@@ -85,12 +104,21 @@ const styles = StyleSheet.create({
   textContainer: {
     flex: 1,
     padding: 10,
-    flexDirection: 'column', // Changed to column layout
+    flexDirection: 'column',
   },
   name: {
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#333', // Darken text color
+  },
+  experience: {
+    fontSize: 16,
+    marginBottom: 5,
+  },
+  location: {
+    fontSize: 16,
+    marginBottom: 5,
   },
   price: {
     fontSize: 16,
@@ -98,7 +126,7 @@ const styles = StyleSheet.create({
     color: '#007bff', // Blue color for price
   },
   emailContainer: {
-    marginTop: 20,
+    marginTop: 9,
     alignSelf: 'center',
   },
   emailLabel: {
@@ -106,7 +134,7 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Increase bottom margin for spacing
     fontWeight: 'bold', // Make the text bold
     textAlign: 'center', // Align text to the center
-    color: 'black', // Change text color to blue
+    color: 'white', // Change text color to blue
     textDecorationLine: 'underline', // Add underline decoration
   },
   emailButton: {
@@ -114,6 +142,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
+    marginTop: 10,
   },
   emailButtonText: {
     color: '#fff',

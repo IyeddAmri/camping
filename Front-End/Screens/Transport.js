@@ -8,7 +8,7 @@ const Transport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.72:5000/trans/getAll');
+        const response = await axios.get('http://192.168.1.101:5000/trans/getAll');
         setTransportData(response.data);
       } catch (error) {
         console.error('Error fetching transport data:', error);
@@ -27,41 +27,60 @@ const Transport = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
-      <View style={styles.container}>
-        {transportData.map((transport) => (
-          <View key={transport.id} style={styles.transportContainer}>
-            <Image source={{ uri: transport.imageUrl }} style={styles.image} />
-            <View style={styles.textContainer}>
-              <Text style={styles.name}>Name: {transport.driver_name}</Text>
-              <Text style={styles.option}>Car Option: {transport.car_option}</Text>
-              <Text style={styles.places}>Available Places: {transport.available_places}</Text>
-              <Text style={styles.price}>Price: {transport.price}</Text>
+    <View style={styles.backgroundContainer}>
+      <Image
+        source={{ uri: 'https://i.pinimg.com/564x/d0/38/2e/d0382eaa19a0469d5e0a3c28b87f6dce.jpg' }}
+        style={styles.backgroundImage}
+        blurRadius={2}
+      />
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.container}>
+          {transportData.map((transport) => (
+            <View key={transport.id} style={styles.transportContainer}>
+              <Image source={{ uri: transport.imageUrl }} style={styles.image} />
+              <View style={styles.textContainer}>
+                <Text style={styles.name}>Name: {transport.driver_name}</Text>
+                <Text style={styles.option}>Car Option: {transport.car_option}</Text>
+                <Text style={styles.places}>Available Places: {transport.available_places}</Text>
+                <Text style={styles.price}>Price: {transport.price}</Text>
+              </View>
             </View>
+          ))}
+          <View style={styles.emailContainer}>
+            <Text style={styles.emailLabel}>Contact us to reserve a transport 😉:</Text>
+            <TouchableOpacity
+              style={styles.emailButton}
+              onPress={() => {
+                // Handle contact logic here, such as opening an email application with your email pre-filled
+                const emailAddress = 'your.email@example.com'; // Replace with your email address
+                const subject = 'Transport Reservation';
+                const body = 'I would like to reserve a transport. Please provide me with more information.';
+                const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                Linking.openURL(mailtoLink);
+              }}
+            >
+              <Text style={styles.emailButtonText}>Reserve Now</Text>
+            </TouchableOpacity>
           </View>
-        ))}
-        <View style={styles.emailContainer}>
-          <Text style={styles.emailLabel}>Contact us to reserve a transport 😉:</Text>
-          <TouchableOpacity
-            style={styles.emailButton}
-            onPress={() => {
-              // Handle contact logic here, such as opening an email application with your email pre-filled
-              const emailAddress = 'your.email@example.com'; // Replace with your email address
-              const subject = 'Transport Reservation';
-              const body = 'I would like to reserve a transport. Please provide me with more information.';
-              const mailtoLink = `mailto:${emailAddress}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-              Linking.openURL(mailtoLink);
-            }}
-          >
-            <Text style={styles.emailButtonText}>Reserve Now</Text>
-          </TouchableOpacity>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  
+  backgroundContainer: {
+    flex: 1,
+    backgroundColor: 'black', // Set a background color as fallback
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: 'cover', // or 'stretch'
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+  },
   scrollContainer: {
     flexGrow: 1,
   },
@@ -71,9 +90,10 @@ const styles = StyleSheet.create({
   },
   transportContainer: {
     flexDirection: 'row',
-    backgroundColor: '#fff',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
     borderRadius: 10,
     marginBottom: 20,
+    paddingRight :0,
     overflow: 'hidden',
     elevation: 3,
     shadowColor: '#000',
@@ -99,6 +119,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: '#333', 
   },
   option: {
     fontSize: 16,
@@ -114,7 +135,7 @@ const styles = StyleSheet.create({
     color: '#007bff',
   },
   emailContainer: {
-    marginTop: 20,
+    marginTop: 9,
     alignSelf: 'center',
   },
   emailLabel: {
@@ -122,7 +143,7 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Increase bottom margin for spacing
     fontWeight: 'bold', // Make the text bold
     textAlign: 'center', // Align text to the center
-    color: 'black', // Change text color to blue
+    color: 'white', // Change text color to blue
     textDecorationLine: 'underline', // Add underline decoration
   },
   emailButton: {
@@ -130,6 +151,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
+    marginTop: 10,
   },
   emailButtonText: {
     color: '#fff',

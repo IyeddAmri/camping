@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Onboarding from './Screens/Onboarding.js'
 import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
@@ -29,7 +30,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-       
+      <Stack.Screen
+          name="Onboarding"
+          component={Onboarding}
+          options={{ headerShown: false }} 
+        />
       <Stack.Screen
           name="HomePage"
           component={HomePage}

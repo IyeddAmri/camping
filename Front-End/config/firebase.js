@@ -1,9 +1,10 @@
 
-
-import { initializeApp } from "firebase/app";
-import { getAuth } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword as signInWithEmail } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import Constants from "expo-constants";
+import { initializeApp } from "firebase/app";
+
+
 
 
 const firebaseConfig = {
@@ -17,6 +18,8 @@ const firebaseConfig = {
 };
 
 
+
+
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
@@ -26,11 +29,14 @@ const firestore = getFirestore(app);
 
 const signInWithEmailAndPassword = async (email, password) => {
   try {
-    const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    const userCredential = await signInWithEmail(auth, email, password);
     return userCredential.user;
   } catch (error) {
     throw error;
   }
 };
 
-export { auth, firestore, signInWithEmailAndPassword };
+export { auth ,initializeApp, firestore, signInWithEmailAndPassword };
+
+
+

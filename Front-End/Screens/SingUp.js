@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../config/firebase'; // Import db from Firebase configuration
 import { Picker } from '@react-native-picker/picker';
 import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
+import { auth } from '../config/firebase';
 
 const SignUpScreen = () => {
   const [email, setEmail] = useState('');

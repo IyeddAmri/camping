@@ -55,8 +55,8 @@ const HomePage = () => {
     } else if (tabName === 'Emergency') {
       navigation.navigate('Emergency'); // Navigate to the Emergency screen
     } else if (tabName === 'Settings') {
-      // Handle navigation to the settings screen
-    } else if (tabName === 'Profile') {
+      navigation.navigate('Settings');
+        } else if (tabName === 'Profile') {
       // Handle navigation to the profile screen
     }
     else if (category === "Community") {

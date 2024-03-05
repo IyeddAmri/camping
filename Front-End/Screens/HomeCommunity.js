@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 import campingg from "../assets/community.jpg";
 import test from "../assets/events.jpg";
 import feu from "../assets/feu.jpg";
-
+import chat from '../Screens/chat'
 const HomeCommunity = () => {
   const navigation = useNavigation();
 
@@ -14,8 +14,10 @@ const HomeCommunity = () => {
     if (category === 'EventList') {
       navigation.navigate('EventList');
     } else if (category === 'Chatroom') {
-        navigation.navigate("Chatroom")
-    }  
+      navigation.navigate('chat');
+    } else if (category === 'photogallery') {
+      navigation.navigate('photogallery');
+    }
   };
 
   return (
@@ -25,11 +27,11 @@ const HomeCommunity = () => {
 
       {}
       <View style={styles.navbarContainer}>
-        <Navbar
-          categories={['EventList', 'Chatroom', 'photoGallery']}
-          selectedCategory={null}
-          onSelectCategory={handleCategoryPress}
-        />
+      <Navbar
+  categories={['EventList', 'Chatroom', 'photogallery']}
+  selectedCategory={null}
+  onSelectCategory={handleCategoryPress}
+/>
       </View>
 
       {}

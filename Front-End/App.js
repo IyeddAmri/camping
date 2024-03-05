@@ -18,12 +18,11 @@ import Emergency from './Screens/Emergency'
 import Product from "./Screens/products";
 import GamesScreen from './Screens/Games'; 
 import campsite from "./Screens/campsites"
-// import Signin from  './Screens/Signin.js' ;
+import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
 import SignUp from "./Screens/SingUp.js";
 import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
-// import SignUp from "./Screens/SingUp.js";
 
 
 const Stack = createStackNavigator();
@@ -33,7 +32,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        {/* <Stack.Screen
+      <Stack.Screen
           name='Signin'
           component={Signin}
           options={{ title: 'login'}}
@@ -41,9 +40,9 @@ const App = () => {
         <Stack.Screen
           name="SignUp"
           component={SignUp}
-          //options={{ title: 'Sign Up' }} 
-        /> */}
-         <Stack.Screen
+          options={{ title: 'Sign Up' }} 
+        /> 
+        <Stack.Screen
           name="HomePage"
           component={HomePage}
           options={{ title: 'Home' }}
@@ -93,7 +92,7 @@ const App = () => {
           name="photogallery"
           component={photogallery}
           options={{ title: 'Community'}}
-/>
+        />
 <Stack.Screen
           name="Settings"
           component={settings}
@@ -114,12 +113,12 @@ const App = () => {
           component={Serhome}
           options={{ title: 'Serhome' }}
         />
-         <Stack.Screen name="Transport" 
-         component={Transport} 
-         options={{ title: 'Transport' }} />
-         <Stack.Screen name="Guide" 
-         component={Guide} 
-         options={{ title: 'Guide' }} />
+        <Stack.Screen name="Transport" 
+        component={Transport} 
+        options={{ title: 'Transport' }} />
+        <Stack.Screen name="Guide" 
+        component={Guide} 
+        options={{ title: 'Guide' }} />
           <Stack.Screen
           name="Emergency"
           component={Emergency}  
@@ -129,8 +128,7 @@ const App = () => {
         name="campsites"
         component={campsite}  
         options={{ title: 'campsitess' }}
-      />
-     
+        />
       </Stack.Navigator>
       
     </NavigationContainer>

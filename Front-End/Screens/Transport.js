@@ -8,7 +8,7 @@ const Transport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/trans/getAll');
+        const response = await axios.get('http://192.168.100.67:5000/trans/getAll');
         setTransportData(response.data);
       } catch (error) {
         console.error('Error fetching transport data:', error);

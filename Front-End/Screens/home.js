@@ -11,7 +11,7 @@ import club from "../assets/community.webp"
 import hanout from "../assets/7wint.jpg"
 import po from "../assets/la3b.jpg"
 import ss from "../assets/res.jpg"
-import lo from "../assets/lou8a.png"
+import lo from "../assets/lou8a.png"  
 import dar from "../assets/home.jpg"
 import glayb from "../assets/glb.webp" // Import the glayb image for the tab bar
 import khdm from '../assets/srv.png'
@@ -19,6 +19,7 @@ import tlf from "../assets/klm.png"
 import ur from "../assets/ml.jpg"
 import pr from "../assets/prm.png"
 import prffff from "../assets/prff.jpg"
+import hh from "../assets/jaw.jpg"
 import prffImage from '../assets/prff.jpg';
 
 const HomePage = () => {

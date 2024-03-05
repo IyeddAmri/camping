@@ -6,7 +6,7 @@ import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
-import product from "./Screens/products";
+
 import outdoor from "./Screens/outdoor"
 import activity from "./Screens/activities";
 import Reshome from './Screens/reshome';
@@ -30,6 +30,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      
       <Stack.Screen
           name="HomePage"
           component={HomePage}

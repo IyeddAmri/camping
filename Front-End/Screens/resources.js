@@ -9,7 +9,7 @@ const Resources = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://192.168.100.50:5000/res/getAll');
+          const response = await axios.get('http://192.168.137.43:5000/res/getAll');
           setData(response.data);
         } catch (error) {
           console.error('Error fetching data:', error);

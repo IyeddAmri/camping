@@ -22,7 +22,8 @@ import prffff from "../assets/prff.jpg"
 import hh from "../assets/jaw.jpg" // Import the hh image
 import abc from "../assets/stores.avif"
 import prffImage from '../assets/prff.jpg';
-
+import src from "../assets/abcd.jpg"
+import dhke from "../assets/ai.png"
 const HomePage = () => {
   const navigation = useNavigation(); 
   
@@ -88,21 +89,23 @@ const HomePage = () => {
       </View>
       
       <ScrollView contentContainerStyle={styles.middleContainer}>
-        <View style={styles.boxRow}>
-          <ScrollView horizontal={true}>
-            <Image source={hamm} style={styles.image} />
-          </ScrollView>
-        </View>
-        <View style={styles.boxRow}>
-        
-          <View style={styles.bigBox}>
-            <Image source={hh} style={{ width: '100%', height: '100%', borderRadius: 10 }} />
-          </View>
-          <View style={styles.bigBox}>
-            <Image source={abc} style={{ width: '100%', height: '100%', borderRadius: 10 }} />
-          </View>
-        </View>
-      </ScrollView>
+  <View style={styles.boxRow}>
+    <View style={styles.bigBox}>
+      <Image source={hh} style={{ width: '100%', height: '100%', borderRadius: 10 }} />
+    </View>
+    <View style={styles.bigBox}>
+      <Image source={abc} style={{ width: '100%', height: '100%', borderRadius: 10 }} />
+    </View>
+  </View>
+  <View style={styles.boxRow}>
+  <Image source={src} style={{ width: '48%', height: '100%', borderRadius: 10 }} />
+  <View style={styles.bigBox}>
+    <Image source={dhke} style={{ width: '100%', height: '100%', borderRadius: 10 }} />
+  </View>
+</View>
+
+</ScrollView>
+
       
       <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}>

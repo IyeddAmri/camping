@@ -14,30 +14,30 @@ const HomePage = () => {
 
   return (
     <View style={styles.container}>
-      {/* Top picture */}
+      {}
       <Image source={hometent} style={styles.topImage} />
 
-      {/* Boxes */}
+      {}
       <View style={styles.boxContainer}>
-        {/* First box */}
+        {}
         <View style={styles.box}>
           <Image source={materialcamp} style={styles.boxImage} />
         </View>
 
-        {/* Second box */}
+        {}
         <View style={styles.box}>
           <Image source={tool} style={styles.boxImage} />
         </View>
       </View>
 
-      {/* Details */}
+      {}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
           Welcome to our store! We offer a wide range of products to cater to your needs. Whether you're looking for camping gear, tools, or anything in between, we've got you covered.
         </Text>
       </View>
 
-      {/* Explore button */}
+      {}
       <TouchableOpacity style={styles.exploreButton} onPress={handleExploreMore}>
         <Text style={styles.exploreButtonText}>Explore More</Text>
       </TouchableOpacity>
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   },
   topImage: {
     width: '100%',
-    height: 300, // Adjust the height as needed
+    height: 300, 
     resizeMode: 'cover',
     height:250
   },
@@ -81,16 +81,22 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   exploreButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#18C0C1',
     paddingVertical: 10,
     borderRadius: 5,
     marginHorizontal: 20,
     alignItems: 'center',
     marginTop: 20,
+    width:159,
+    height:55,
+    borderRadius:15,
+  
   },
   exploreButtonText: {
     color: 'white',
     fontWeight: 'bold',
+    width:115,
+    height:30
   },
 });
 

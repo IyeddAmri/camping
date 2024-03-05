@@ -28,7 +28,7 @@ const EventList = () => {
       <FlatList
         data={events}
         keyExtractor={(item) => item.id} 
-        numColumns={2} // Set the number of columns to 2
+        numColumns={2} 
         renderItem={({ item }) => (
           <TouchableOpacity onPress={() => onViewDetails(item)} style={styles.eventContainer}>
             <View>
@@ -58,8 +58,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 8,
     marginBottom: 16,
-    marginLeft: 8, // Add margin to space out the cards
-    marginRight: 8, // Add margin to space out the cards
+    marginLeft: 8, 
+    marginRight: 8, 
     padding: 12,
     flexDirection: 'row',
     alignItems: 'center',

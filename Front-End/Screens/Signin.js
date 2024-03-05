@@ -189,10 +189,11 @@ const SignInScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        {/* Replace 'yourImageSource' with the actual source of your image */}
-        <Image source={require('../assets/khayma.webp')} style={styles.image} resizeMode="cover" />
-      </View>
+     <View style={styles.imageContainer}>
+  {/* Replace the URL with the actual URL of your image */}
+  <Image source={require('../assets/khayma.png.jpg')} style={styles.image} resizeMode="cover" />
+</View>
+
       <View style={styles.formContainer}>
         <Text style={styles.heading}>Sign In</Text>
         <TextInput
@@ -245,7 +246,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 1,
     width: '100%',
-    height: '10%',
+    height: '100%',
   },
   formContainer: {
     flex: 1,

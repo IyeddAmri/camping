@@ -3,8 +3,7 @@ import { View, TextInput, Button, StyleSheet } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Picker } from '@react-native-picker/picker';
 import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
-
-import { auth, firestore } from '../config/firebase'; // Import auth and firestore from firebase.js
+import { auth } from '../config/firebase';
 
 const SignUpScreen = () => {
   const [email, setEmail] = useState('');
@@ -31,9 +30,7 @@ const SignUpScreen = () => {
         birthday: birthday,
         location: location
       };
-
-      // Assuming you have a 'users' collection in Firestore
-      await setDoc(doc(firestore, 'users', userCredential.user.uid), userData);
+      await setDoc(doc(db, 'users', userCredential.user.uid), userData);
 
       console.log('User signed up successfully:', userCredential.user);
     } catch (error) {

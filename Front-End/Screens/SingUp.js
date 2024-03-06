@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet } from 'react-native';
+import { View, TextInput, Button, StyleSheet,ImageBackground,TouchableOpacity,Text } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Picker } from '@react-native-picker/picker';
 import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
@@ -12,6 +12,7 @@ const SignUpScreen = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [birthday, setBirthday] = useState('');
   const [location, setLocation] = useState('Tunis');
+  const[error, setError] = useState(null);
 
   const handleSignUp = async () => {
     try {
@@ -30,7 +31,7 @@ const SignUpScreen = () => {
         birthday: birthday,
         location: location
       };
-      await setDoc(doc(db, 'users', userCredential.user.uid), userData);
+      await setDoc(doc('users', userCredential.user.uid), userData);
 
       console.log('User signed up successfully:', userCredential.user);
     } catch (error) {
@@ -39,13 +40,25 @@ const SignUpScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={require('../assets/green.avif')}
+      style={styles.container}
+      resizeMode="cover"
+    >
+      <Text style={styles.heading}>Sign Up</Text>
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder="Your E-mail"
         value={email}
         onChangeText={setEmail}
         keyboardType="email-address"
+        autoCapitalize="none"
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Username"
+        value={username}
+        onChangeText={setUsername}
         autoCapitalize="none"
       />
       <TextInput
@@ -64,13 +77,7 @@ const SignUpScreen = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder="Username"
-        value={username}
-        onChangeText={setUsername}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Birthday"
+        placeholder="Your Birthday"
         value={birthday}
         onChangeText={setBirthday}
       />
@@ -85,26 +92,63 @@ const SignUpScreen = () => {
         <Picker.Item label="kef" value="Kairouan" />
         <Picker.Item label="boulifa" value="Bizerte" />
       </Picker>
-      <Button title="Sign Up" onPress={handleSignUp} />
-    </View>
+      {error ? <Text style={styles.error}>{error}</Text> : null}
+      <TouchableOpacity onPress={handleSignUp} style={styles.button}>
+        <Text style={styles.buttonText}>Sign Up</Text>
+      </TouchableOpacity>
+      <Text style={styles.signupText}>
+        Already have an account?{' '}
+        <Text style={styles.signupLink} onPress={() => navigation.navigate('Signin')}>
+          Sign In
+        </Text>
+      </Text>
+    </ImageBackground>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+  },
+  heading: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    color: '#fff',
   },
   input: {
-    width: '100%',
+    width: '80%',
     height: 50,
     borderWidth: 1,
     borderColor: '#ccc',
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
+    backgroundColor: '#fff',
+  },
+  error: {
+    color: 'red',
+    marginBottom: 10,
+  },
+  signupText: {
+    marginTop: 20,
+    color: '#000',
+  },
+  signupLink: {
+    color: 'blue',
+  },
+  button: {
+    backgroundColor: '#18C0C1',
+    padding: 15,
+    borderRadius: 5,
+    width: '80%',
+    alignItems: 'center',
+    marginTop: 20,
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
 

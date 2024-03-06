@@ -32,7 +32,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen
+       <Stack.Screen
           name='Signin'
           component={Signin}
           options={{ title: 'login'}}
@@ -41,7 +41,7 @@ const App = () => {
           name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} 
-        /> 
+        />
         <Stack.Screen
           name="HomePage"
           component={HomePage}
@@ -125,6 +125,11 @@ const App = () => {
         component={campsite}  
         options={{ title: 'campsitess' }}
         />
+        {/* <Stack.Screen
+        name="Wishlist"
+        component={Wishlist}  
+        options={{ title: 'Wishlist' }}
+        /> */}
          <Stack.Screen
         name="chat"
         component={messenger}  

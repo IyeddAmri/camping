@@ -19,7 +19,7 @@ app.use('/activities', activityRoutes);
 app.use("/photo", photoroute);
 
 app.use('/campsites', campsitesRoutes);
-app.use('/whish', whislistRoutes)
+app.use('/wish', whislistRoutes)
 app.use('/res',resource)
 app.use('/guide',guide)
 app.use('/trans',transport)

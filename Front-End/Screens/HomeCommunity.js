@@ -6,7 +6,7 @@ import Navbar from './Navbar';
 import campingg from "../assets/community.jpg";
 import test from "../assets/events.jpg";
 import feu from "../assets/feu.jpg";
-
+import chat from '../Screens/chat'
 const HomeCommunity = () => {
   const navigation = useNavigation();
 
@@ -14,43 +14,44 @@ const HomeCommunity = () => {
     if (category === 'EventList') {
       navigation.navigate('EventList');
     } else if (category === 'Chatroom') {
-        navigation.navigate("Chatroom")
-    }  
+      navigation.navigate('chat');
+    } else if (category === 'photogallery') {
+      navigation.navigate('photogallery');
+    }
   };
 
   return (
     <View style={styles.container}>
-      {/* Top picture */}
+      {}
       <Image source={campingg} style={styles.topImage} />
 
-      {/* Navbar */}
+      {}
       <View style={styles.navbarContainer}>
-        <Navbar
-          categories={['EventList', 'Chatroom', 'photoGallery']}
-          selectedCategory={null}
-          onSelectCategory={handleCategoryPress}
-        />
+      <Navbar
+  categories={['EventList', 'Chatroom', 'photogallery']}
+  selectedCategory={null}
+  onSelectCategory={handleCategoryPress}
+/>
       </View>
 
-      {/* Boxes */}
+      {}
       <View style={styles.boxContainer}>
         {/* First box
         <View style={styles.box}>
           <Image source={test} style={styles.boxImage} />
         </View> */}
 
-        {/* Second box */}
+        {}
         <View style={styles.box}>
-          <Image source={test} style={styles.boxImage} />
+          {/* You can add another image for the second box here */}
         </View>
-
-        {/* Third box */}
-        <View style={styles.box}>
+        {/* third box */}
+        <View style={styles.bo}>
           <Image source={feu} style={styles.boxImage} />
         </View>
       </View>
 
-      {/* Details */}
+      {}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
           Many camping destinations are located in remote or secluded areas that are not easily accessible by foot
@@ -78,8 +79,8 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginTop: 5,
+    // justifyContent: 'space-around',
+    marginTop: 20,
   },
   box: {
     width: '40%',

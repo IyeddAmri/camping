@@ -1,5 +1,3 @@
-// ProductListScreen.js
-
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -21,7 +19,7 @@ const ProductListScreen = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api')
+    axios.get('http://192.168.218.30:5000/api')
       .then(response => {
         setProducts(response.data);
       })
@@ -35,7 +33,7 @@ const ProductListScreen = () => {
     products;
 
   const handleBuy = (productId) => {
-    // Handle the buy action here
+    
     console.log(`Buying product with ID: ${productId}`);
   };
 
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
   },
   productItem: {
     flex: 1,
-    aspectRatio: 0.9, // Adjusted aspect ratio for better spacing
+    aspectRatio: 0.9, 
     margin: 5,
     borderRadius: 10,
     backgroundColor: '#f9f9f9',
@@ -105,7 +103,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 100, // Adjusted height for bigger product boxes
+    height: 100,
     resizeMode: 'cover',
   },
   name: {
@@ -122,7 +120,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 50,
     right: 10,
-    zIndex: 1, // Ensure the cart icon is above the FlatList
+    zIndex: 1,
   },
   shoppingCartIcon: {
     fontSize: 24,

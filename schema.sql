@@ -107,14 +107,14 @@ COLLATE = utf8mb4_0900_ai_ci;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `camping`.`events` (
   `EventID` INT NOT NULL AUTO_INCREMENT,
-  `CampsiteID` INT NULL DEFAULT NULL,
-  `OrganizerID` INT NULL DEFAULT NULL,
-  `Name` VARCHAR(255) NULL DEFAULT NULL,
-  `DateTime` DATETIME NULL DEFAULT NULL,
-  `Description` TEXT NULL DEFAULT NULL,
-  `ImageURL` VARCHAR(255) NULL DEFAULT NULL,
-  `Category` VARCHAR(255) NULL DEFAULT NULL,
-  `ActivityID` INT NULL DEFAULT NULL,
+  `CampsiteID` INT NOT NULL,
+  `OrganizerID` INT NOT NULL,
+  `Name` VARCHAR(255) NOT NULL,
+  `DateTime` VARCHAR(255) NOT NULL,
+  `Description` TEXT NOT NULL,
+  `ImageURL` VARCHAR(2000) NOT NULL,
+  `Category` VARCHAR(255) NOT NULL,
+  `ActivityID` INT NOT NULL,
   PRIMARY KEY (`EventID`),
   INDEX `CampsiteID` (`CampsiteID` ASC) VISIBLE,
   INDEX `OrganizerID` (`OrganizerID` ASC) VISIBLE,
@@ -134,23 +134,6 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `camping`.`guide`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `camping`.`guide` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(255) NOT NULL,
-  `experience` VARCHAR(20) NULL DEFAULT NULL,
-  `location` VARCHAR(255) NULL DEFAULT NULL,
-  `price` DECIMAL(10,3) NULL DEFAULT NULL,
-  `imageUrl` VARCHAR(255) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 5
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
 -- Table `camping`.`products`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `camping`.`products` (
@@ -163,6 +146,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`products` (
   `Category` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ProductID`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 42
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -186,6 +170,18 @@ CREATE TABLE IF NOT EXISTS `camping`.`orders` (
   CONSTRAINT `orders_ibfk_2`
     FOREIGN KEY (`ProductID`)
     REFERENCES `camping`.`products` (`ProductID`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `camping`.`photogallery`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `camping`.`photogallery` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `image_url` VARCHAR(2000) NOT NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -223,7 +219,6 @@ CREATE TABLE IF NOT EXISTS `camping`.`resources` (
   `ImageURL` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ResourceID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 26
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 

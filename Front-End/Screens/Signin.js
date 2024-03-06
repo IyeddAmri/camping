@@ -142,7 +142,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { signInWithEmailAndPassword } from '../config/firebase';
-import { GoogleSignIn, FacebookSignIn } from '../config/googleSignIn'; // Import GoogleSignIn and FacebookSignIn functions from your authentication providers
+import { GoogleSignIn} from '../config/googleSignIn'
 import { AntDesign, FontAwesome } from '@expo/vector-icons'; // Import icons from vector library
 
 const SignInScreen = ({ navigation }) => {
@@ -176,16 +176,7 @@ const SignInScreen = ({ navigation }) => {
   };
 
   // Function to handle Facebook sign-in
-  const handleFacebookSignIn = async () => {
-    try {
-      const user = await FacebookSignIn(); // Call the FacebookSignIn function from your authentication provider
-      console.log('Facebook sign-in successful:', user);
-      // Navigate to the home page or perform any additional logic as needed
-    } catch (error) {
-      setError('Error signing in with Facebook.');
-      console.error('Error signing in with Facebook:', error.message);
-    }
-  };
+ 
 
   return (
     <View style={styles.container}>
@@ -223,18 +214,15 @@ const SignInScreen = ({ navigation }) => {
         </Text>
         <View style={styles.socialLoginContainer}>
           {/* Google Sign-In */}
-          <TouchableOpacity onPress={handleGoogleSignIn} style={styles.socialButton}>
-            <AntDesign name="google" size={24} color="white" />
-          </TouchableOpacity>
-          {/* Facebook Sign-In */}
-          <TouchableOpacity onPress={handleFacebookSignIn} style={styles.socialButton}>
-            <FontAwesome name="facebook" size={24} color="white" />
+          <TouchableOpacity onPress={handleGoogleSignIn}>
+            <Image source={require('../assets/google.png')} style={styles.googleIcon} />
           </TouchableOpacity>
         </View>
       </View>
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -295,13 +283,19 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 20,
   },
-  socialButton: {
-    backgroundColor: '#3b5998', // Facebook blue color
-    padding: 10,
-    borderRadius: 5,
-    marginRight: 10,
+  // socialButton: {
+  //   padding: 10,
+  //   borderRadius: 5,
+  //   marginRight: 10,
+  //   alignItems: 'center',
+  //   flex: 1,
+  // },
+  
+  googleIcon: {
+    width: 24,
+    height: 24,
     alignItems: 'center',
-    flex: 1,
+    // tintColor: 'white',
   },
 });
 

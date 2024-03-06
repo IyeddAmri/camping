@@ -214,7 +214,7 @@ const SignInScreen = ({ navigation }) => {
         </Text>
         <View style={styles.socialLoginContainer}>
           {/* Google Sign-In */}
-          <TouchableOpacity onPress={handleGoogleSignIn}>
+          <TouchableOpacity onPress={handleGoogleSignIn} style={styles.socialButton}>
             <Image source={require('../assets/google.png')} style={styles.googleIcon} />
           </TouchableOpacity>
         </View>
@@ -283,18 +283,20 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 20,
   },
-  // socialButton: {
-  //   padding: 10,
-  //   borderRadius: 5,
-  //   marginRight: 10,
-  //   alignItems: 'center',
-  //   flex: 1,
-  // },
+  socialButton: {
+    padding: 10,
+    borderRadius: 5,
+    marginRight: 10,
+    alignItems: 'center',
+    flex: 1,
+  },
   
   googleIcon: {
     width: 24,
     height: 24,
-    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1 / React.Pixel
+
     // tintColor: 'white',
   },
 });

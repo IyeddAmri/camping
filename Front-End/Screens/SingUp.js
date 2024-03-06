@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   signupText: {
     marginTop: 20,
-    color: '#fff',
+    color: '#000',
   },
   signupLink: {
     color: 'blue',

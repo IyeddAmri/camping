@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore';
-import { useNavigation } from '@react-navigation/native';
-import { auth, firestore } from '../config/firebase';
-import { Text, TouchableOpacity } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
+import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
+import { auth } from '../config/firebase';
 
 const SignUpScreen = () => {
   const [email, setEmail] = useState('');
@@ -12,9 +11,8 @@ const SignUpScreen = () => {
   const [username, setUsername] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [birthday, setBirthday] = useState('');
-  const [error, setError] = useState('');
-
-  const navigation = useNavigation();
+  const [location, setLocation] = useState('Tunis');
+  const[error, setError] = useState('');
 
   const handleSignUp = async () => {
     try {
@@ -23,20 +21,19 @@ const SignUpScreen = () => {
         return;
       }
 
-      const userCredential = await createUserWithEmailAndPassword(auth, email);
+      // Create user in Firebase Authentication
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
+      // Save additional user information to Firestore
       const userData = {
         email: email,
         username: username,
         birthday: birthday,
-        location: 'Tunis', // Assuming you want to keep the location as 'Tunis'
+        location: location
       };
-
-      await setDoc(doc(firestore, 'users', userCredential.user.uid), userData);
+      await setDoc(doc, 'users', userCredential.user.uid), userData;
 
       console.log('User signed up successfully:', userCredential.user);
-
-      navigation.navigate('Signin');
     } catch (error) {
       console.error('Error signing up:', error.message);
     }

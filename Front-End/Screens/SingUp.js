@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, ImageBackground } from 'react-native';
+import { View, TextInput, Button, StyleSheet,ImageBackground,TouchableOpacity,Text } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Picker } from '@react-native-picker/picker';
 import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
@@ -12,7 +12,7 @@ const SignUpScreen = () => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [birthday, setBirthday] = useState('');
   const [location, setLocation] = useState('Tunis');
-  const[error, setError] = useState('');
+  const[error, setError] = useState(null);
 
   const handleSignUp = async () => {
     try {
@@ -23,7 +23,7 @@ const SignUpScreen = () => {
 
       // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
+      
       // Save additional user information to Firestore
       const userData = {
         email: email,
@@ -31,7 +31,7 @@ const SignUpScreen = () => {
         birthday: birthday,
         location: location
       };
-      await setDoc(doc(db, 'users', userCredential.user.uid), userData);
+      await setDoc(doc('users', userCredential.user.uid), userData);
 
       console.log('User signed up successfully:', userCredential.user);
     } catch (error) {
@@ -81,6 +81,17 @@ const SignUpScreen = () => {
         value={birthday}
         onChangeText={setBirthday}
       />
+      <Picker
+        selectedValue={location}
+        onValueChange={(itemValue) => setLocation(itemValue)}
+        style={styles.input}
+      >
+        <Picker.Item label="khanget el ragouba" value="Tunis" />
+        <Picker.Item label="barnousa" value="Sfax" />
+        <Picker.Item label="dahmani" value="Sousse" />
+        <Picker.Item label="kef" value="Kairouan" />
+        <Picker.Item label="boulifa" value="Bizerte" />
+      </Picker>
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <TouchableOpacity onPress={handleSignUp} style={styles.button}>
         <Text style={styles.buttonText}>Sign Up</Text>
@@ -94,7 +105,6 @@ const SignUpScreen = () => {
     </ImageBackground>
   );
 };
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,

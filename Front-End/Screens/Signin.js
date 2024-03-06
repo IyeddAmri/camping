@@ -138,12 +138,10 @@
 //   },
 // });
 
-// export default SignInScreen;
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity,Image } from 'react-native';
 import { signInWithEmailAndPassword } from '../config/firebase';
-import { GoogleSignIn} from '../config/googleSignIn'
-import { AntDesign, FontAwesome } from '@expo/vector-icons'; // Import icons from vector library
+import { GoogleSignIn, FacebookSignIn } from '../config/googleSignIn'; // Import GoogleSignIn and FacebookSignIn functions from your authentication providers
 
 const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -175,7 +173,6 @@ const SignInScreen = ({ navigation }) => {
     }
   };
 
-  // Function to handle Facebook sign-in
  
 
   return (

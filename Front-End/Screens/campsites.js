@@ -11,7 +11,7 @@ const CampsitesScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.146.188:5000/campsites');
+        const response = await axios.get('http://192.168.1.16:5000/campsites');
       
         const initialCampsites = response.data.map(campsite => ({ ...campsite, liked: false }));
         setCampsites(initialCampsites);

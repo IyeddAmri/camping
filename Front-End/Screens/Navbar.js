@@ -25,10 +25,12 @@ const Navbar = ({ categories, selectedCategory, onSelectCategory, icons }) => {
             ]}
             activeOpacity={0.8}
           >
-            {icons && icons[index] && (
-              <Image source={icons[index]} style={[styles.icon, getCategoryStyle(category)]} />
-            )}
-            <Text style={styles.navText}>{category}</Text>
+            <View style={styles.categoryContainer}>
+              {icons && icons[index] && (
+                <Image source={icons[index]} style={[styles.icon, getCategoryStyle(category)]} />
+              )}
+              <Text style={styles.navText}>{category}</Text>
+            </View>
           </TouchableOpacity>
         ))}
       </View>
@@ -70,11 +72,14 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ccc',
   },
   navItem: {
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   navText: {
     fontSize: 16,
     color: '#333',
+    marginLeft: 5,
   },
   selectedNavItem: {
     borderBottomWidth: 2,
@@ -86,38 +91,35 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   mapIcon: {
-    width:25,
-    position:"relative",
-    left:3 // Example style for map icon
+    width: 25,
   },
   weatherIcon: {
-    width:25,
-    position:"relative",
-    left:13,
+    width: 25,
   },
   campIcon: {
-    width:45,
-    position:"relative",
-    left:13, // Example style for campsite icon
+    width: 25,
   },
   communityIcon: {
-    width:35,// Example style for community icon
-    left:19
+    width: 25,
   },
   storeIcon: {
-    width:35,
-    left:2,
+    width: 25,
   },
   activitiesIcon: {
-    width:65,
-    left:0,// Example style for activities icon
+    width: 25,
   },
   resourcesIcon: {
-    width:60,
-    left:5, // Example style for resources icon
+    width: 25,
   },
   languageIcon: {
-    left:20 // Example style for language icon
+    width: 25,
+  },
+  categoryContainer: {
+    backgroundColor: 'aliceblue',
+    borderRadius: 20, // 1.25 rem border radius
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 });
 

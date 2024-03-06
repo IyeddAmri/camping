@@ -24,7 +24,7 @@ import SignUp from "./Screens/SingUp.js";
 //import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
-
+import ta9s from "./Screens/weather.js"
 const Stack = createStackNavigator();
 
 
@@ -129,6 +129,11 @@ const App = () => {
          <Stack.Screen
         name="chat"
         component={messenger}  
+        options={{ title: 'messenger' }}
+        />
+        <Stack.Screen
+        name="weather"
+        component={ta9s}  
         options={{ title: 'messenger' }}
         />
       </Stack.Navigator>

@@ -13,7 +13,7 @@ const CampsitesScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/campsites');
+        const response = await axios.get('http://localhost:5000/campsites/get');
         const initialCampsites = response.data.map(campsite => ({ ...campsite, liked: false }));
         setCampsites(initialCampsites);
       } catch (error) {
@@ -30,7 +30,7 @@ const CampsitesScreen = () => {
   
     const updatedWishlist = updatedCampsites.filter((campsite) => campsite.liked);
     setWishlist(updatedWishlist);
-
+  
     // Update liked status in the backend
     const campsiteToUpdate = updatedCampsites[index];
     axios.put(`http://localhost:5000/campsites/${campsiteToUpdate.CampsiteID}`, { liked: campsiteToUpdate.liked })
@@ -42,7 +42,7 @@ const CampsitesScreen = () => {
     <View style={styles.container}>
       <FlatList
         data={campsites}
-        keyExtractor={(item) => item.Name}
+        keyExtractor={(item) => item.CampsiteID.toString()}
         renderItem={({ item, index }) => (
           <View style={styles.campsiteContainer}>
             <Image source={{ uri: item.ImageURL }} style={styles.image} />
@@ -58,7 +58,7 @@ const CampsitesScreen = () => {
         )}
       />
       {/* Render your Wishlist component here if needed */}
-      <Wishlist wishlist={wishlist} />
+      {/* <Wishlist wishlist={wishlist} /> */}
     </View>
   );
 };

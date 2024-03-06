@@ -31,7 +31,7 @@ const SignUpScreen = () => {
         birthday: birthday,
         location: location
       };
-      await setDoc(doc, 'users', userCredential.user.uid), userData;
+      await setDoc(doc(db, 'users', userCredential.user.uid), userData);
 
       console.log('User signed up successfully:', userCredential.user);
     } catch (error) {

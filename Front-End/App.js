@@ -21,9 +21,9 @@ import campsite from "./Screens/campsites"
 import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
 import SignUp from "./Screens/SingUp.js";
-import photogallery from './Screens/photogallery'
+//import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
-// import Wishlist from './Screens/wishlist';
+import messenger from "./Screens/chat.js"
 
 const Stack = createStackNavigator();
 
@@ -88,12 +88,8 @@ const App = () => {
           component={EventDetails}
           options={{ title: 'Event Details'}}
         />
-        <Stack.Screen
-          name="photogallery"
-          component={photogallery}
-          options={{ title: 'Community'}}
-        />
-<Stack.Screen
+       
+      <Stack.Screen
           name="Settings"
           component={settings}
           options={{ title: 'Settings' }}
@@ -134,6 +130,11 @@ const App = () => {
         component={Wishlist}  
         options={{ title: 'Wishlist' }}
         /> */}
+         <Stack.Screen
+        name="chat"
+        component={messenger}  
+        options={{ title: 'messenger' }}
+        />
       </Stack.Navigator>
       
     </NavigationContainer>

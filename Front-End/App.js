@@ -33,8 +33,24 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-       
+
       <Stack.Screen
+          name="Onboarding"
+          component={Onboarding}
+          options={{ headerShown: false }} 
+        />
+
+      {/* <Stack.Screen
+          name='Signin'
+          component={Signin}
+          options={{ title: 'login'}}
+        />
+        <Stack.Screen
+          name="SignUp"
+          component={SignUp}
+          options={{ title: 'Sign Up' }} 
+        />  */}
+        <Stack.Screen
           name="HomePage"
           component={HomePage}
           options={{ title: 'Home' }}

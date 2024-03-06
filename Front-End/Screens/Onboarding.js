@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, ImageBackground } from 'react-native';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 const { width } = Dimensions.get('window');
 
@@ -8,18 +9,46 @@ const Onboarding = ({ navigation }) => {
 
   const slides = [
     {
-        title: 'Welcome to Our App',
-        description: 'Discover amazing camping spots and events.',
-      },
-      {
-        title: 'Explore Exciting Features',
-        description: 'Find new adventures and activities near you.',
-      },
+      title: 'Welcome to Our App',
+      description: 'Discover amazing camping spots and events.',
+    },
+    {
+      title: 'Explore Exciting Features',
+      description: 'Find new adventures and activities near you.',
+    },
     {
       title: 'Connect with Others',
       description: 'Connect with fellow campers and share experiences.',
     },
   ];
+
+  // Define shared values for animations
+  const titleOpacity = useSharedValue(0);
+  const descriptionOpacity = useSharedValue(0);
+  const paginationOpacity = useSharedValue(0);
+
+  // Define animated styles for elements
+  const titleStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(titleOpacity.value),
+    transform: [{ translateY: withTiming(titleOpacity.value * 10) }],
+  }));
+
+  const descriptionStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(descriptionOpacity.value),
+    transform: [{ translateY: withTiming(descriptionOpacity.value * 10) }],
+  }));
+
+  const paginationStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(paginationOpacity.value),
+    transform: [{ translateY: withTiming(paginationOpacity.value * 10) }],
+  }));
+
+  // Start animations when the component mounts
+  React.useEffect(() => {
+    titleOpacity.value = 1;
+    descriptionOpacity.value = 1;
+    paginationOpacity.value = 1;
+  }, []);
 
   const handleNext = () => {
     if (currentPage < slides.length - 1) {
@@ -44,16 +73,16 @@ const Onboarding = ({ navigation }) => {
         >
           {slides.map((slide, index) => (
             <View key={index} style={[styles.slide, { width }]}>
-              <Text style={styles.title}>{slide.title}</Text>
-              <Text style={styles.description}>{slide.description}</Text>
+              <Animated.Text style={[styles.title, titleStyle]}>{slide.title}</Animated.Text>
+              <Animated.Text style={[styles.description, descriptionStyle]}>{slide.description}</Animated.Text>
             </View>
           ))}
         </ScrollView>
         <View style={styles.pagination}>
           {slides.map((_, index) => (
-            <View
+            <Animated.View
               key={index}
-              style={[styles.paginationDot, { opacity: index === currentPage ? 1 : 0.5 }]}
+              style={[styles.paginationDot, paginationStyle, { opacity: index === currentPage ? 1 : 0.5 }]}
             />
           ))}
         </View>
@@ -73,12 +102,13 @@ const styles = StyleSheet.create({
   overlay: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.4)', // Semi-transparent overlay
-    padding: 20, // Add padding for content
+    
     justifyContent: 'center',
   },
   slide: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    flex: 1, // Make the slide container take up the entire height of the screen
+    alignItems: 'center', // Center items horizontally
+    justifyContent: 'center', // Center items vertically
   },
   title: {
     fontSize: 28,
@@ -86,11 +116,13 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
     color: '#fff', // Change text color to white
+    marginLeft: -10, // Adjust the marginLeft to move the text a little bit to the left
   },
   description: {
     fontSize: 20,
     textAlign: 'center',
     color: '#fff', // Change text color to white
+    marginLeft: 0, // Adjust the marginLeft to move the text a little bit to the left
   },
   pagination: {
     flexDirection: 'row',

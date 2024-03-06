@@ -13,6 +13,7 @@ const Wishlist = ({ wishlist }) => {
           <View style={styles.campsiteContainer}>
             <Image source={{ uri: item.ImageURL }} style={styles.image} />
             <Text style={styles.location}>{item.LocationName}</Text>
+            <Text style={styles.price}>Price: ${item.Price}</Text>
             {/* Add other campsite details as needed */}
           </View>
         )}
@@ -44,6 +45,10 @@ const styles = StyleSheet.create({
   location: {
     fontSize: 16,
     fontWeight: 'bold',
+    marginBottom: 5,
+  },
+  price: {
+    fontSize: 16,
     marginBottom: 5,
   },
 });

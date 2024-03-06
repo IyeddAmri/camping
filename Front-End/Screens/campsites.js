@@ -3,10 +3,13 @@ import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native'; 
+import Wishlist from "./Wishlist"; // Correct import statement
 
 const CampsitesScreen = () => {
   const navigation = useNavigation(); 
   const [campsites, setCampsites] = useState([]);
+  const [wishlist, setWishlist] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,10 +26,25 @@ const CampsitesScreen = () => {
     fetchData();
   }, []);
 
+  // const toggleLike = (index) => {
+  //   setCampsites(prevCampsites => {
+  //     const updatedCampsites = [...prevCampsites];
+  //     updatedCampsites[index].liked = !updatedCampsites[index].liked;
+  //     return updatedCampsites;
+  //   });
+  // };
   const toggleLike = (index) => {
     setCampsites(prevCampsites => {
       const updatedCampsites = [...prevCampsites];
       updatedCampsites[index].liked = !updatedCampsites[index].liked;
+
+      // Update wishlist
+      if (updatedCampsites[index].liked) {
+        setWishlist(prevWishlist => [...prevWishlist, updatedCampsites[index]]);
+      } else {
+        setWishlist(prevWishlist => prevWishlist.filter(item => item.Name !== updatedCampsites[index].Name));
+      }
+
       return updatedCampsites;
     });
   };
@@ -50,6 +68,7 @@ const CampsitesScreen = () => {
           </View>
         )}
       />
+            <Wishlist wishlist={wishlist} />
     </View>
   );
 };

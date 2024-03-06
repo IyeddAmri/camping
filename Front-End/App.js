@@ -18,13 +18,13 @@ import Emergency from './Screens/Emergency'
 import Product from "./Screens/products";
 import GamesScreen from './Screens/Games'; 
 import campsite from "./Screens/campsites"
-import Signin from  './Screens/Signin.js' ;
+// import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
-import SignUp from "./Screens/SingUp.js";
+// import SignUp from "./Screens/SingUp.js";
 //import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
-
+import wishlist from "./Screens/Wishlist.jsx"
 const Stack = createStackNavigator();
 
 
@@ -32,7 +32,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-       <Stack.Screen
+      {/* <Stack.Screen
           name='Signin'
           component={Signin}
           options={{ title: 'login'}}
@@ -41,7 +41,7 @@ const App = () => {
           name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} 
-        />
+        /> */}
         <Stack.Screen
           name="HomePage"
           component={HomePage}
@@ -125,11 +125,11 @@ const App = () => {
         component={campsite}  
         options={{ title: 'campsitess' }}
         />
-        {/* <Stack.Screen
+        <Stack.Screen
         name="Wishlist"
-        component={Wishlist}  
+        component={wishlist}  
         options={{ title: 'Wishlist' }}
-        /> */}
+        />
          <Stack.Screen
         name="chat"
         component={messenger}  

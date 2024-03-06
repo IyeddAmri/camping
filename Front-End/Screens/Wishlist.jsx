@@ -1,6 +1,13 @@
-// Wishlist.js
 import React from 'react';
 import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+
+const WishlistItem = ({ item }) => (
+  <View style={styles.campsiteContainer}>
+    <Image source={{ uri: item.ImageURL }} style={styles.image} />
+    <Text style={styles.price}>Price: ${item.Price}</Text>
+    <Text style={styles.rating}>Rating: {item.Rating}</Text>
+  </View>
+);
 
 const Wishlist = ({ wishlist }) => {
   return (
@@ -9,14 +16,7 @@ const Wishlist = ({ wishlist }) => {
       <FlatList
         data={wishlist}
         keyExtractor={(item) => item.Name}
-        renderItem={({ item }) => (
-          <View style={styles.campsiteContainer}>
-            <Image source={{ uri: item.ImageURL }} style={styles.image} />
-            <Text style={styles.location}>{item.LocationName}</Text>
-            <Text style={styles.price}>Price: ${item.Price}</Text>
-            {/* Add other campsite details as needed */}
-          </View>
-        )}
+        renderItem={({ item }) => <WishlistItem item={item} />}
       />
     </View>
   );
@@ -50,6 +50,9 @@ const styles = StyleSheet.create({
   price: {
     fontSize: 16,
     marginBottom: 5,
+  },
+  rating: {
+    fontSize: 16,
   },
 });
 

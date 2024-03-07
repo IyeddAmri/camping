@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, ImageBackground, StyleSheet } from 'react-native';
 
 // Import images
-// import sunnyImage from './images/sunny.avif';
-// import rainyImage from './images/rainy.avif';
-// import cloudyImage from './images/cloudy.avif';
-// import unknownImage from './images/unknownImage.avif';
+import sunnyImage from './images/sunny.avif';
+import rainyImage from './images/rainy.avif';
+import cloudyImage from './images/cloudy.avif';
+import unknownImage from './images/unknownImage.avif';
 
 const weatherImages = {
-//   clear: sunnyImage,
-//   rain: rainyImage,
-//   clouds: cloudyImage,
-//   unknown: unknownImage,
+  clear: sunnyImage,
+  rain: rainyImage,
+  clouds: cloudyImage,
+  unknown: unknownImage,
 };
 
 const WeatherInfo = () => {

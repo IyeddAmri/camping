@@ -85,7 +85,7 @@ const SignUpScreen = () => {
         <Picker.Item label="kef" value="Kairouan" />
         <Picker.Item label="boulifa" value="Bizerte" />
       </Picker>
-      <Button title="Sign Up" onPress={handleSignUp} />
+      <Button title="SignUp" onPress={handleSignUp} />
     </View>
   );
 };

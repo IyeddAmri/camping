@@ -20,7 +20,7 @@ import ur from "../assets/ml.jpg"
 import pr from "../assets/prm.png"
 import prffff from "../assets/prff.jpg"
 import prffImage from '../assets/prff.jpg';
-
+import Profile from "../Screens/profile"
 const HomePage = () => {
   const navigation = useNavigation(); 
   
@@ -41,23 +41,10 @@ const HomePage = () => {
   };
 
   const handleTabPress = (tabName) => {
-    if (tabName === 'Home') {
-      // Handle navigation to the home screen
-    } else if (tabName === 'Whishlist') {
-      // Handle navigation to the wishlist screen
-    } else if (tabName === 'Services') {
-      navigation.navigate('serhome'); // Navigate to the Services screen
-    } else if (tabName === 'Inbox') {
-      // Handle navigation to the inbox screen
-    } else if (tabName === 'Emergency') {
-      navigation.navigate('Emergency'); // Navigate to the Emergency screen
-    } else if (tabName === 'Settings') {
-      navigation.navigate('Settings');
-        } else if (tabName === 'Profile') {
-      // Handle navigation to the profile screen
-    }
-    else if (category === "Community") {
-      navigation.navigate("HomeCommunity")
+    if (tabName === 'Profile') {
+      navigation.navigate('Profile'); // Navigate to the Profile screen
+    } else {
+      // Handle other tab presses here
     }
   };
 

@@ -23,8 +23,8 @@ import HomeCommunity from "./Screens/HomeCommunity";
 import SignUp from "./Screens/SingUp.js";
 //import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
-import messenger from "./Screens/chat.js"
-
+import Chat from "./Screens/chat.js"
+import Profile from "./Screens/profile.js"
 const Stack = createStackNavigator();
 
 
@@ -32,7 +32,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      <Stack.Screen
+       <Stack.Screen 
+        name="Profile"
+        component={Profile}
+        options={{title :'Profile '}}
+        />
+        <Stack.Screen
           name='Signin'
           component={Signin}
           options={{ title: 'login'}}
@@ -58,6 +63,9 @@ const App = () => {
           component={StoreHome}
           options={{ title: 'Store' }}
         />
+        
+       
+
         <Stack.Screen
           name="activities"
           component={activity}
@@ -127,8 +135,8 @@ const App = () => {
         />
          <Stack.Screen
         name="chat"
-        component={messenger}  
-        options={{ title: 'messenger' }}
+        component={Chat}  
+        options={{ title: 'messenger el ' }}
         />
       </Stack.Navigator>
       

@@ -35,7 +35,6 @@ const Wishlist = ({ wishlist }) => {
         keyExtractor={(item) => item.Name}
         renderItem={({ item }) => <WishlistItem item={item} />}
       />
-      <Button title="Add to Wishlist" onPress={addToWishlist} />
     </View>
   );
 };

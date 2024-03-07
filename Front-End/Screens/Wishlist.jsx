@@ -10,12 +10,17 @@ const WishlistItem = ({ item }) => (
 );
 
 const Wishlist = ({ wishlist }) => {
+  const keyExtractor = (item) => {
+    // Check if 'item' and 'item.Name' are defined before accessing the 'Name' property
+    return item && item.Name ? item.Name.toString() : '';
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Wishlist</Text>
       <FlatList
         data={wishlist}
-        keyExtractor={(item) => item.Name}
+        keyExtractor={keyExtractor}
         renderItem={({ item }) => <WishlistItem item={item} />}
       />
     </View>

@@ -23,7 +23,13 @@ import HomeCommunity from "./Screens/HomeCommunity";
 import SignUp from "./Screens/SingUp.js";
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
-import Wishlist from './Screens/wishlist';
+import Wishlist from './Screens/Wishlist.jsx';
+
+
+
+
+
+
 const Stack = createStackNavigator();
 
 
@@ -103,11 +109,7 @@ const App = () => {
           component={Resourcess}
           options={{ title: 'Resourcesss' }}
         /> 
-        <Stack.Screen
-        name="wishlist"
-        component={Wishlist}
-        options={{ title: 'wishlist' }}
-      />
+
           <Stack.Screen
           name="serhome"
           component={Serhome}
@@ -125,16 +127,22 @@ const App = () => {
           options={{ title: 'Emergency' }}
         />
         <Stack.Screen
+  name='wishlist'
+  component={Wishlist} 
+  options={{ title: 'wishlist' }}
+/>
+        <Stack.Screen
         name="campsites"
         component={campsite}  
         options={{ title: 'campsites' }}
         />
 
-         <Stack.Screen
+        <Stack.Screen
         name="chat"
         component={messenger}  
         options={{ title: 'messenger' }}
         />
+
       </Stack.Navigator>
       
     </NavigationContainer>

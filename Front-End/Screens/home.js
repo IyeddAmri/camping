@@ -44,7 +44,7 @@ const HomePage = () => {
     if (tabName === 'Home') {
       // Handle navigation to the home screen
     } else if (tabName === 'Whishlist') {
-      navigation.navigate('Wishlist');
+      navigation.navigate('wishlist'); 
       // Handle navigation to the wishlist screen
     } else if (tabName === 'Services') {
       navigation.navigate('serhome'); // Navigate to the Services screen

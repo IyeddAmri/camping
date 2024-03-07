@@ -3,7 +3,7 @@ import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react
 import axios from 'axios'; 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import Wishlist from './wishlist';
+import Wishlist from './Wishlist.jsx';
 const CampsitesScreen = () => {
   const navigation = useNavigation();
   const [campsites, setCampsites] = useState([]);
@@ -70,7 +70,7 @@ const CampsitesScreen = () => {
           </View>
         )}
       />
-      <Wishlist wishlist={Wishlist} />
+<Wishlist wishlist={wishlist} />
     </View>
   );
 };

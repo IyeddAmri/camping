@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, ImageBackground, StyleSheet } from 'react-native';
 
 // Import images
-import sunnyImage from './images/sunny.avif';
-import rainyImage from './images/rainy.avif';
-import cloudyImage from './images/cloudy.avif';
-import unknownImage from './images/unknownImage.avif';
+import sunnyImage from '../assets/sun.jpg';
+import rainyImage from '../assets/cloud.avif';
+import cloudyImage from '../assets/rain.jpg';
+import unknownImage from '../assets/kn.jpg';
 
 const weatherImages = {
   clear: sunnyImage,

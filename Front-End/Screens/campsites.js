@@ -2,18 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
-import Wishlist from './Wishlist';
+import { useNavigation } from '@react-navigation/native'; 
+import wishlist from "./Wishlist"
 
 const CampsitesScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation(); 
   const [campsites, setCampsites] = useState([]);
   const [wishlist, setWishlist] = useState([]);
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:5000/campsites/get');
+      
         const initialCampsites = response.data.map(campsite => ({ ...campsite, liked: false }));
         setCampsites(initialCampsites);
       } catch (error) {
@@ -24,34 +26,34 @@ const CampsitesScreen = () => {
     fetchData();
   }, []);
 
+  // const toggleLike = (index) => {
+  //   setCampsites(prevCampsites => {
+  //     const updatedCampsites = [...prevCampsites];
+  //     updatedCampsites[index].liked = !updatedCampsites[index].liked;
+  //     return updatedCampsites;
+  //   });
+  // };
   const toggleLike = (index) => {
-    const updatedCampsites = [...campsites];
-    updatedCampsites[index].liked = !updatedCampsites[index].liked;
-  
-    const updatedWishlist = updatedCampsites.filter((campsite) => campsite.liked);
-    setWishlist(updatedWishlist);
-  
-    // Update liked status in the backend
-    const campsiteToUpdate = updatedCampsites[index];
-  
-    // Update liked status in the backend
-    console.log('CampsiteID:', campsiteToUpdate.CampsiteID);
-    axios
-      .put(`http://localhost:5000/campsites/${campsiteToUpdate.CampsiteID}`, { liked: campsiteToUpdate.liked })
-      .then((response) => console.log('Successfully updated liked status in the backend'))
-      .catch((error) => {
-        console.error('Error updating liked status in the backend:', error);
-        // Revert the liked status in the state if there's an error
-        updatedCampsites[index].liked = !updatedCampsites[index].liked;
-        setWishlist(updatedCampsites.filter((campsite) => campsite.liked));
-      });
-    }
+    setCampsites(prevCampsites => {
+      const updatedCampsites = [...prevCampsites];
+      updatedCampsites[index].liked = !updatedCampsites[index].liked;
+
+      // Update wishlist
+      if (updatedCampsites[index].liked) {
+        setWishlist(prevWishlist => [...prevWishlist, updatedCampsites[index]]);
+      } else {
+        setWishlist(prevWishlist => prevWishlist.filter(item => item.Name !== updatedCampsites[index].Name));
+      }
+
+      return updatedCampsites;
+    });
+  };
 
   return (
     <View style={styles.container}>
       <FlatList
         data={campsites}
-        keyExtractor={(item) => item.CampsiteID.toString()}
+        keyExtractor={(item) => item.Name}
         renderItem={({ item, index }) => (
           <View style={styles.campsiteContainer}>
             <Image source={{ uri: item.ImageURL }} style={styles.image} />
@@ -66,8 +68,6 @@ const CampsitesScreen = () => {
           </View>
         )}
       />
-      {/* Render your Wishlist component here if needed */}
-      {/* <Wishlist wishlist={wishlist} /> */}
     </View>
   );
 };
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   },
   campsiteContainer: {
     marginBottom: 20,
-    position: 'relative',
+    position: 'relative', 
   },
   image: {
     width: '100%',

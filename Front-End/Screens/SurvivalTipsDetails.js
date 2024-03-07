@@ -12,9 +12,9 @@ const SurvivalTipsDetails = ({ isVisible, onClose, title, description, category,
     >
       <View style={styles.container}>
         <View style={styles.modalContent}>
-          <Text style={styles.title}>{title}</Text>
+          
           <Text style={styles.description}>{description}</Text>
-          <Text style={styles.category}>{category}</Text>
+          
           <TouchableOpacity onPress={onClose} style={styles.closeButton}>
             <Text style={styles.closeButtonText}>Close</Text>
           </TouchableOpacity>

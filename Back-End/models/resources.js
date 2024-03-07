@@ -31,16 +31,16 @@ const create=(resourcesData,callback)=>{
     })
 }
 
-const remove=(resourcesId,callback)=>{
-    const query='DELETE FROM resources WHERE id=?'
-    connection.query(query,[resourcesId],(err)=>{
-        if(err){
-            callback(err)
-        }else{
-            callback(null)
+const remove = (resourcesId, callback) => {
+    const query = 'DELETE FROM resources WHERE ResourceID=?';
+    connection.query(query, [resourcesId], (err) => {
+        if (err) {
+            callback(err);
+        } else {
+            callback(null);
         }
-    })
-}
+    });
+};
 const update=(resourcesId,resourcesData,callback)=>{
     const {Title,Description,Category,ImageURL}=resourcesData
     const query='UPDATE resources SET Title=?,Description=?,Category=?,ImageURL=? WHERE id=?'

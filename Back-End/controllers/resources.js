@@ -33,13 +33,13 @@ const getAllResource = (req, res) => {
   
   const deleteResource = (req, res) => {
     resource.remove(req.params.id, (err) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(204).send();
-      }
+        if (err) {
+            res.status(500).send(err);
+        } else {
+            res.status(204).send();
+        }
     });
-  }
+};
   
   const updateResource = (req, res) => {
     resource.update(req.params.id, req.body, (err, result) => {

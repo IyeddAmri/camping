@@ -11,7 +11,7 @@ const Resources = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://192.168.1.101:5000/res/getAll');
+          const response = await axios.get('http://192.168.43.44:5000/res/getAll');
           setData(response.data);
         } catch (error) {
           console.error('Error fetching data:', error);
@@ -47,7 +47,6 @@ const Resources = () => {
               {filteredData.map((resource, index) => (
                 <TouchableOpacity key={resource.ResourceID} onPress={() => handleTipClick(resource)} style={[styles.resourceBox, index % 2 !== 0 ? styles.even : styles.odd]}>
                   <Text style={styles.title}>{resource.Title}</Text>
-                  <Text style={styles.description}>{resource.Description}</Text>
                   <Text style={styles.category}>{resource.Category}</Text>
                   <Image source={{ uri: resource.ImageURL }} style={styles.image} />
                 </TouchableOpacity>

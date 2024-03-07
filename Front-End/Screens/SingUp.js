@@ -5,7 +5,7 @@ import { Picker } from '@react-native-picker/picker';
 import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
 import { auth } from '../config/firebase';
 
-const SignUpScreen = () => {
+const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
@@ -37,6 +37,7 @@ const SignUpScreen = () => {
     } catch (error) {
       console.error('Error signing up:', error.message);
     }
+      navigation.navigate('Signin');
   };
 
   return (

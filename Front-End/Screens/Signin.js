@@ -236,14 +236,15 @@ const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
     backgroundColor: 'white', // Add background color for the form section
-    padding: 20,
-    borderTopLeftRadius: 20, // Optional: Add border radius to match the image container
-    borderTopRightRadius: 20,
+    padding: 10,
+    borderRadius: 20,
   },
   heading: {
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 20,
+    position:"relative",
+    left:130
   },
   input: {
     width: '100%',
@@ -253,6 +254,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingHorizontal: 10,
     marginBottom: 10,
+    borderRadius: 35,
   },
   error: {
     color: 'red',
@@ -260,21 +262,29 @@ const styles = StyleSheet.create({
   },
   signupText: {
     marginTop: 20,
+    position:"relative",
+    left:50
   },
   signupLink: {
-    color: 'blue',
+    color: 'green',
+    position:"relative",
+    right:3 
   },
   button: {
-    backgroundColor: '#007bff',
+    backgroundColor: '#18C0C1',
     padding: 10,
-    borderRadius: 5,
-    width: '100%',
+    borderRadius:35,
+    width: '80%',
     alignItems: 'center',
     marginTop: 10,
+    position:"relative",
+    left:35
   },
   buttonText: {
     color: '#fff',
     fontWeight: 'bold',
+
+
   },
   socialLoginContainer: {
     flexDirection: 'row',

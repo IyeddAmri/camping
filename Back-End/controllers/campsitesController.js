@@ -62,7 +62,20 @@ const campsitesController = {
         res.json({ message: 'Campsite deleted successfully' });
       }
     });
-  }
+  },
+  likeCampsite: (req, res) => {
+    const campsiteId = req.params.id;
+  
+    campsitesModel.likeCampsite(campsiteId, (err, results) => {
+      if (err) {
+        console.error('Error liking campsite:', err);
+        res.status(500).json({ error: 'Failed to like campsite' });
+      } else {
+        res.json({ message: 'Campsite liked successfully' });
+      }
+    });
+  },
+  
 };
 
 module.exports = campsitesController;

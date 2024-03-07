@@ -14,7 +14,7 @@ const CampsitesScreen = () => {
       try {
         const response = await axios.get('http://localhost:5000/campsites/get');
 
-        const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: false }));
+        const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: campsite.Liked }));
         setCampsites(initialCampsites);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -24,7 +24,13 @@ const CampsitesScreen = () => {
     fetchData();
   }, []);
 
-  const toggleLike = (index) => {
+  const toggleLike = async (index, campsiteId) => {
+    try {
+      await axios.put(`http://localhost:5000/campsites/like/${campsiteId}`);
+    } catch (error) {
+      console.error('Error liking/unliking campsite on the server:', error);
+    }
+
     setCampsites((prevCampsites) => {
       const updatedCampsites = [...prevCampsites];
       updatedCampsites[index].liked = !updatedCampsites[index].liked;
@@ -59,7 +65,7 @@ const CampsitesScreen = () => {
           <View style={styles.campsiteContainer}>
             <Image source={{ uri: item.ImageURL }} style={styles.image} />
             <View style={styles.loveIconContainer}>
-              <TouchableOpacity onPress={() => toggleLike(index)}>
+              <TouchableOpacity onPress={() => toggleLike(index, item.CampsiteID)}>
                 <Ionicons
                   name={item.liked ? 'heart' : 'heart-outline'}
                   size={24}

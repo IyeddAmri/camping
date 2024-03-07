@@ -134,7 +134,7 @@ const App = () => {
         <Stack.Screen
         name="weather"
         component={ta9s}  
-        options={{ title: 'messenger' }}
+        options={{ title: 'weather' }}
         />
       </Stack.Navigator>
       

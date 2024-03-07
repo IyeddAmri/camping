@@ -1,5 +1,6 @@
-import React from 'react';
-import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, Image, StyleSheet, Button } from 'react-native';
+import axios from 'axios';
 
 const WishlistItem = ({ item }) => (
   <View style={styles.campsiteContainer}>
@@ -10,6 +11,22 @@ const WishlistItem = ({ item }) => (
 );
 
 const Wishlist = ({ wishlist }) => {
+  const addToWishlist = async () => {
+    try {
+      const userID = 'your_user_id'; // replace with the actual user ID
+      const campsiteID = 'your_campsite_id'; // replace with the actual campsite ID
+
+      const response = await axios.post('http://localhost:5000/wish/add', {
+        userID,
+        campsiteID,
+      });
+
+      console.log(response.data); // Log the response for debugging purposes
+    } catch (error) {
+      console.error('Error adding to wishlist:', error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Wishlist</Text>
@@ -18,6 +35,7 @@ const Wishlist = ({ wishlist }) => {
         keyExtractor={(item) => item.Name}
         renderItem={({ item }) => <WishlistItem item={item} />}
       />
+      <Button title="Add to Wishlist" onPress={addToWishlist} />
     </View>
   );
 };

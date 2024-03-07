@@ -21,10 +21,9 @@ import campsite from "./Screens/campsites"
 import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
 import SignUp from "./Screens/SingUp.js";
-//import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
-import wishlist from "./Screens/Wishlist.jsx"
+import Wishlist from './Screens/wishlist';
 const Stack = createStackNavigator();
 
 
@@ -103,7 +102,12 @@ const App = () => {
           name="resources"
           component={Resourcess}
           options={{ title: 'Resourcesss' }}
-        />
+        /> 
+        <Stack.Screen
+        name="wishlist"
+        component={Wishlist}
+        options={{ title: 'wishlist' }}
+      />
           <Stack.Screen
           name="serhome"
           component={Serhome}
@@ -125,11 +129,7 @@ const App = () => {
         component={campsite}  
         options={{ title: 'campsites' }}
         />
-        <Stack.Screen
-        name="Wishlist"
-        component={wishlist}  
-        options={{ title: 'Wishlist' }}
-        />
+
          <Stack.Screen
         name="chat"
         component={messenger}  

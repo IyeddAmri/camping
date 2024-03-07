@@ -33,10 +33,19 @@ const CampsitesScreen = () => {
   
     // Update liked status in the backend
     const campsiteToUpdate = updatedCampsites[index];
-    axios.put(`http://localhost:5000/campsites/${campsiteToUpdate.CampsiteID}`, { liked: campsiteToUpdate.liked })
-      .then(response => console.log('Successfully updated liked status in the backend'))
-      .catch(error => console.error('Error updating liked status in the backend:', error));
-  };
+  
+    // Update liked status in the backend
+    console.log('CampsiteID:', campsiteToUpdate.CampsiteID);
+    axios
+      .put(`http://localhost:5000/campsites/${campsiteToUpdate.CampsiteID}`, { liked: campsiteToUpdate.liked })
+      .then((response) => console.log('Successfully updated liked status in the backend'))
+      .catch((error) => {
+        console.error('Error updating liked status in the backend:', error);
+        // Revert the liked status in the state if there's an error
+        updatedCampsites[index].liked = !updatedCampsites[index].liked;
+        setWishlist(updatedCampsites.filter((campsite) => campsite.liked));
+      });
+    }
 
   return (
     <View style={styles.container}>

@@ -18,9 +18,9 @@ import Emergency from './Screens/Emergency'
 import Product from "./Screens/products";
 import GamesScreen from './Screens/Games'; 
 import campsite from "./Screens/campsites"
-// import Signin from  './Screens/Signin.js' ;
+import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
-// import SignUp from "./Screens/SingUp.js";
+import SignUp from "./Screens/SingUp.js";
 //import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
@@ -32,16 +32,16 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-      {/* <Stack.Screen
+      <Stack.Screen
           name='Signin'
           component={Signin}
-          options={{ title: 'login'}}
+          options={{ title: 'Sign in'}}
         />
         <Stack.Screen
           name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} 
-        /> */}
+        />
         <Stack.Screen
           name="HomePage"
           component={HomePage}

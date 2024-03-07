@@ -26,18 +26,22 @@ module.exports = {
     });
   },
   updateCampsite: (id, updatedData, callback) => {
-    const sql = "UPDATE campsites SET ? WHERE id=?";
-    connection.query(sql, [updatedData, id], (err, results) => {
-      if (err) {
-        console.error('Error during update:', err);
-      }
-      console.log('SQL Query:', sql, [updatedData, id]);
-      callback(err, results);
+    const sql = "UPDATE campsites SET ? WHERE CampsiteID=?";
+    const values = [updatedData, id];
+
+    connection.query(sql, values, (err, results) => {
+        if (err) {
+            console.error('Error during update:', err);
+            callback(err, null);
+        } else {
+            console.log('SQL Query:', sql, values);
+            callback(null, results);
+        }
     });
-  },
+},
 
   getCampsiteById: (id, callback) => {
-    const query = "SELECT * FROM campsites where id=?";
+    const query = "SELECT * FROM campsites where CampsiteID=?";
     connection.query(query, [id], (err, results) => {
       callback(err, results);
     });

@@ -32,12 +32,12 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+  
+        <Stack.Screen 
+        name="Signin" 
+        component={Signin}
+         />
       <Stack.Screen
-          name='Signin'
-          component={Signin}
-          options={{ title: 'Sign in'}}
-        />
-        <Stack.Screen
           name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} 

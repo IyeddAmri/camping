@@ -5,16 +5,6 @@ const Navbar = ({ categories, selectedCategory, onSelectCategory, icons }) => {
   return (
     <ScrollView horizontal showsHorizontalScrollIndicator={false}>
       <View style={styles.navbar}>
-        <TouchableOpacity 
-          onPress={() => onSelectCategory(null)} 
-          style={[
-            styles.navItem,
-            selectedCategory === null && styles.selectedNavItem 
-          ]}
-          activeOpacity={0.8} 
-        >
-          <Text style={styles.navText}>All</Text>
-        </TouchableOpacity>
         {categories.map((category, index) => (
           <TouchableOpacity 
             key={index} 

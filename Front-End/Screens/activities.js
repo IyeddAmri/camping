@@ -71,6 +71,8 @@ const styles = StyleSheet.create({
   },
   navbarContainer: {
     marginVertical: 10,
+    position:"relative",
+    right:10,
   },
   boxContainer: {
     flexDirection: 'row',

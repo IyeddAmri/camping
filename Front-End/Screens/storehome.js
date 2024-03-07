@@ -90,13 +90,17 @@ const styles = StyleSheet.create({
     width:159,
     height:55,
     borderRadius:15,
+    position:"relative",
+    left:100,
   
   },
   exploreButtonText: {
     color: 'white',
     fontWeight: 'bold',
     width:115,
-    height:30
+    height:30,
+    position:"relative",
+    top:10,
   },
 });
 

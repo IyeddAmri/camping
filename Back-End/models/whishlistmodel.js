@@ -34,7 +34,7 @@ const wishlistModel = {
     });
   },
   getWishliste: (callback) => {
-    const query = 'SELECT * FROM wishlist ';
+    const query = 'SELECT * FROM wishlist'
     connection.query(query,(err, results) => {
       if (err) {
         callback(err, null);

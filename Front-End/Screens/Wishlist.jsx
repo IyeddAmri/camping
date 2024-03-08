@@ -10,6 +10,8 @@ const WishlistItem = ({ item }) => (
 );
 
 const Wishlist = ({ wishlist }) => {
+  console.log('Wishlist Data:', wishlist);
+
   const keyExtractor = (item) => {
     // Check if 'item' and 'item.Name' are defined before accessing the 'Name' property
     return item && item.Name ? item.Name.toString() : '';

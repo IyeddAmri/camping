@@ -171,9 +171,14 @@ const SignUpScreen = ({ navigation }) => {
   const [location, setLocation] = useState('Tunis');
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleToggleRepeatPasswordVisibility = () => {
+    setShowRepeatPassword(!showRepeatPassword);
   };
 
   const handleSignUp = async () => {
@@ -236,13 +241,18 @@ const SignUpScreen = ({ navigation }) => {
           <Icon name={showPassword ? 'eye-slash' : 'eye'} size={20} color="#000" />
         </TouchableOpacity>
       </View>
-      <TextInput
-        style={styles.input}
-        placeholder="Repeat Password"
-        value={repeatPassword}
-        onChangeText={setRepeatPassword}
-        secureTextEntry
-      />
+      <View style={styles.passwordContainer}>
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Repeat Password"
+          value={repeatPassword}
+          onChangeText={setRepeatPassword}
+          secureTextEntry={!showRepeatPassword}
+        />
+        <TouchableOpacity onPress={handleToggleRepeatPasswordVisibility} style={styles.eyeIcon}>
+          <Icon name={showRepeatPassword ? 'eye-slash' : 'eye'} size={20} color="#000" />
+        </TouchableOpacity>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Your Birthday"
@@ -341,3 +351,4 @@ const styles = StyleSheet.create({
 });
 
 export default SignUpScreen;
+

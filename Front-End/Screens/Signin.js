@@ -139,14 +139,20 @@
 // });
 
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity,Image } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { signInWithEmailAndPassword } from '../config/firebase';
 import { GoogleSignIn, FacebookSignIn } from '../config/googleSignIn'; // Import GoogleSignIn and FacebookSignIn functions from your authentication providers
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import the eye icon
 
 const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const handleSignInWithEmailAndPassword = async () => {
     try {
@@ -173,14 +179,12 @@ const SignInScreen = ({ navigation }) => {
     }
   };
 
- 
-
   return (
     <View style={styles.container}>
-     <View style={styles.imageContainer}>
-  {/* Replace the URL with the actual URL of your image */}
-  <Image source={require('../assets/khayma.png.jpg')} style={styles.image} resizeMode="cover" />
-</View>
+      <View style={styles.imageContainer}>
+        {/* Replace the URL with the actual URL of your image */}
+        <Image source={require('../assets/khayma.png.jpg')} style={styles.image} resizeMode="cover" />
+      </View>
 
       <View style={styles.formContainer}>
         <Text style={styles.heading}>Sign In</Text>
@@ -192,13 +196,18 @@ const SignInScreen = ({ navigation }) => {
           keyboardType="email-address"
           autoCapitalize="none"
         />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
+        <View style={styles.passwordContainer}>
+          <TextInput
+            style={styles.passwordInput}
+            placeholder="Password"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={!showPassword}
+          />
+          <TouchableOpacity onPress={handleTogglePasswordVisibility} style={styles.eyeIcon}>
+            <Icon name={showPassword ? 'eye-slash' : 'eye'} size={20} color="#000" />
+          </TouchableOpacity>
+        </View>
         {error ? <Text style={styles.error}>{error}</Text> : null}
         <TouchableOpacity onPress={handleSignInWithEmailAndPassword} style={styles.button}>
           <Text style={styles.buttonText}>Sign In</Text>
@@ -219,8 +228,6 @@ const SignInScreen = ({ navigation }) => {
     </View>
   );
 };
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -303,9 +310,25 @@ const styles = StyleSheet.create({
     height: 24,
     justifyContent: 'center',
     borderWidth: 1 / React.Pixel
-
-    // tintColor: 'white',
   },
-});
-
-export default SignInScreen;
+    passwordContainer: {
+      position: 'relative',
+      width: '100%',
+      marginBottom: 10,
+    },
+    passwordInput: {
+      width: '100%',
+      height: 50,
+      borderWidth: 1,
+      borderColor: '#ccc',
+      borderRadius: 35,
+      paddingHorizontal: 10,
+      backgroundColor: '#fff',
+    },
+    eyeIcon: {
+      position: 'absolute',
+      top: 15,
+      right: 10,
+    },
+  });
+  export default SignInScreen;

@@ -34,8 +34,8 @@ const SignInScreen = ({ navigation }) => {
       console.log('Google sign-in successful:', user);
       // Navigate to the home page or perform any additional logic as needed
     } catch (error) {
-      setError('Error signing in with Google.');
-      console.error('Error signing in with Google:', error.message);
+      setError('');
+      console.error( error.message);
     }
   };
 

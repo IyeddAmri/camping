@@ -1,5 +1,4 @@
 const wishlistModel = require('../models/whishlistmodel');
-
 const wishlistController = {
   addToWishlist: (req, res) => {
     const { userID, campsiteID } = req.body;
@@ -36,13 +35,14 @@ const wishlistController = {
       }
     });
   },
+  
   getWishlist: (req, res) => {
-    wishlistModel.getWishliste( (err, results) => {
+    wishlistModel.getWishlist((err, results) => {
       if (err) {
         console.error('Error fetching wishlist:', err);
         res.status(500).json({ error: 'Failed to fetch wishlist' });
       } else {
-        res.json(results);
+        res.status(200).json(results);
       }
     });
   }

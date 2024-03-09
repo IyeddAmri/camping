@@ -12,8 +12,9 @@ const HomePage = () => {
   const handleCategorySelect = (category) => {
     if (category === 'Survival Tips') {
       navigation.navigate('resources');
+    }else if (category === 'Checklist') {
+      navigation.navigate('Checklist');
     }
-    // You can handle navigation for other categories here
   };
 
   return (

@@ -25,7 +25,7 @@ import SignUp from "./Screens/SingUp.js";
 //import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
-
+import Checklist from './Screens/Checklist.js'
 const Stack = createStackNavigator();
 
 
@@ -138,6 +138,11 @@ const App = () => {
         component={messenger}  
         options={{ title: 'messenger' }}
         />
+         <Stack.Screen
+  name="Checklist"
+  component={Checklist}
+  options={{ title: 'Checklist' }}
+/>
       </Stack.Navigator>
       
     </NavigationContainer>

@@ -129,7 +129,7 @@ const App = () => {
         />
         <Stack.Screen
   name='wishlist'
-  component={Wishlist} 
+  component={wishlist} 
   options={{ title: 'wishlist' }}
 />
         <Stack.Screen

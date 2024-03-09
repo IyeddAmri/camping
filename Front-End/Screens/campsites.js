@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import axios from 'axios';
+import axios from 'axios'; 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-
+import Wishlist from './Wishlist.jsx';
 const CampsitesScreen = () => {
   const navigation = useNavigation();
   const [campsites, setCampsites] = useState([]);
@@ -12,9 +12,9 @@ const CampsitesScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.3.188:5000/campsites/get');
-      
-        const initialCampsites = response.data.map(campsite => ({ ...campsite, liked: false }));
+        const response = await axios.get('http://localhost:5000/campsites/get');
+
+        const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: campsite.Liked }));
         setCampsites(initialCampsites);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -24,12 +24,17 @@ const CampsitesScreen = () => {
     fetchData();
   }, []);
 
-  const toggleLike = (index) => {
+  const toggleLike = async (index, campsiteId) => {
+    try {
+      await axios.put(`http://localhost:5000/campsites/like/${campsiteId}`);
+    } catch (error) {
+      console.error('Error liking/unliking campsite on the server:', error);
+    }
+
     setCampsites((prevCampsites) => {
       const updatedCampsites = [...prevCampsites];
       updatedCampsites[index].liked = !updatedCampsites[index].liked;
 
-      // Update wishlist
       if (updatedCampsites[index].liked) {
         setWishlist((prevWishlist) => [...prevWishlist, updatedCampsites[index]]);
       } else {
@@ -42,14 +47,6 @@ const CampsitesScreen = () => {
     });
   };
 
-  const WishlistItem = ({ item }) => (
-    <View style={styles.campsiteContainer}>
-      <Image source={{ uri: item.ImageURL }} style={styles.image} />
-      <Text style={styles.price}>Price: ${item.Price}</Text>
-      <Text style={styles.rating}>Rating: {item.Rating}</Text>
-    </View>
-  );
-
   return (
     <View style={styles.container}>
       <FlatList
@@ -59,7 +56,7 @@ const CampsitesScreen = () => {
           <View style={styles.campsiteContainer}>
             <Image source={{ uri: item.ImageURL }} style={styles.image} />
             <View style={styles.loveIconContainer}>
-              <TouchableOpacity onPress={() => toggleLike(index)}>
+              <TouchableOpacity onPress={() => toggleLike(index, item.CampsiteID)}>
                 <Ionicons
                   name={item.liked ? 'heart' : 'heart-outline'}
                   size={24}
@@ -73,17 +70,11 @@ const CampsitesScreen = () => {
           </View>
         )}
       />
-      <View style={styles.container}>
-        <Text style={styles.title}>Wishlist</Text>
-        <FlatList
-          data={wishlist}
-          keyExtractor={(item) => item.Name}
-          renderItem={({ item }) => <WishlistItem item={item} />}
-        />
-      </View>
+<Wishlist wishlist={wishlist} />
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {
@@ -118,11 +109,6 @@ const styles = StyleSheet.create({
   },
   rating: {
     fontSize: 16,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
   },
 });
 

@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`campsites` (
   `FeaturesAndActivities` TEXT NULL DEFAULT NULL,
   `Audience` VARCHAR(255) NULL DEFAULT NULL,
   `PaidStatus` VARCHAR(255) NULL DEFAULT NULL,
+  `Liked` TINYINT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`CampsiteID`))
 ENGINE = InnoDB
 AUTO_INCREMENT = 5

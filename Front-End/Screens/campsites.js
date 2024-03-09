@@ -12,7 +12,7 @@ const CampsitesScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/campsites/get');
+        const response = await axios.get('http://192.168.1.226:5000/campsites/get');
 
         const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: campsite.Liked }));
         setCampsites(initialCampsites);
@@ -26,7 +26,7 @@ const CampsitesScreen = () => {
 
   const toggleLike = async (index, campsiteId) => {
     try {
-      await axios.put(`http://localhost:5000/campsites/like/${campsiteId}`);
+      await axios.put(`http://192.168.1.226:5000/campsites/like/${campsiteId}`);
     } catch (error) {
       console.error('Error liking/unliking campsite on the server:', error);
     }

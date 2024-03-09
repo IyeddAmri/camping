@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import campingg from "../assets/community.jpg";
 import test from "../assets/events.jpg";
 import feu from "../assets/feu.jpg";
+import chat from "../assets/chats.jpg"
 
 const HomeCommunity = () => {
   const navigation = useNavigation();
@@ -38,14 +39,11 @@ const HomeCommunity = () => {
       </View>
 
       <View style={styles.boxContainer}>
-        {/* <View style={styles.box}>
-          <Image source={test} style={styles.boxImage} />
-        </View> */}
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
+          {  <Image source={feu} style={styles.boxImage} />}
         </View>
         <View style={styles.box}>
-          <Image source={feu} style={styles.boxImage} />
+          <Image source={chat} style={styles.chatImage} />
         </View>
       </View>
 
@@ -111,6 +109,12 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderRadius: 15,
   },
+  chatImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 15,
+  },
   detailsContainer: {
     paddingHorizontal: 20,
     marginTop: 20,
@@ -119,18 +123,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     lineHeight: 24,
-  },
-  exploreButton: {
-    backgroundColor: 'blue',
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginHorizontal: 20,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  exploreButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
   },
 });
 

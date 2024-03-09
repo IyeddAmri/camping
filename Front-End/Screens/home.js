@@ -41,10 +41,24 @@ const HomePage = () => {
   };
 
   const handleTabPress = (tabName) => {
-    if (tabName === 'Profile') {
-      navigation.navigate('Profile'); // Navigate to the Profile screen
-    } else {
-      // Handle other tab presses here
+    if (tabName === 'Home') {
+      // Handle navigation to the home screen
+    } else if (tabName === 'Whishlist') {
+      navigation.navigate('Wishlist');
+      // Handle navigation to the wishlist screen
+    } else if (tabName === 'Services') {
+      navigation.navigate('serhome'); // Navigate to the Services screen
+    } else if (tabName === 'Inbox') {
+      // Handle navigation to the inbox screen
+    } else if (tabName === 'Emergency') {
+      navigation.navigate('Emergency'); // Navigate to the Emergency screen
+    } else if (tabName === 'Settings') {
+      navigation.navigate('Settings');
+        } else if (tabName === 'Profile') {
+     navigation.navigate("profile")
+    }
+    else if (category === "Community") {
+      navigation.navigate("HomeCommunity")
     }
   };
 

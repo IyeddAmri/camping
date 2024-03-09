@@ -24,7 +24,7 @@ const wishlistModel = {
   },
 
   getWishlistByUserID: (userID, callback) => {
-    const query = 'SELECT * FROM wishlist WHERE UserID = ?';
+    const query = 'SELECT * FROM wishlist WHERE WishListID= ?';
     connection.query(query, [userID], (err, results) => {
       if (err) {
         callback(err, null);
@@ -32,6 +32,17 @@ const wishlistModel = {
         callback(null, results);
       }
     });
+  },
+  getWishliste: (callback) => {
+    const query = 'SELECT * FROM wishlist ';
+    connection.query(query,(err, results) => {
+      if (err) {
+        callback(err, null);
+      } else {
+        callback(null, results);
+      }
+    });
+
   }
 };
 

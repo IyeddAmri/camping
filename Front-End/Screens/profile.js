@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-import { auth, firestore, collection,doc, getDoc } from '../config/firebase';
+import { auth, firestore, doc, getDoc } from '../config/firebase';
 
 export default function Profile() {
   const [userData, setUserData] = useState(null);

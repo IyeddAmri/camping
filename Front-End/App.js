@@ -2,11 +2,12 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Onboarding from './Screens/Onboarding.js'
 import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
-
+import ta9s from "./Screens/weather.js"
 import outdoor from "./Screens/outdoor"
 import activity from "./Screens/activities";
 import Reshome from './Screens/reshome';
@@ -24,20 +25,22 @@ import SignUp from "./Screens/SingUp.js";
 //import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
-import wishlist from "./Screens/Wishlist.jsx"
-import ta9s from "./Screens/weather.js"
-import Slider from "./Screens/slider.js"
-
-
-
+import Checklist from './Screens/Checklist.js'
+import wishlist from './Screens/Wishlist.jsx'
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-     
-        <Stack.Screen 
+
+      <Stack.Screen
+          name="Onboarding"
+          component={Onboarding}
+          options={{ headerShown: false }} 
+        />
+
+<Stack.Screen 
         name="Signin" 
         component={Signin}
          />
@@ -92,10 +95,7 @@ const App = () => {
           component={EventDetails}
           options={{ title: 'Event Details'}}
         />
-        <Stack.Screen 
-      name="slider" 
-      component={Slider}
-       />
+       
       <Stack.Screen
           name="Settings"
           component={settings}
@@ -142,9 +142,14 @@ const App = () => {
         component={messenger}  
         options={{ title: 'messenger' }}
         />
-        <Stack.Screen
+         <Stack.Screen
+  name="Checklist"
+  component={Checklist}
+  options={{ title: 'Checklist' }}
+/>
+<Stack.Screen
         name="weather"
-        component={ta9s}  
+        component={ta9s}
         options={{ title: 'weather' }}
         />
       </Stack.Navigator>

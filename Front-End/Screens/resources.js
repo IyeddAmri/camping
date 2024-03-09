@@ -1,20 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, Image, ScrollView, StyleSheet, TextInput } from 'react-native';
+import { View, Text, Image, ScrollView, StyleSheet, TextInput, TouchableOpacity } from 'react-native';
 import axios from 'axios';
+import SurvivalTipsDetails from './SurvivalTipsDetails';
 
 const Resources = () => {
     const [data, setData] = useState(null);
     const [searchCategory, setSearchCategory] = useState('');
+    const [selectedTip, setSelectedTip] = useState(null);
   
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://192.168.3.188:5000/res/getAll');
+          const response = await axios.get('http://192.168.43.44:5000/res/getAll');
           setData(response.data);
         } catch (error) {
           console.error('Error fetching data:', error);
-        } finally {
-          setLoading(false);
         }
       };
   
@@ -24,6 +24,14 @@ const Resources = () => {
     const filteredData = data ? data.filter(resource =>
       resource.Category.toLowerCase().includes(searchCategory.toLowerCase())
     ) : [];
+  
+    const handleTipClick = (tip) => {
+      setSelectedTip(tip);
+    };
+  
+    const handleCloseDetails = () => {
+      setSelectedTip(null);
+    };
   
     return (
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -37,17 +45,23 @@ const Resources = () => {
           {filteredData.length > 0 ? (
             <View style={styles.resourceContainer}>
               {filteredData.map((resource, index) => (
-                <View key={resource.ResourceID} style={[styles.resourceBox, index % 2 !== 0 ? styles.even : styles.odd]}>
+                <TouchableOpacity key={resource.ResourceID} onPress={() => handleTipClick(resource)} style={[styles.resourceBox, index % 2 !== 0 ? styles.even : styles.odd]}>
                   <Text style={styles.title}>{resource.Title}</Text>
-                  <Text style={styles.description}>{resource.Description}</Text>
                   <Text style={styles.category}>{resource.Category}</Text>
                   <Image source={{ uri: resource.ImageURL }} style={styles.image} />
-                </View>
+                </TouchableOpacity>
               ))}
             </View>
           ) : (
             <Text style={styles.loading}>No resources found</Text>
           )}
+          <SurvivalTipsDetails
+            isVisible={selectedTip !== null}
+            onClose={handleCloseDetails}
+            title={selectedTip?.Title}
+            description={selectedTip?.Description}
+            category={selectedTip?.Category}
+          />
         </View>
       </ScrollView>
     );

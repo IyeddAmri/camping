@@ -12,9 +12,9 @@ const CampsitesScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/campsites/get');
-
-        const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: false }));
+        const response = await axios.get('http://192.168.3.188:5000/campsites/get');
+      
+        const initialCampsites = response.data.map(campsite => ({ ...campsite, liked: false }));
         setCampsites(initialCampsites);
       } catch (error) {
         console.error('Error fetching data:', error);

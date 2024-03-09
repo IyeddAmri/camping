@@ -16,7 +16,7 @@ const Wishlist = ({ wishlist }) => {
       const userID = 'your_user_id'; // replace with the actual user ID
       const campsiteID = 'your_campsite_id'; // replace with the actual campsite ID
 
-      const response = await axios.post('http://localhost:5000/wish/add', {
+      const response = await axios.post('http://192.168.3.188:5000/wish/add', {
         userID,
         campsiteID,
       });

@@ -302,9 +302,9 @@ const styles = StyleSheet.create({
     width: 24,
     height: 24,
     justifyContent: 'center',
-    borderWidth: 1 / React.Pixel
+    // borderWidth: 1 / React.Pixel
 
-    // tintColor: 'white',
+   
   },
 });
 

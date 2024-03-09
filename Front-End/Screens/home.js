@@ -2,24 +2,21 @@ import React from 'react';
 import { View, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image, Text } from 'react-native';
 import Navbar from './Navbar';
 import { useNavigation } from '@react-navigation/native'; 
-import hamm from "../assets/hm.jpg"; 
-import chat from '../assets/bhar.webp';
+import { FontAwesome } from '@expo/vector-icons';
+import { Feather, MaterialIcons } from '@expo/vector-icons';
+import { LinearGradient } from 'expo-linear-gradient';  
 import maps from "../assets/map.png"; 
-import ta9ss from "../assets/ta9s.png"; // Import the new image
+import ta9ss from "../assets/ta9s.png";
 import camp from "../assets/camppp.jpg"
 import club from "../assets/community.webp"
 import hanout from "../assets/7wint.jpg"
 import po from "../assets/la3b.jpg"
 import ss from "../assets/res.jpg"
-import lo from "../assets/lou8a.png"
-import dar from "../assets/home.jpg"
-import glayb from "../assets/glb.webp" // Import the glayb image for the tab bar
-import khdm from '../assets/srv.png'
-import tlf from "../assets/klm.png"
-import ur from "../assets/ml.jpg"
-import pr from "../assets/prm.png"
-import prffff from "../assets/prff.jpg"
-import prffImage from '../assets/prff.jpg';
+import lo from "../assets/lou8a.png"  
+import campsiteImage from "../assets/cmp.jpg"; 
+import storeImage from '../assets/sell.webp';
+import survivalImage from "../assets/survival.jpg"; 
+import aiImage from "../assets/ai.jpg"; 
 
 const HomePage = () => {
   const navigation = useNavigation(); 
@@ -38,6 +35,9 @@ const HomePage = () => {
     } else if (category === 'Resources') {
       navigation.navigate('reshome');
     }
+    else if (category === 'Weather') {
+      navigation.navigate('weather');
+    }
   };
 
   const handleTabPress = (tabName) => {
@@ -54,16 +54,15 @@ const HomePage = () => {
       navigation.navigate('Emergency'); // Navigate to the Emergency screen
     } else if (tabName === 'Settings') {
       navigation.navigate('Settings');
-        } else if (tabName === 'Profile') {
+    } else if (tabName === 'Profile') {
       // Handle navigation to the profile screen
-    }
-    else if (category === "Community") {
+    } else if (category === "Community") {
       navigation.navigate("HomeCommunity")
     }
   };
 
  
-  const icons = [maps, ta9ss, camp, club, hanout, po, ss, lo]; // Add 'ta9ss' icon at index 1 for above "Weather"
+  const icons = [maps, ta9ss, camp, club, hanout, po, ss, lo];
 
   return (
     <View style={styles.container}>
@@ -73,7 +72,7 @@ const HomePage = () => {
           placeholder="Search"
         />
         <TouchableOpacity style={styles.bookingLogoContainer}>
-          <Text>Booking Logo</Text>
+          <FontAwesome name="hotel" size={24} color="black" /> 
         </TouchableOpacity>
       </View>
       
@@ -82,45 +81,58 @@ const HomePage = () => {
           categories={['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language']}
           selectedCategory={null}
           onSelectCategory={handleCategoryPress}
-          icons={icons} // Pass icons array to Navbar
+          icons={icons} 
         />
       </View>
       
       <ScrollView contentContainerStyle={styles.middleContainer}>
-        <View style={styles.boxRow}>
-          <ScrollView horizontal={true}>
-            <Image source={hamm} style={styles.image} />
-          </ScrollView>
-        </View>
-        <View style={styles.boxRow}>
-          <View style={styles.bigBox}></View>
-          <View style={styles.bigBox}></View>
-        </View>
+        <TouchableOpacity style={styles.bigBox} onPress={() => handleCategoryPress('Campsites')}>
+          <Image source={campsiteImage} style={styles.boxImage} />
+          <Text style={styles.boxTitle}>Best Campsites in Tunisia</Text>
+          <Text style={styles.boxDescription}>Discover the best campsites in Tunisia and enjoy your outdoor adventures.</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.bigBox} onPress={() => handleCategoryPress('Store')}>
+          <Image source={storeImage} style={styles.boxImage} />
+          <Text style={styles.boxTitle}>Camping Store</Text>
+          <Text style={styles.boxDescription}>Explore our camping store for the best camping products and gear.</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.bigBox} onPress={() => handleCategoryPress('Resources')}>
+          <Image source={survivalImage} style={styles.boxImage} />
+          <Text style={styles.boxTitle}>Survival Tips</Text>
+          <Text style={styles.boxDescription}>Learn essential survival tips and techniques for your camping trips.</Text>
+        </TouchableOpacity>
+        
+        <TouchableOpacity style={styles.bigBox} onPress={() => handleCategoryPress('Activities')}>
+          <Image source={aiImage} style={styles.boxImage} />
+          <Text style={styles.boxTitle}>AI Tool for Camping</Text>
+          <Text style={styles.boxDescription}>Use our AI tool to identify plants and animals during your camping adventures.</Text>
+        </TouchableOpacity>
       </ScrollView>
-      
+
       <View style={styles.tabbar}>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Home')}>
-          <Image source={dar} style={[styles.tabIcon, styles.homeIcon]} />
+          <Feather name="home" size={24} color="black" />
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Whishlist')}>
-          <Image source={glayb} style={[styles.tabIcon, styles.whishlistIcon]} /> 
+          <MaterialIcons name="favorite" size={24} color="black" /> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Services')}>
-          <Image source={khdm} style={[styles.tabIcon, styles.servicesIcon]} /> 
+          <MaterialIcons name="room-service" size={24} color="black" /> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Inbox')}>
-          <Image source={tlf} style={[styles.tabIcon, styles.inboxIcon]} /> 
+          <MaterialIcons name="inbox" size={24} color="black" /> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Emergency')}>
-          <Image source={ur} style={[styles.tabIcon, styles.emergencyIcon]} /> 
+          <MaterialIcons name="warning" size={24} color="black" /> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Settings')}>
-        <Image source={pr} style={[styles.tabIcon, styles.settingsIcon]} /> 
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Profile')}>
-      <Image source={prffff} style={[styles.tabIcon, styles.profileIcon]} /> 
-    </TouchableOpacity>
-        
+          <MaterialIcons name="settings" size={24} color="black" /> 
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Profile')}>
+          <MaterialIcons name="person" size={24} color="black" /> 
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -142,7 +154,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderColor: 'gray',
-    borderRadius: 5,
+    borderRadius: 20, // 1.25 rem border radius
     paddingHorizontal: 10,
     marginRight: 10,
   },
@@ -156,21 +168,40 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   middleContainer: {
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  boxRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginVertical: 10,
-    width: '100%',
     paddingHorizontal: 10,
+    paddingTop: 10,
   },
   bigBox: {
-    width: '48%',
-    height: 200,
-    backgroundColor: '#f0f0f0',
+    width: '100%',
+    height: 300,
+    backgroundColor: '#fff',
     borderRadius: 10,
+    marginBottom: 20,
+    padding: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  boxImage: {
+    width: '100%',
+    height: '70%',
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  boxTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    color: '#333',
+  },
+  boxDescription: {
+    fontSize: 16,
+    color: '#666',
   },
   tabbar: {
     flexDirection: 'row',

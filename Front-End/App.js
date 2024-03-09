@@ -6,7 +6,7 @@ import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
-import product from "./Screens/products";
+
 import outdoor from "./Screens/outdoor"
 import activity from "./Screens/activities";
 import Reshome from './Screens/reshome';
@@ -23,21 +23,19 @@ import HomeCommunity from "./Screens/HomeCommunity";
 import SignUp from "./Screens/SingUp.js";
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
-import Wishlist from './Screens/Wishlist.jsx';
-
-
-
+import wishlist from "./Screens/Wishlist.jsx"
+import ta9s from "./Screens/weather.js"
+import Slider from "./Screens/slider.js"
 
 
 
 const Stack = createStackNavigator();
 
-
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-  
+     
         <Stack.Screen 
         name="Signin" 
         component={Signin}
@@ -93,7 +91,10 @@ const App = () => {
           component={EventDetails}
           options={{ title: 'Event Details'}}
         />
-       
+        <Stack.Screen 
+      name="slider" 
+      component={Slider}
+       />
       <Stack.Screen
           name="Settings"
           component={settings}
@@ -142,7 +143,11 @@ const App = () => {
         component={messenger}  
         options={{ title: 'messenger' }}
         />
-
+        <Stack.Screen
+        name="weather"
+        component={ta9s}  
+        options={{ title: 'weather' }}
+        />
       </Stack.Navigator>
       
     </NavigationContainer>

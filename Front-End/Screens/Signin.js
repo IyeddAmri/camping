@@ -165,6 +165,10 @@ const styles = StyleSheet.create({
   googleIcon: {
     width: 24,
     height: 24,
+    justifyContent: 'center',
+   
+
+   
   },
 
   socialLoginContainer: {

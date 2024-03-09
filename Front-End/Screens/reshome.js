@@ -1,15 +1,15 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Navbar from './Navbar'; // Assuming you have a Navbar component
-import cam from '../assets/explore.jpg'
-import water from '../assets/water.webp'
+
+import cam from '../assets/explore.jpg';
+import water from '../assets/water.webp';
 import fire from "../assets/fire.jpg";
 
 const HomePage = () => {
   const navigation = useNavigation();
 
-  const handleCategorySelect = (category) => {
+  const handleCategoryPress = (category) => {
     if (category === 'Survival Tips') {
       navigation.navigate('resources');
     }
@@ -23,11 +23,17 @@ const HomePage = () => {
 
       {/* Navbar */}
       <View style={styles.navbarContainer}>
-        <Navbar
-          categories={['Survival Tips', 'Ai Tools', 'Checklist']}
-          selectedCategory={null}
-          onSelectCategory={handleCategorySelect}
-        />
+        <View style={styles.navbar}>
+          <TouchableOpacity style={styles.navItem} onPress={() => handleCategoryPress('Survival Tips')}>
+            <Text style={styles.navItemText}>Survival Tips</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navItem} onPress={() => handleCategoryPress('Ai Tools')}>
+            <Text style={styles.navItemText}>Ai Tools</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navItem} onPress={() => handleCategoryPress('Checklist')}>
+            <Text style={styles.navItemText}>Checklist</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* Boxes */}
@@ -39,7 +45,7 @@ const HomePage = () => {
 
         {/* Second box */}
         <View style={styles.box}>
-        <Image source={water} style={styles.boxImage} />
+          <Image source={water} style={styles.boxImage} />
         </View>
       </View>
 
@@ -65,6 +71,24 @@ const styles = StyleSheet.create({
   },
   navbarContainer: {
     marginVertical: 10,
+  },
+  navbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    borderRadius: 10,
+    marginBottom: 10,
+  },
+  navItem: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    backgroundColor: '#ffffff',
+  },
+  navItemText: {
+    fontWeight: 'bold',
+    color: '#333',
   },
   boxContainer: {
     flexDirection: 'row',

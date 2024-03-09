@@ -54,7 +54,7 @@ const Onboarding = ({ navigation }) => {
     if (currentPage < slides.length - 1) {
       setCurrentPage(currentPage + 1);
     } else {
-      navigation.navigate('HomePage');
+      navigation.navigate('Signin');
     }
   };
 

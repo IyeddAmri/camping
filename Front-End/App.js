@@ -7,7 +7,7 @@ import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
-import product from "./Screens/products";
+import ta9s from "./Screens/weather.js"
 import outdoor from "./Screens/outdoor"
 import activity from "./Screens/activities";
 import Reshome from './Screens/reshome';
@@ -26,8 +26,8 @@ import SignUp from "./Screens/SingUp.js";
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
+import wishlist from './Screens/Wishlist.jsx'
 const Stack = createStackNavigator();
-
 
 const App = () => {
   return (
@@ -40,16 +40,15 @@ const App = () => {
           options={{ headerShown: false }} 
         />
 
+<Stack.Screen 
+        name="Signin" 
+        component={Signin}
+         />
       <Stack.Screen
-          name='Signin'
-          component={Signin}
-          options={{ title: 'login'}}
-        />
-        <Stack.Screen
           name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} 
-        /> 
+        />
         <Stack.Screen
           name="HomePage"
           component={HomePage}
@@ -131,7 +130,12 @@ const App = () => {
         <Stack.Screen
         name="campsites"
         component={campsite}  
-        options={{ title: 'campsitess' }}
+        options={{ title: 'campsites' }}
+        />
+        <Stack.Screen
+        name="Wishlist"
+        component={wishlist}  
+        options={{ title: 'Wishlist' }}
         />
          <Stack.Screen
         name="chat"
@@ -143,6 +147,11 @@ const App = () => {
   component={Checklist}
   options={{ title: 'Checklist' }}
 />
+<Stack.Screen
+        name="weather"
+        component={ta9s}
+        options={{ title: 'weather' }}
+        />
       </Stack.Navigator>
       
     </NavigationContainer>

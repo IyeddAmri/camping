@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet,ImageBackground,TouchableOpacity,Text } from 'react-native';
+import { View, TextInput, Button, StyleSheet, ImageBackground, TouchableOpacity, Text } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { Picker } from '@react-native-picker/picker';
 import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
 import { auth } from '../config/firebase';
+import Icon from 'react-native-vector-icons/FontAwesome'; // Import the eye icon
 
 const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -12,7 +13,17 @@ const SignUpScreen = ({ navigation }) => {
   const [repeatPassword, setRepeatPassword] = useState('');
   const [birthday, setBirthday] = useState('');
   const [location, setLocation] = useState('Tunis');
-  const[error, setError] = useState(null);
+  const [error, setError] = useState(null);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showRepeatPassword, setShowRepeatPassword] = useState(false);
+
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const handleToggleRepeatPasswordVisibility = () => {
+    setShowRepeatPassword(!showRepeatPassword);
+  };
 
   const handleSignUp = async () => {
     try {
@@ -23,7 +34,7 @@ const SignUpScreen = ({ navigation }) => {
 
       // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      
+
       // Save additional user information to Firestore
       const userData = {
         email: email,
@@ -37,7 +48,7 @@ const SignUpScreen = ({ navigation }) => {
     } catch (error) {
       console.error('Error signing up:', error.message);
     }
-      navigation.navigate('Signin');
+    navigation.navigate('Signin');
   };
 
   return (
@@ -62,20 +73,30 @@ const SignUpScreen = ({ navigation }) => {
         onChangeText={setUsername}
         autoCapitalize="none"
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-        secureTextEntry
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Repeat Password"
-        value={repeatPassword}
-        onChangeText={setRepeatPassword}
-        secureTextEntry
-      />
+      <View style={styles.passwordContainer}>
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
+          secureTextEntry={!showPassword}
+        />
+        <TouchableOpacity onPress={handleTogglePasswordVisibility} style={styles.eyeIcon}>
+          <Icon name={showPassword ? 'eye-slash' : 'eye'} size={20} color="#000" />
+        </TouchableOpacity>
+      </View>
+      <View style={styles.passwordContainer}>
+        <TextInput
+          style={styles.passwordInput}
+          placeholder="Repeat Password"
+          value={repeatPassword}
+          onChangeText={setRepeatPassword}
+          secureTextEntry={!showRepeatPassword}
+        />
+        <TouchableOpacity onPress={handleToggleRepeatPasswordVisibility} style={styles.eyeIcon}>
+          <Icon name={showRepeatPassword ? 'eye-slash' : 'eye'} size={20} color="#000" />
+        </TouchableOpacity>
+      </View>
       <TextInput
         style={styles.input}
         placeholder="Your Birthday"
@@ -106,6 +127,7 @@ const SignUpScreen = ({ navigation }) => {
     </ImageBackground>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -128,6 +150,25 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: '#fff',
   },
+  passwordContainer: {
+    position: 'relative',
+    width: '80%',
+    marginBottom: 10,
+  },
+  passwordInput: {
+    width: '100%',
+    height: 50,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    paddingHorizontal: 10,
+    backgroundColor: '#fff',
+  },
+  eyeIcon: {
+    position: 'absolute',
+    top: 15,
+    right: 10,
+  },
   error: {
     color: 'red',
     marginBottom: 10,
@@ -137,7 +178,7 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   signupLink: {
-    color: 'blue',
+    color: 'green',
   },
   button: {
     backgroundColor: '#18C0C1',
@@ -154,3 +195,4 @@ const styles = StyleSheet.create({
 });
 
 export default SignUpScreen;
+

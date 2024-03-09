@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, Button } from 'react-native';
-import axios from 'axios';
+import React from 'react';
+import { View, Text, FlatList, Image, StyleSheet } from 'react-native';
 
 const WishlistItem = ({ item }) => (
   <View style={styles.campsiteContainer}>
@@ -11,20 +10,11 @@ const WishlistItem = ({ item }) => (
 );
 
 const Wishlist = ({ wishlist }) => {
-  const addToWishlist = async () => {
-    try {
-      const userID = 'your_user_id'; // replace with the actual user ID
-      const campsiteID = 'your_campsite_id'; // replace with the actual campsite ID
+  console.log('Wishlist Data:', wishlist);
 
-      const response = await axios.post('http://localhost:5000/wish/add', {
-        userID,
-        campsiteID,
-      });
-
-      console.log(response.data); // Log the response for debugging purposes
-    } catch (error) {
-      console.error('Error adding to wishlist:', error);
-    }
+  const keyExtractor = (item) => {
+    // Check if 'item' and 'item.Name' are defined before accessing the 'Name' property
+    return item && item.Name ? item.Name.toString() : '';
   };
 
   return (
@@ -32,7 +22,7 @@ const Wishlist = ({ wishlist }) => {
       <Text style={styles.title}>Wishlist</Text>
       <FlatList
         data={wishlist}
-        keyExtractor={(item) => item.Name}
+        keyExtractor={keyExtractor}
         renderItem={({ item }) => <WishlistItem item={item} />}
       />
     </View>
@@ -58,11 +48,6 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 10,
     marginBottom: 10,
-  },
-  location: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginBottom: 5,
   },
   price: {
     fontSize: 16,

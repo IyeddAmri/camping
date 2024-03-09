@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import Navbar from './Navbar';
-
 
 const ProductListScreen = () => {
   const navigation = useNavigation();
@@ -19,7 +17,7 @@ const ProductListScreen = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://192.168.218.30:5000/api')
+    axios.get('http://192.168.3.188:5000/api')
       .then(response => {
         setProducts(response.data);
       })
@@ -33,9 +31,25 @@ const ProductListScreen = () => {
     products;
 
   const handleBuy = (productId) => {
-    
     console.log(`Buying product with ID: ${productId}`);
   };
+
+  const renderNavbar = () => (
+    <ScrollView horizontal contentContainerStyle={styles.navbar}>
+      {categories.map(category => (
+        <TouchableOpacity
+          key={category}
+          style={[
+            styles.navItem,
+            selectedCategory === category && styles.selectedNavItem
+          ]}
+          onPress={() => setSelectedCategory(category)}
+        >
+          <Text style={styles.navItemText}>{category}</Text>
+        </TouchableOpacity>
+      ))}
+    </ScrollView>
+  );
 
   const renderItem = ({ item }) => (
     <TouchableOpacity
@@ -55,11 +69,7 @@ const ProductListScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Navbar 
-        categories={categories} 
-        selectedCategory={selectedCategory} 
-        onSelectCategory={setSelectedCategory} 
-      /> 
+      {renderNavbar()}
       <Text style={styles.heading}>Product List</Text>
       <View style={styles.shoppingCartContainer}>
         <TouchableOpacity onPress={() => console.log("Shopping Cart Pressed")}>
@@ -82,6 +92,29 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  navbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    height:60
+  },
+  navItem: {
+    paddingHorizontal: 25,
+    paddingVertical: 10,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    marginRight: 10,
+    
+  },
+  selectedNavItem: {
+    backgroundColor: '#ccc',
+  },
+  navItemText: {
+    fontWeight: 'bold',
+    color: '#333',
+  },
   heading: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -97,7 +130,7 @@ const styles = StyleSheet.create({
     flex: 1,
     aspectRatio: 0.9, 
     margin: 5,
-    borderRadius: 10,
+    borderRadius: 20,
     backgroundColor: '#f9f9f9',
     overflow: 'hidden',
   },
@@ -141,4 +174,3 @@ const styles = StyleSheet.create({
 });
 
 export default ProductListScreen;
-

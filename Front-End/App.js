@@ -2,11 +2,12 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import Onboarding from './Screens/Onboarding.js'
 import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
 import HomePage from './Screens/home'; 
 import StoreHome from './Screens/storehome'; 
-import product from "./Screens/products";
+import ta9s from "./Screens/weather.js"
 import outdoor from "./Screens/outdoor"
 import activity from "./Screens/activities";
 import Reshome from './Screens/reshome';
@@ -21,14 +22,15 @@ import campsite from "./Screens/campsites"
 import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
 import SignUp from "./Screens/SingUp.js";
-//import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
 import Chat from "./Screens/chat.js"
 import wishlist from "./Screens/Wishlist.jsx"
 import Profile  from "./Screens/profile.js"
 
+import messenger from "./Screens/chat.js"
+import Checklist from './Screens/Checklist.js'
+import wishlist from './Screens/Wishlist.jsx'
 const Stack = createStackNavigator();
-
 
 const App = () => {
   return (
@@ -41,6 +43,18 @@ const App = () => {
           options={{ title: 'login'}}
         />
         <Stack.Screen
+
+      
+          name="Onboarding"
+          component={Onboarding}
+          options={{ headerShown: false }} 
+        />
+
+<Stack.Screen 
+        name="Signin" 
+        component={Signin}
+         />
+      <Stack.Screen
           name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} 
@@ -113,7 +127,8 @@ const App = () => {
           name="resources"
           component={Resourcess}
           options={{ title: 'Resourcesss' }}
-        />
+        /> 
+
           <Stack.Screen
           name="serhome"
           component={Serhome}
@@ -131,19 +146,30 @@ const App = () => {
           options={{ title: 'Emergency' }}
         />
         <Stack.Screen
+  name='wishlist'
+  component={wishlist} 
+  options={{ title: 'wishlist' }}
+/>
+        <Stack.Screen
         name="campsites"
         component={campsite}  
         options={{ title: 'campsites' }}
         />
+
         <Stack.Screen
-        name="Wishlist"
-        component={wishlist}  
-        options={{ title: 'Wishlist' }}
-        />
-         <Stack.Screen
         name="chat"
         component={Chat}  
         options={{ title: 'messenger el ' }}
+        />
+         <Stack.Screen
+  name="Checklist"
+  component={Checklist}
+  options={{ title: 'Checklist' }}
+/>
+<Stack.Screen
+        name="weather"
+        component={ta9s}
+        options={{ title: 'weather' }}
         />
       </Stack.Navigator>
       

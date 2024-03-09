@@ -45,5 +45,18 @@ module.exports = {
     connection.query(query, [id], (err, results) => {
       callback(err, results);
     });
-  }
+  },
+  likeCampsite: (id, callback) => {
+    const sql = "UPDATE campsites SET Liked = NOT Liked WHERE CampsiteID=?";
+    connection.query(sql, [id], (err, results) => {
+      if (err) {
+        callback(err, null);
+      } else if (results.affectedRows === 0) {
+        callback({ status: 404, message: 'Campsite not found' }, null);
+      } else {
+        callback(null, results);
+      }
+    });
+  },
+  
 };

@@ -270,12 +270,12 @@ const styles = StyleSheet.create({
   signupText: {
     marginTop: 20,
     position:"relative",
-    left:50
+    left:90
   },
   signupLink: {
     color: 'green',
     position:"relative",
-    right:3 
+    right:3
   },
   button: {
     backgroundColor: '#18C0C1',
@@ -293,10 +293,7 @@ const styles = StyleSheet.create({
 
 
   },
-  socialLoginContainer: {
-    flexDirection: 'row',
-    marginTop: 20,
-  },
+ 
   socialButton: {
     padding: 10,
     borderRadius: 5,
@@ -308,9 +305,14 @@ const styles = StyleSheet.create({
   googleIcon: {
     width: 24,
     height: 24,
-    justifyContent: 'center',
-    borderWidth: 1 / React.Pixel
   },
+
+  socialLoginContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center', // Align items in the center
+    marginTop: 20,
+  },
+
     passwordContainer: {
       position: 'relative',
       width: '100%',

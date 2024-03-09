@@ -334,7 +334,7 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   signupLink: {
-    color: 'blue',
+    color: 'green',
   },
   button: {
     backgroundColor: '#18C0C1',

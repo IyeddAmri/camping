@@ -91,7 +91,7 @@ const styles = StyleSheet.create({
     height:55,
     borderRadius:15,
     position:"relative",
-    left:100,
+    left:80,
   
   },
   exploreButtonText: {
@@ -100,7 +100,8 @@ const styles = StyleSheet.create({
     width:115,
     height:30,
     position:"relative",
-    top:10,
+    top:7,
+    right:-13,
   },
 });
 

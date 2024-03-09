@@ -50,7 +50,6 @@ const campsitesController = {
       }
     });
   },
-
   deleteCampsite: (req, res) => {
     const campsiteId = req.params.id;
     campsitesModel.deleteCampsite(campsiteId, (err) => {

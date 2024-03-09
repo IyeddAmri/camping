@@ -17,7 +17,7 @@ const Navbar = ({ categories, selectedCategory, onSelectCategory, icons }) => {
           >
             <View style={styles.categoryContainer}>
               {icons && icons[index] && (
-                <Image source={icons[index]} style={[styles.icon, getCategoryStyle(category)]} />
+                <Image source={icons[index]} style={styles.icon} />
               )}
               <Text style={styles.navText}>{category}</Text>
             </View>
@@ -26,29 +26,6 @@ const Navbar = ({ categories, selectedCategory, onSelectCategory, icons }) => {
       </View>
     </ScrollView>
   );
-};
-
-const getCategoryStyle = (category) => {
-  switch (category) {
-    case 'Map':
-      return styles.mapIcon;
-    case 'Weather':
-      return styles.weatherIcon;
-    case 'Campsites':
-      return styles.campIcon;
-    case 'Community':
-      return styles.communityIcon;
-    case 'Store':
-      return styles.storeIcon;
-    case 'Activities':
-      return styles.activitiesIcon;
-    case 'Resources':
-      return styles.resourcesIcon;
-    case 'Language':
-      return styles.languageIcon;
-    default:
-      return null;
-  }
 };
 
 const styles = StyleSheet.create({
@@ -80,32 +57,8 @@ const styles = StyleSheet.create({
     height: 20,
     marginRight: 5,
   },
-  mapIcon: {
-    width: 25,
-  },
-  weatherIcon: {
-    width: 25,
-  },
-  campIcon: {
-    width: 25,
-  },
-  communityIcon: {
-    width: 25,
-  },
-  storeIcon: {
-    width: 25,
-  },
-  activitiesIcon: {
-    width: 25,
-  },
-  resourcesIcon: {
-    width: 25,
-  },
-  languageIcon: {
-    width: 25,
-  },
   categoryContainer: {
-    backgroundColor: 'aliceblue',
+    backgroundColor: '#F0FFFF',
     borderRadius: 20, // 1.25 rem border radius
     padding: 10,
     flexDirection: 'row',

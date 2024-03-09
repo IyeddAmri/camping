@@ -1,12 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Navbar from './Navbar';
 
 import campingg from "../assets/community.jpg";
 import test from "../assets/events.jpg";
 import feu from "../assets/feu.jpg";
-import chat from '../Screens/chat'
+
 const HomeCommunity = () => {
   const navigation = useNavigation();
 
@@ -22,36 +21,34 @@ const HomeCommunity = () => {
 
   return (
     <View style={styles.container}>
-      {}
       <Image source={campingg} style={styles.topImage} />
 
-      {}
       <View style={styles.navbarContainer}>
-      <Navbar
-  categories={['EventList', 'Chatroom', 'photogallery']}
-  selectedCategory={null}
-  onSelectCategory={handleCategoryPress}
-/>
+        <View style={styles.navbar}>
+          <TouchableOpacity style={styles.navItem} onPress={() => handleCategoryPress('EventList')}>
+            <Text style={styles.navItemText}>Event List</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navItem} onPress={() => handleCategoryPress('Chatroom')}>
+            <Text style={styles.navItemText}>Chatroom</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.navItem} onPress={() => handleCategoryPress('photogallery')}>
+            <Text style={styles.navItemText}>Photogallery</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
-      {}
       <View style={styles.boxContainer}>
-        {/* First box
-        <View style={styles.box}>
+        {/* <View style={styles.box}>
           <Image source={test} style={styles.boxImage} />
         </View> */}
-
-        {}
         <View style={styles.box}>
           {/* You can add another image for the second box here */}
         </View>
-        {/* third box */}
-        <View style={styles.bo}>
+        <View style={styles.box}>
           <Image source={feu} style={styles.boxImage} />
         </View>
       </View>
 
-      {}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
           Many camping destinations are located in remote or secluded areas that are not easily accessible by foot
@@ -77,15 +74,36 @@ const styles = StyleSheet.create({
     position: 'relative',
     left: 30,
   },
+  navbar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    backgroundColor: '#f0f0f0',
+    paddingVertical: 10,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    position:"relative",
+    right:25
+  },
+  navItem: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    backgroundColor: '#ffffff',
+  },
+  navItemText: {
+    fontWeight: 'bold',
+    color: '#333',
+  },
   boxContainer: {
     flexDirection: 'row',
-    // justifyContent: 'space-around',
     marginTop: 20,
   },
   box: {
     width: '40%',
     borderRadius: 15,
     overflow: 'hidden',
+    marginHorizontal: 10,
   },
   boxImage: {
     width: '100%',

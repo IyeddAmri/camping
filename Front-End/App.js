@@ -40,7 +40,7 @@ const App = () => {
           options={{ headerShown: false }} 
         />
 
-      {/* <Stack.Screen
+      <Stack.Screen
           name='Signin'
           component={Signin}
           options={{ title: 'login'}}
@@ -49,7 +49,7 @@ const App = () => {
           name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} 
-        />  */}
+        /> 
         <Stack.Screen
           name="HomePage"
           component={HomePage}

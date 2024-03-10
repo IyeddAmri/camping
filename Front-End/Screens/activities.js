@@ -14,6 +14,9 @@ const HomePage = () => {
     } else if (category === 'Outdoor Adventures') {
       navigation.navigate('outdoor');
     }  
+    else if (category === 'Radio') {
+      navigation.navigate('radio');
+    }  
   };
 
   return (

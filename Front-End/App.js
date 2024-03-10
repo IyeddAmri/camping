@@ -26,6 +26,7 @@ import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
 import wishlist from './Screens/Wishlist.jsx'
+import radioun from "./Screens/radio.js"
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -152,6 +153,11 @@ const App = () => {
         name="weather"
         component={ta9s}
         options={{ title: 'weather' }}
+        />
+        <Stack.Screen
+        name="radio"
+        component={radioun}
+        options={{ title: 'Radio' }}
         />
       </Stack.Navigator>
       

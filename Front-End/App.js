@@ -25,7 +25,7 @@ import SignUp from "./Screens/SingUp.js";
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
-import wishlist from './Screens/Wishlist.jsx'
+import Wishlist from './Screens/wishlist.js';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -127,16 +127,7 @@ const App = () => {
           component={Emergency}  
           options={{ title: 'Emergency' }}
         />
-        <Stack.Screen
-  name='wishlist'
-  component={wishlist} 
-  options={{ title: 'wishlist' }}
-/>
-        <Stack.Screen
-        name="campsites"
-        component={campsite}  
-        options={{ title: 'campsites' }}
-        />
+
 
         <Stack.Screen
         name="chat"
@@ -153,7 +144,9 @@ const App = () => {
         component={ta9s}
         options={{ title: 'weather' }}
         />
-      </Stack.Navigator>
+      <Stack.Screen name="campsites" component={campsite} options={{title:'campsite'}} />
+      <Stack.Screen name="wishlist" component={Wishlist} options={{title:'wishlist'}} />
+    </Stack.Navigator>
       
     </NavigationContainer>
   );

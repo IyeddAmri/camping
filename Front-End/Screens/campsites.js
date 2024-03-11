@@ -1,10 +1,12 @@
+// campsites.js
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import axios from 'axios'; 
+import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import Wishlist from './Wishlist.jsx';
-const CampsitesScreen = () => {
+
+const campsites = () => {
   const navigation = useNavigation();
   const [campsites, setCampsites] = useState([]);
   const [wishlist, setWishlist] = useState([]);
@@ -13,7 +15,6 @@ const CampsitesScreen = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:5000/campsites/get');
-
         const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: campsite.Liked }));
         setCampsites(initialCampsites);
       } catch (error) {
@@ -37,6 +38,7 @@ const CampsitesScreen = () => {
 
       if (updatedCampsites[index].liked) {
         setWishlist((prevWishlist) => [...prevWishlist, updatedCampsites[index]]);
+        navigation.navigate('Wishlist', { wishlist: [...wishlist, updatedCampsites[index]] });
       } else {
         setWishlist((prevWishlist) =>
           prevWishlist.filter((item) => item.Name !== updatedCampsites[index].Name)
@@ -70,11 +72,9 @@ const CampsitesScreen = () => {
           </View>
         )}
       />
-<Wishlist wishlist={wishlist} />
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -112,4 +112,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CampsitesScreen;
+export default campsites;

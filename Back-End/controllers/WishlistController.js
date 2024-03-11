@@ -2,6 +2,27 @@
 const wish = require('../models/WishlistModel');
 
 const wishlistController = {
+  likeCampsite: (req, res) => {
+    const campsiteId = req.params.id;
+
+    wish.getById(campsiteId, (err, result) => {
+      if (err) {
+        res.status(500).json({ message: 'Internal server error' });
+      } else if (!result) {
+        res.status(404).json({ message: 'Campsite not found' });
+      } else {
+        const updatedLikedValue = !result.Liked;
+
+        wish.update(campsiteId, { Liked: updatedLikedValue }, (updateErr, updateResult) => {
+          if (updateErr) {
+            res.status(500).json({ message: 'Internal server error during like update' });
+          } else {
+            res.status(200).json({ message: 'Campsite like status updated successfully' });
+          }
+        });
+      }
+    });
+  },
   getAll: (req, res) => {
     wish.getAll((err, results) => {
       if (err) {
@@ -12,19 +33,20 @@ const wishlistController = {
     });
   },
   
-  getWishById: (req, res) => {
-    const id = req.params.id;
-    wish.getById(id, (err, result) => {
+  getById: (req, res) => {
+    const campsiteId = req.params.id;
+
+    wish.getById(campsiteId, (err, result) => {
       if (err) {
         res.status(500).json({ message: 'Internal server error' });
       } else if (!result) {
-        res.status(404).json({ message: 'wish not found' });
+        res.status(404).json({ message: 'Campsite not found' });
       } else {
         res.status(200).json(result);
       }
     });
   },
-  
+
   createWish: (req, res) => {
     const wishData = req.body;
     wish.create(wishData, (err, result) => {
@@ -36,19 +58,6 @@ const wishlistController = {
     });
   },
   
-  updateWish: (req, res) => {
-    const id = req.params.id;
-    const wishData = req.body;
-    wish.update(id, wishData, (err, result) => {
-      if (err) {
-        res.status(500).json({ message: 'Internal server error' });
-      } else if (result.affectedRows === 0) {
-        res.status(404).json({ message: 'wish not found' });
-      } else {
-        res.status(200).json({ message: 'wish updated successfully' });
-      }
-    });
-  },
   
   deletewish: (req, res) => {
     const id = req.params.id;

@@ -2,7 +2,7 @@ const connection = require("../database/index");
 
 module.exports = {
   delete: (id, callback) => {
-    const sql = "DELETE FROM wishlist WHERE id=?";
+    const sql = "DELETE FROM wishlist WHERE WishlistID=?";
     connection.query(sql, [id], (err, results) => {
       if (err) {
         callback(err, null);

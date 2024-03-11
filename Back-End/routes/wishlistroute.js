@@ -7,7 +7,7 @@ router.get('/get', wishController.getAll);
 router.get('/:id', wishController.getById);
 router.post('/add', wishController.createWish);
 router.put('/like/:id', wishController.likeCampsite); 
-router.put('/:id', wishController.update);
+router.put('/:id', wishController.updateById);
 router.delete('/:id', wishController.deletewish);
 
 module.exports = router;

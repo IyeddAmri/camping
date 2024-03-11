@@ -1,61 +1,51 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import Onboarding from './Screens/Onboarding.js'
+import Onboarding from './Screens/Onboarding.js';
 import eventList from './Screens/events/EventList';
 import EventDetails from './Screens/events/EventDetails';
-import HomePage from './Screens/home'; 
-import StoreHome from './Screens/storehome'; 
-import ta9s from "./Screens/weather.js"
-import outdoor from "./Screens/outdoor"
+import HomePage from './Screens/home';
+import StoreHome from './Screens/storehome';
+import ta9s from "./Screens/weather.js";
+import outdoor from "./Screens/outdoor";
 import activity from "./Screens/activities";
 import Reshome from './Screens/reshome';
-import Resourcess from "./Screens/resources"
+import Resourcess from "./Screens/resources";
 import Guide from "./Screens/guide";
 import Transport from './Screens/Transport';
-import Serhome from './Screens/serhome'
-import Emergency from './Screens/Emergency'
+import Serhome from './Screens/serhome';
+import Emergency from './Screens/Emergency';
 import Product from "./Screens/products";
-import GamesScreen from './Screens/Games'; 
-import campsite from "./Screens/campsites"
-import Signin from  './Screens/Signin.js' ;
-import HomeCommunity from "./Screens/HomeCommunity"; 
+import GamesScreen from './Screens/Games';
+import campsite from "./Screens/campsites";
+import Signin from  './Screens/Signin.js';
+import HomeCommunity from "./Screens/HomeCommunity";
 import SignUp from "./Screens/SingUp.js";
-import settings from './Screens/settings'
-import Chat from "./Screens/chat.js"
-import wishlist from "./Screens/Wishlist.jsx"
-import Profile  from "./Screens/profile.js"
+import settings from './Screens/settings';
+import Chat from "./Screens/chat.js";
+//import wishlist from "./Screens/Wishlist.jsx";
+import Profile  from "./Screens/profile.js";
 
-import messenger from "./Screens/chat.js"
-import Checklist from './Screens/Checklist.js'
-import wishlist from './Screens/Wishlist.jsx'
+//import messenger from "./Screens/chat.js";
+
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-     
         <Stack.Screen
           name='Signin'
           component={Signin}
-          options={{ title: 'login'}}
+          options={{ title: 'Login'}}
         />
         <Stack.Screen
-
-      
           name="Onboarding"
           component={Onboarding}
           options={{ headerShown: false }} 
         />
-
-<Stack.Screen 
-        name="Signin" 
-        component={Signin}
-         />
-      <Stack.Screen
-          name="SignUp"
+        <Stack.Screen 
+          name="SignUp" 
           component={SignUp}
           options={{ title: 'Sign Up' }} 
         />
@@ -69,19 +59,16 @@ const App = () => {
           component={Product}
           options={{ title: 'Store' }}
         />
-       
         <Stack.Screen
           name="storehome"
           component={StoreHome}
           options={{ title: 'Store' }}
         />
-        
-         <Stack.Screen 
-        name="profile"
-        component={Profile}
-        options={{title :'Profile '}}
+        <Stack.Screen 
+          name="profile"
+          component={Profile}
+          options={{title :'Profile'}}
         />
-
         <Stack.Screen
           name="activities"
           component={activity}
@@ -112,8 +99,7 @@ const App = () => {
           component={EventDetails}
           options={{ title: 'Event Details'}}
         />
-       
-      <Stack.Screen
+        <Stack.Screen
           name="Settings"
           component={settings}
           options={{ title: 'Settings' }}
@@ -128,51 +114,58 @@ const App = () => {
           component={Resourcess}
           options={{ title: 'Resourcesss' }}
         /> 
-
-          <Stack.Screen
+        <Stack.Screen
           name="serhome"
           component={Serhome}
           options={{ title: 'Serhome' }}
         />
-        <Stack.Screen name="Transport" 
-        component={Transport} 
-        options={{ title: 'Transport' }} />
-        <Stack.Screen name="Guide" 
-        component={Guide} 
-        options={{ title: 'Guide' }} />
-          <Stack.Screen
+        <Stack.Screen 
+          name="Transport" 
+          component={Transport} 
+          options={{ title: 'Transport' }} 
+        />
+        <Stack.Screen 
+          name="Guide" 
+          component={Guide} 
+          options={{ title: 'Guide' }} 
+        />
+        <Stack.Screen
           name="Emergency"
           component={Emergency}  
           options={{ title: 'Emergency' }}
         />
+        {/* 
         <Stack.Screen
-  name='wishlist'
-  component={wishlist} 
-  options={{ title: 'wishlist' }}
-/>
-        <Stack.Screen
-        name="campsites"
-        component={campsite}  
-        options={{ title: 'campsites' }}
+          name='wishlist'
+          component={wishlist} 
+          options={{ title: 'wishlist' }}
         />
-
+        */}
         <Stack.Screen
-        name="chat"
-        component={Chat}  
-        options={{ title: 'messenger el ' }}
+          name="campsites"
+          component={campsite}  
+          options={{ title: 'campsites' }}
         />
-         <Stack.Screen
-  name="Checklist"
-  component={Checklist}
-  options={{ title: 'Checklist' }}
-/>
-<Stack.Screen
-        name="weather"
-        component={ta9s}
-        options={{ title: 'weather' }}
+        
+        <Stack.Screen
+          name="Chat"
+          component={Chat}  
+          options={{ title: 'Messenger' }}
+        />
+        
+        {/*
+        <Stack.Screen
+          name="Checklist"
+          component={Checklist}
+          options={{ title: 'Checklist' }}
+        />
+        */}
+        <Stack.Screen
+          name="weather"
+          component={ta9s}
+          options={{ title: 'Weather' }}
         />
       </Stack.Navigator>
-      
     </NavigationContainer>
   );
 };

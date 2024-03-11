@@ -5,34 +5,42 @@ import { auth, firestore, doc, getDoc } from '../config/firebase';
 
 export default function Profile() {
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        if (auth.currentUser) { // Check if currentUser is not null
-          const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
-          const userDocSnapshot = await getDoc(userDocRef);
-    
-          if (userDocSnapshot.exists()) {
-            setUserData(userDocSnapshot.data());
-          } else {
-            console.log('User data not found');
-          }
-        } else {
-          console.log('User not authenticated'); // Handle the case where currentUser is null
+        if (!auth.currentUser) {
+          throw new Error('User not authenticated');
         }
+
+        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+        const userDocSnapshot = await getDoc(userDocRef);
+
+        if (!userDocSnapshot.exists()) {
+          throw new Error('User data not found');
+        }
+
+        setUserData(userDocSnapshot.data());
+        setLoading(false);
       } catch (error) {
         console.error('Error fetching user data:', error.message);
+        setError(error.message);
+        setLoading(false);
       }
     };
-  
-    fetchUserData(); // Call the fetchUserData function when the component mounts
-  
+
+    fetchUserData();
   }, []);
-  
+
   return (
     <View style={styles.container}>
-      {userData ? (
+      {loading ? (
+        <Text>Loading user data...</Text>
+      ) : error ? (
+        <Text>Error: {error}</Text>
+      ) : (
         <View>
           <Text style={styles.label}>Username:</Text>
           <Text style={styles.value}>{userData.username}</Text>
@@ -43,8 +51,6 @@ export default function Profile() {
           <Text style={styles.label}>Birthday:</Text>
           <Text style={styles.value}>{userData.birthday}</Text>
         </View>
-      ) : (
-        <Text>Loading user data...</Text>
       )}
     </View>
   );

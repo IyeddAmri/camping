@@ -22,7 +22,7 @@ import pr from "../assets/prm.png"
 import prffff from "../assets/prff.jpg"
 import prffImage from '../assets/prff.jpg';
 import Profile from "../Screens/profile"
-import lo from "../assets/lou8a.png"  
+ 
 import campsiteImage from "../assets/cmp.jpg"; 
 import storeImage from '../assets/sell.webp';
 import survivalImage from "../assets/survival.jpg"; 
@@ -65,7 +65,7 @@ const HomePage = () => {
     } else if (tabName === 'Settings') {
       navigation.navigate('Settings');
     } else if (tabName === 'Profile') {
-      // Handle navigation to the profile screen
+      navigation.navigate('profile'); // Navigate to the Profile screen
     } else if (category === "Community") {
       navigation.navigate("HomeCommunity")
     }

@@ -1,4 +1,3 @@
-
 const wish = require('../models/WishlistModel');
 
 const wishlistController = {
@@ -32,7 +31,7 @@ const wishlistController = {
       }
     });
   },
-  
+
   getById: (req, res) => {
     const campsiteId = req.params.id;
 
@@ -47,6 +46,21 @@ const wishlistController = {
     });
   },
 
+  updateById: (req, res) => {
+    const id = req.params.id;
+    const wishData = req.body;
+
+    wish.update(id, wishData, (err, result) => {
+      if (err) {
+        res.status(500).json({ message: 'Internal server error' });
+      } else if (result.affectedRows === 0) {
+        res.status(404).json({ message: 'wish not found' });
+      } else {
+        res.status(200).json({ message: 'wish updated successfully' });
+      }
+    });
+  },
+
   createWish: (req, res) => {
     const wishData = req.body;
     wish.create(wishData, (err, result) => {
@@ -57,8 +71,7 @@ const wishlistController = {
       }
     });
   },
-  
-  
+
   deletewish: (req, res) => {
     const id = req.params.id;
     wish.delete(id, (err, result) => {
@@ -73,4 +86,4 @@ const wishlistController = {
   }
 };
 
-module.exports =wishlistController
+module.exports = wishlistController;

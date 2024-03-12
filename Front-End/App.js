@@ -24,6 +24,8 @@ import HomeCommunity from "./Screens/HomeCommunity";
 import SignUp from "./Screens/SingUp.js";
 //import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
+import Help from './Screens/Help.js'
+import RateAndReview from './Screens/RateAndReview.js'
 import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
 import wishlist from './Screens/Wishlist.jsx'
@@ -101,6 +103,8 @@ const App = () => {
           component={settings}
           options={{ title: 'Settings' }}
         />
+        <Stack.Screen name="Help" component={Help} />
+        <Stack.Screen name="RateAndReview" component={RateAndReview} />
         <Stack.Screen
           name="reshome"
           component={Reshome}

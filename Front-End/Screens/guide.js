@@ -8,7 +8,7 @@ const Guide = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.101:5000/guide/getAll');
+        const response = await axios.get('http://192.168.1.15:5000/guide/getAll');
         setGuides(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -21,7 +21,7 @@ const Guide = () => {
   return (
     <View style={styles.backgroundContainer}>
       <ImageBackground
-        source={{ uri: 'https://i.pinimg.com/564x/b8/60/66/b86066b8326ae8f52c86d9cd899012cc.jpg' }}
+      
         style={styles.backgroundImage}
         blurRadius={2} // Adjust the blur radius as needed
       >
@@ -63,7 +63,7 @@ const Guide = () => {
 const styles = StyleSheet.create({
   backgroundContainer: {
     flex: 1,
-    backgroundColor: 'black', // Set a background color as fallback
+    backgroundColor: '#d9d4c3', // Set a background color as fallback
   },
   backgroundImage: {
     flex: 1,

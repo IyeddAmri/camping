@@ -22,7 +22,7 @@ import Signin from  './Screens/Signin.js';
 import HomeCommunity from "./Screens/HomeCommunity";
 import SignUp from "./Screens/SingUp.js";
 import settings from './Screens/settings';
-import Chat from "./Screens/chat.js";
+import chat from "./Screens/chat.js";
 //import wishlist from "./Screens/Wishlist.jsx";
 import Profile  from "./Screens/profile.js";
 
@@ -148,9 +148,9 @@ const App = () => {
         />
         
         <Stack.Screen
-          name="Chat"
-          component={Chat}  
-          options={{ title: 'Messenger' }}
+          name="chat"
+          component={chat}  
+          options={{ title: 'chat' }}
         />
         
         {/*

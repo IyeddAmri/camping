@@ -25,7 +25,8 @@ import SignUp from "./Screens/SingUp.js";
 import settings from './Screens/settings'
 import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
-import Wishlist from './Screens/wishlist.js';
+import WishlistScreen from './Screens/WishlistScreen.js';
+import photogallery from './Screens/photogallery.js';
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -134,7 +135,7 @@ const App = () => {
         component={messenger}  
         options={{ title: 'messenger' }}
         />
-         <Stack.Screen
+        <Stack.Screen
   name="Checklist"
   component={Checklist}
   options={{ title: 'Checklist' }}
@@ -144,8 +145,20 @@ const App = () => {
         component={ta9s}
         options={{ title: 'weather' }}
         />
-      <Stack.Screen name="campsites" component={campsite} options={{title:'campsite'}} />
-      <Stack.Screen name="wishlist" component={Wishlist} options={{title:'wishlist'}} />
+        <Stack.Screen
+        name="photogallery"
+        component={photogallery}
+        options={{ title: 'photogallery' }}
+        />
+      <Stack.Screen name="campsites" 
+      component={campsite} 
+      options={{title:'campsite'}}
+      />
+<Stack.Screen name="wishlist" 
+      component={WishlistScreen} 
+      options={{title:'wishlist'}}
+      />
+
     </Stack.Navigator>
       
     </NavigationContainer>

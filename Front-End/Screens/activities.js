@@ -4,6 +4,9 @@ import { useNavigation } from '@react-navigation/native';
 
 import cam from "../assets/camping.jpg";
 import wol from "../assets/wolf.webp";
+import pp from "../assets/pp.jpg"
+
+
 
 const HomePage = () => {
   const navigation = useNavigation();
@@ -42,7 +45,7 @@ const HomePage = () => {
           <Image source={wol} style={styles.boxImage} />
         </View>
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
+        <Image source={pp} style={styles.boxImage} />
         </View>
       </View>
 

@@ -1,44 +1,30 @@
-import React from 'react';
-import { View, Text, FlatList } from 'react-native';
-import mockData from '../Screens/mockData';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
-const YourComponent = () => {
-  return (
-    <View>
-      {/* Displaying search parameters */}
-      <Text>Search Engine: {mockData.search_parameters.engine}</Text>
-      <Text>Query: {mockData.search_parameters.q}</Text>
-      <Text>Location: {mockData.search_parameters.ll}</Text>
+const fetchData = async () => {
+  const options = {
+    method: 'GET',
+    url: 'https://bando-radio-api.p.rapidapi.com/countries',
+    headers: {
+      'X-RapidAPI-Key': '79d6960173msh89628b626831c28p11700djsn3c3afbe6d1ab',
+      'X-RapidAPI-Host': 'bando-radio-api.p.rapidapi.com'
+    }
+  };
 
-      {/* Displaying ads */}
-      <Text>Ads:</Text>
-      <FlatList
-        data={mockData.ads}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View>
-            <Text>Position: {item.position}</Text>
-            <Text>Title: {item.title}</Text>
-            {/* Add more fields as needed */}
-          </View>
-        )}
-      />
-
-      {/* Displaying local results */}
-      <Text>Local Results:</Text>
-      <FlatList
-        data={mockData.local_results}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <View>
-            <Text>Position: {item.position}</Text>
-            <Text>Title: {item.title}</Text>
-            {/* Add more fields as needed */}
-          </View>
-        )}
-      />
-    </View>
-  );
+  try {
+    const response = await axios.request(options);
+    console.log(response.data);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-export default YourComponent;
+const App = () => {
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return null; // Since we're just fetching data, we don't need to render anything
+};
+
+export default App;

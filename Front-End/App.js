@@ -27,6 +27,11 @@ import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
 import wishlist from './Screens/Wishlist.jsx'
 import radioun from "./Screens/radio.js"
+import ShoppingCartScreen from './Screens/shop.js';
+
+
+
+
 const Stack = createStackNavigator();
 
 const App = () => {
@@ -52,7 +57,7 @@ const App = () => {
         <Stack.Screen
           name="HomePage"
           component={HomePage}
-          options={{ title: 'Home' }}
+          options={{ headerShown: false }} 
         />
         <Stack.Screen
           name="products"
@@ -83,7 +88,7 @@ const App = () => {
         <Stack.Screen
           name="HomeCommunity"
           component={HomeCommunity}
-          options={{ title: 'HomeCommunity' }}
+          options={{ headerShown: false }} 
         />
         <Stack.Screen
           name="EventList"
@@ -136,7 +141,7 @@ const App = () => {
         <Stack.Screen
         name="campsites"
         component={campsite}  
-        options={{ title: 'campsites' }}
+        options={{ headerShown: false }} 
         />
 
         <Stack.Screen
@@ -152,13 +157,19 @@ const App = () => {
 <Stack.Screen
         name="weather"
         component={ta9s}
-        options={{ title: 'weather' }}
+        options={{ headerShown: false }} 
         />
         <Stack.Screen
         name="radio"
         component={radioun}
         options={{ title: 'Radio' }}
         />
+        <Stack.Screen
+        name="shop"
+        component={ShoppingCartScreen}
+        options={{ title: 'Radio' }}
+        />
+       
       </Stack.Navigator>
       
     </NavigationContainer>

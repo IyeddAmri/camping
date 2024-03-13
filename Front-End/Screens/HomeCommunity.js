@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 import campingg from "../assets/community.jpg";
 import test from "../assets/events.jpg";
@@ -22,6 +23,9 @@ const HomeCommunity = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       <Image source={campingg} style={styles.topImage} />
 
       <View style={styles.navbarContainer}>
@@ -59,6 +63,12 @@ const HomeCommunity = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 1,
   },
   topImage: {
     width: '100%',

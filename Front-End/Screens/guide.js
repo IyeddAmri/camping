@@ -8,7 +8,7 @@ const Guide = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.15:5000/guide/getAll');
+        const response = await axios.get('http://192.168.1.13:5000/guide/getAll');
         setGuides(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Increase bottom margin for spacing
     fontWeight: 'bold', // Make the text bold
     textAlign: 'center', // Align text to the center
-    color: 'white', // Change text color to blue
+    color: '#007bff', // Change text color to blue
     textDecorationLine: 'underline', // Add underline decoration
   },
   emailButton: {

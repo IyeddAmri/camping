@@ -8,7 +8,7 @@ const Transport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.15:5000/trans/getAll');
+        const response = await axios.get('http://192.168.1.13:5000/trans/getAll');
         setTransportData(response.data);
       } catch (error) {
         console.error('Error fetching transport data:', error);
@@ -137,13 +137,14 @@ const styles = StyleSheet.create({
   emailContainer: {
     marginTop: 9,
     alignSelf: 'center',
+   
   },
   emailLabel: {
     fontSize: 20, // Increase font size
     marginBottom: 10, // Increase bottom margin for spacing
     fontWeight: 'bold', // Make the text bold
     textAlign: 'center', // Align text to the center
-    color: 'white', // Change text color to blue
+    color: '#007bff', // Change text color to blue
     textDecorationLine: 'underline', // Add underline decoration
   },
   emailButton: {

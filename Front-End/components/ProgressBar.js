@@ -1,11 +1,10 @@
 import React from "react";
 import { View } from "react-native";
 import Svg, { Rect } from "react-native-svg";
- 
+
 export default function ProgressBar({ progress }) {
   const barWidth = 230;
   const progressWidth = (progress / 100) * barWidth;
- 
   return (
     <View>
       <Svg width={barWidth} height="7">

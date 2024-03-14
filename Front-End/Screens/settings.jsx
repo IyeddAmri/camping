@@ -1,3 +1,5 @@
+// Settings.js
+
 import React from 'react';
 import { View, TouchableOpacity, Text, StyleSheet, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -11,10 +13,34 @@ const Settings = () => {
   };
   const handleMenuItemPress = (menuItem) => {
     switch (menuItem) {
+      case 'Profile':
+        // Handle Profile menu item press
+        break;
+      case 'Password':
+        // Handle Password menu item press
+        break;
+      case 'Notification':
+        // Handle Notification menu item press
+        break;
+      case 'Language':
+        // Handle Language menu item press
+        break;
+        case 'RateAndReview':
+          navigation.navigate('RateAndReview');
+        break;
+      case 'Help':
+        navigation.navigate('Help');
+        break;
+      case 'LogOut':
+        // Handle LogOut menu item press
+        break;
+      default:
+        // Handle default case if necessary
+        break;
     }
   };
 
-return (
+  return (
     <ScrollView contentContainerStyle={styles.container}>
 
      {/* Go Back Button */}
@@ -51,12 +77,13 @@ return (
         <Text> Help</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuItem} onPress={() => handleMenuItemPress('LogOut')}>
-  <Icon name="sign-out" size={20} color="#000" />
-  <Text> LogOut</Text>
-</TouchableOpacity>
-          </ScrollView>
+        <Icon name="sign-out" size={20} color="#000" />
+        <Text> LogOut</Text>
+      </TouchableOpacity>
+    </ScrollView>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     padding: 20,
@@ -93,4 +120,3 @@ const styles = StyleSheet.create({
 });
 
 export default Settings;
-

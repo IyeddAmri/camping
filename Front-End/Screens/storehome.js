@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     top:20
   },
   exploreButton: {
-    backgroundColor: '#18C0C1',
+    backgroundColor: '#007bff',
     paddingVertical: 10,
     borderRadius: 1.25,
     marginHorizontal: 20,

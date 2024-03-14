@@ -1,10 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Navbar from './Navbar'; // Assuming you have a Navbar component
-import cam from '../assets/camp.jpg'
-import water from '../assets/Guide.jpg'
-import fire from "../assets/transport.jpg";
 
 const HomePage = () => {
   const navigation = useNavigation();
@@ -20,34 +16,45 @@ const HomePage = () => {
   return (
     <View style={styles.container}>
       {/* Top picture */}
-      <Image source={cam} style={styles.topImage} />
+      <Image source={require('../assets/camp.jpg')} style={styles.topImage} />
 
       {/* Navbar */}
       <View style={styles.navbarContainer}>
-        <Navbar
-          categories={['Transport', 'Guide']}
-          selectedCategory={null}
-          onSelectCategory={handleCategorySelect}
-        />
+        <View style={styles.navItem}>
+          <Text
+            style={styles.navItemText}
+            onPress={() => handleCategorySelect('Transport')}
+          >
+            Transport
+          </Text>
+        </View>
+        <View style={styles.navItem}>
+          <Text
+            style={styles.navItemText}
+            onPress={() => handleCategorySelect('Guide')}
+          >
+            Guide
+          </Text>
+        </View>
       </View>
 
       {/* Boxes */}
       <View style={styles.boxContainer}>
         {/* First box */}
         <View style={styles.box}>
-          <Image source={fire} style={styles.boxImage} />
+          <Image source={require('../assets/transport.jpg')} style={styles.boxImage} />
         </View>
 
         {/* Second box */}
         <View style={styles.box}>
-        <Image source={water} style={styles.boxImage} />
+          <Image source={require('../assets/Guide.jpg')} style={styles.boxImage} />
         </View>
       </View>
 
       {/* Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-        Welcome to the Services Home section ! Here, you'll discover a range of essential services tailored to enhance your camping experience. Whether you're seeking reliable transport options to reach your destination hassle-free or professional guides to lead you through the wilderness with expertise, our Services Home provides all the necessary resources to make your camping trip memorable and stress-free.
+          Welcome to the Services Home section! Here, you'll discover a range of essential services tailored to enhance your camping experience. 
         </Text>
       </View>
     </View>
@@ -65,7 +72,20 @@ const styles = StyleSheet.create({
     height: 250,
   },
   navbarContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     marginVertical: 10,
+  },
+  navItem: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    backgroundColor: '#ffffff',
+    marginHorizontal: 10,
+  },
+  navItemText: {
+    fontWeight: 'bold',
+    color: '#333',
   },
   boxContainer: {
     flexDirection: 'row',

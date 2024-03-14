@@ -22,7 +22,6 @@ import campsite from "./Screens/campsites"
 import Signin from  './Screens/Signin.js' ;
 import HomeCommunity from "./Screens/HomeCommunity"; 
 import SignUp from "./Screens/SingUp.js";
-//import photogallery from './Screens/photogallery'
 import settings from './Screens/settings'
 import Help from './Screens/Help.js'
 import RateAndReview from './Screens/RateAndReview.js'
@@ -114,7 +113,8 @@ const App = () => {
           name="resources"
           component={Resourcess}
           options={{ title: 'Resourcesss' }}
-        />
+        /> 
+
           <Stack.Screen
           name="serhome"
           component={Serhome}
@@ -132,16 +132,17 @@ const App = () => {
           options={{ title: 'Emergency' }}
         />
         <Stack.Screen
+  name='wishlist'
+  component={wishlist} 
+  options={{ title: 'wishlist' }}
+/>
+        <Stack.Screen
         name="campsites"
         component={campsite}  
         options={{ title: 'campsites' }}
         />
+
         <Stack.Screen
-        name="Wishlist"
-        component={wishlist}  
-        options={{ title: 'Wishlist' }}
-        />
-         <Stack.Screen
         name="chat"
         component={messenger}  
         options={{ title: 'messenger' }}

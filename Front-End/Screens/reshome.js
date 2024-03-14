@@ -53,7 +53,7 @@ const HomePage = () => {
       {/* Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-        Welcome to the Resources section ! Here, you'll find a curated collection of essential tools and information to enhance your camping experience. From survival tips to handy AI tools and comprehensive checklists, this section is designed to equip you with everything you need for a safe, enjoyable, and hassle-free adventure in the great outdoors. Explore, learn, and make the most out of your camping trip with our carefully selected resources.
+        Welcome to the Resources section ! Here, you'll find a curated collection of essential tools and information to enhance your camping experience. 
         </Text>
       </View>
     </View>
@@ -113,7 +113,7 @@ const styles = StyleSheet.create({
   },
   detailsText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 24,
   },
 });

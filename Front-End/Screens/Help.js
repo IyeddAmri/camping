@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   email: {
     textDecorationLine: 'underline',
-    color: '#007bff', // Blue color
+    color: 'pruple',
   },
   sectionTitle: {
     fontSize: 20,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   resourceLink: {
     fontSize: 16,
-    color: '#007bff',
+    color: 'purple',
   },
 });
 

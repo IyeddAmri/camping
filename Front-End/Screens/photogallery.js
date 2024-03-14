@@ -11,22 +11,20 @@ import { Video } from 'expo-av';
 const PhotoGallery = () => {
   const [media, setMedia] = useState(null);
   const [uploadProgress, setUploadProgress] = useState(0);
-  const [files, setFiles] = useState([]);
+  const [uploading, setuploading] = useState([]);
 
   useEffect(() => {
-    const unsubscribe = onSnapshot(collection(firestore, 'files'), (snapshot) => {
-      const updatedFiles = snapshot.docs && snapshot.docs.map((doc) => doc.data());
-      if (updatedFiles) {
-        setFiles(updatedFiles);
-      }
+    const unsubscribe = onSnapshot(collection(firestore, 'uploading'), (snapshot) => {
+      const updateduploading = snapshot.docs.map((doc) => doc.data());
+      setuploading(updateduploading);
     });
-  
+
     return () => unsubscribe();
   }, []);
 
   const pickMedia = async (mediaType) => {
     let result;
-  
+
     if (mediaType === 'image') {
       const permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (permissionResult.granted === false) {
@@ -36,7 +34,7 @@ const PhotoGallery = () => {
         );
         return;
       }
-  
+
       result = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
@@ -46,7 +44,7 @@ const PhotoGallery = () => {
     } else if (mediaType === 'video') {
       // Add video picking logic here
     }
-  
+
     // Check if result is defined and not cancelled
     if (result && !result.cancelled) {
       setMedia({
@@ -100,9 +98,6 @@ const PhotoGallery = () => {
             console.log('File available at', downloadURL);
             await saveRecord(type, downloadURL, new Date().toISOString());
             setMedia(null);
-            // Refresh the list after successful upload
-            const updatedFiles = await onSnapshot(collection(firestore, 'files'));
-            setFiles(updatedFiles.docs.map((doc) => doc.data()));
           } catch (error) {
             console.error('Error getting download URL:', error);
           }
@@ -113,7 +108,7 @@ const PhotoGallery = () => {
 
   const saveRecord = async (fileType, url, createdAt) => {
     try {
-      await addDoc(collection(firestore, 'files'), {
+      await addDoc(collection(firestore, 'uploading'), {
         fileType,
         url,
         createdAt,
@@ -128,7 +123,7 @@ const PhotoGallery = () => {
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
       {media && <Uploading image={media.uri} progress={uploadProgress} />}
       <FlatList
-        data={files}
+        data={uploading}
         keyExtractor={(item) => item.url}
         renderItem={({ item }) => {
           if (item.fileType === 'image') {

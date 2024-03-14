@@ -143,9 +143,9 @@ const styles = StyleSheet.create({
     fontSize: 20, // Increase font size
     marginBottom: 10, // Increase bottom margin for spacing
     fontWeight: 'bold', // Make the text bold
-    textAlign: 'center', // Align text to the center
-    color: '#007bff', // Change text color to blue
-    textDecorationLine: 'underline', // Add underline decoration
+    textAlign: 'center', 
+    color: '#007bff', 
+    textDecorationLine: 'underline', 
   },
   emailButton: {
     backgroundColor: '#007bff',

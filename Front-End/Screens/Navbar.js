@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
   },
   categoryContainer: {
-    backgroundColor: '#F0FFFF',
+    backgroundColor: '#F8F8FF',
     borderRadius: 20, // 1.25 rem border radius
     padding: 10,
     flexDirection: 'row',

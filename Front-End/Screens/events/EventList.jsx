@@ -9,7 +9,7 @@ const EventList = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    axios.get("http://192.168.3.188:5000/event/get")
+    axios.get("http://192.168.1.16:5000/event/get")
       .then(function (response) {
         setEvents(response.data);
       })
@@ -25,19 +25,20 @@ const EventList = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Explore Tunisia⛺</Text>
-      <FlatList
-        data={events}
-        keyExtractor={(item) => item.id} 
-        numColumns={2} 
-        renderItem={({ item }) => (
-          <TouchableOpacity onPress={() => onViewDetails(item)} style={styles.eventContainer}>
+      <View style={styles.eventRow}>
+        {events.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            onPress={() => onViewDetails(item)}
+            style={styles.eventContainer}
+          >
             <View>
               <Image source={{ uri: item.ImageURL }} style={styles.eventImage} />
               <Text style={styles.eventName}>{item.Name}</Text>
             </View>
           </TouchableOpacity>
-        )}
-      />
+        ))}
+      </View>
     </View>
   );
 };
@@ -53,25 +54,28 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 16,
   },
+  eventRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    flexWrap: 'wrap',
+  },
   eventContainer: {
-    flex: 1,
+    width: '48%', // Adjust width to fit two boxes in one line with a small gap
     backgroundColor: '#fff',
     borderRadius: 8,
     marginBottom: 16,
-    marginLeft: 8, 
-    marginRight: 8, 
     padding: 12,
-    flexDirection: 'row',
     alignItems: 'center',
   },
   eventImage: {
-    width: 80,
-    height: 80,
+    width: '100%',
+    aspectRatio: 1, // Maintain aspect ratio for the image
     borderRadius: 4,
-    marginRight: 12,
+    marginBottom: 8,
   },
   eventName: {
-    fontSize: 18,
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
 

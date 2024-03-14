@@ -8,6 +8,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const Settings = () => {
   const navigation = useNavigation();
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
   const handleMenuItemPress = (menuItem) => {
     switch (menuItem) {
       case 'Profile':
@@ -39,6 +42,12 @@ const Settings = () => {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
+
+     {/* Go Back Button */}
+     <TouchableOpacity style={styles.goBackButton} onPress={handleGoBack}>
+     <Icon name="arrow-left" size={20} color="#000" />
+   </TouchableOpacity>
+
       <View style={styles.premiumBox}>
         <Text style={styles.premiumTitle}>Premium Membership</Text>
         <Text style={styles.premiumSubtitle}>Upgrade for more features</Text>
@@ -79,10 +88,16 @@ const styles = StyleSheet.create({
   container: {
     padding: 20,
   },
+  goBackButton: {
+    position: 'relative',
+    top: 10,
+  },
   premiumBox: {
     backgroundColor: '#800080', // Purple color
     padding: 20,
-    marginBottom: 20,
+    marginBottom: 30,
+    position:"relative",
+    top:20,
     borderRadius: 10,
   },
   premiumTitle: {

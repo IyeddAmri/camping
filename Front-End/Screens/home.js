@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image, Text } from 'react-native';
 import Navbar from './Navbar';
 import { useNavigation } from '@react-navigation/native'; 
@@ -20,7 +20,9 @@ import aiImage from "../assets/ai.jpg";
 
 const HomePage = () => {
   const navigation = useNavigation(); 
-  
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredCategories, setFilteredCategories] = useState([]);
+
   const handleCategoryPress = (category) => {
     if (category === 'Store') {
       navigation.navigate('storehome');
@@ -37,6 +39,9 @@ const HomePage = () => {
     }
     else if (category === 'Weather') {
       navigation.navigate('weather');
+    }
+    else if (category === 'Map') {
+      navigation.navigate('map');
     }
   };
 
@@ -61,7 +66,16 @@ const HomePage = () => {
     }
   };
 
- 
+  const handleSearch = () => {
+    // Filter categories based on searchQuery
+    const filtered = allCategories.filter(category =>
+      category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredCategories(filtered);
+  };
+
+  const allCategories = ['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language'];
+
   const icons = [maps, ta9ss, camp, club, hanout, po, ss, lo];
 
   return (
@@ -70,6 +84,9 @@ const HomePage = () => {
         <TextInput
           style={styles.searchBar}
           placeholder="Search"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          onSubmitEditing={handleSearch}
         />
         <TouchableOpacity style={styles.bookingLogoContainer}>
           <FontAwesome name="hotel" size={24} color="black" /> 
@@ -78,7 +95,7 @@ const HomePage = () => {
       
       <View style={styles.navbarContainer}>
         <Navbar
-          categories={['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language']}
+          categories={filteredCategories.length ? filteredCategories : allCategories}
           selectedCategory={null}
           onSelectCategory={handleCategoryPress}
           icons={icons} 
@@ -147,7 +164,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
-    marginTop: 10,
+    marginTop: 50,
   },
   searchBar: {
     flex: 1,

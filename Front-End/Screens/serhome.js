@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const HomePage = () => {
   const navigation = useNavigation();
@@ -13,12 +14,21 @@ const HomePage = () => {
     }
   };
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
-      {/* Top picture */}
+     
+      <TouchableOpacity style={styles.goBackButton} onPress={handleGoBack}>
+        <Icon name="arrow-left" size={24} color="black" /> 
+      </TouchableOpacity>
+
+    
       <Image source={require('../assets/camp.jpg')} style={styles.topImage} />
 
-      {/* Navbar */}
+   
       <View style={styles.navbarContainer}>
         <View style={styles.navItem}>
           <Text
@@ -38,20 +48,20 @@ const HomePage = () => {
         </View>
       </View>
 
-      {/* Boxes */}
+     
       <View style={styles.boxContainer}>
-        {/* First box */}
+      
         <View style={styles.box}>
           <Image source={require('../assets/transport.jpg')} style={styles.boxImage} />
         </View>
 
-        {/* Second box */}
+        
         <View style={styles.box}>
           <Image source={require('../assets/Guide.jpg')} style={styles.boxImage} />
         </View>
       </View>
 
-      {/* Details */}
+     
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
           Welcome to the Services Home section! Here, you'll discover a range of essential services tailored to enhance your camping experience. 
@@ -65,9 +75,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  goBackButton: {
+    position: 'absolute',
+    top: 35,
+    left: 20,
+    zIndex: 1,
+  },
   topImage: {
     width: '100%',
-    height: 300, // Adjust the height as needed
+    height: 300, 
     resizeMode: 'cover',
     height: 250,
   },

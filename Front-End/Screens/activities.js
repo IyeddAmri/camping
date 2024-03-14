@@ -1,12 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 import cam from "../assets/camping.jpg";
 import wol from "../assets/wolf.webp";
-import pp from "../assets/pp.jpg"
-
-
+import pp from "../assets/pp.jpg";
 
 const HomePage = () => {
   const navigation = useNavigation();
@@ -24,6 +23,10 @@ const HomePage = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="white" />
+      </TouchableOpacity>
+
       <Image source={cam} style={styles.topImage} />
 
       <View style={styles.navbarContainer}>
@@ -45,7 +48,7 @@ const HomePage = () => {
           <Image source={wol} style={styles.boxImage} />
         </View>
         <View style={styles.box}>
-        <Image source={pp} style={styles.boxImage} />
+          <Image source={pp} style={styles.boxImage} />
         </View>
       </View>
 
@@ -61,6 +64,12 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 1,
   },
   topImage: {
     width: '100%',

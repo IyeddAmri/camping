@@ -55,7 +55,7 @@ const WeatherInfo = ({ navigation }) => {
       style={styles.weatherContainer}
     >
       <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
-        <Ionicons name="arrow-back" size={24} color="white" />
+        <Ionicons name="arrow-back" size={24} color="black" />
       </TouchableOpacity>
       <TextInput
         placeholder='Enter city name'

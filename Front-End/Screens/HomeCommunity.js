@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   },
   goBackButton: {
     position: 'absolute',
-    top: 20,
+    top: 30,
     left: 20,
     zIndex: 1,
   },
@@ -80,7 +80,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 10,
     position: 'relative',
-    left: 30,
+    left: 25,
+    top:20
   },
   navbar: {
     flexDirection: 'row',
@@ -105,7 +106,9 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 50,
+    position:"relative",
+    left:18
   },
   box: {
     width: '40%',
@@ -133,6 +136,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 16,
     lineHeight: 24,
+    position:"relative",
+    top:30
   },
 });
 

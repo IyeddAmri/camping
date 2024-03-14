@@ -8,7 +8,7 @@ const Transport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.101:5000/trans/getAll');
+        const response = await axios.get('http://192.168.1.13:5000/trans/getAll');
         setTransportData(response.data);
       } catch (error) {
         console.error('Error fetching transport data:', error);
@@ -29,7 +29,7 @@ const Transport = () => {
   return (
     <View style={styles.backgroundContainer}>
       <Image
-        source={{ uri: 'https://i.pinimg.com/564x/d0/38/2e/d0382eaa19a0469d5e0a3c28b87f6dce.jpg' }}
+       
         style={styles.backgroundImage}
         blurRadius={2}
       />
@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
   
   backgroundContainer: {
     flex: 1,
-    backgroundColor: 'black', // Set a background color as fallback
-  },
+    backgroundColor: '#d9d4c3', // Earthy tone, reminiscent of soil or sand
+},
   backgroundImage: {
     flex: 1,
     resizeMode: 'cover', // or 'stretch'
@@ -137,14 +137,15 @@ const styles = StyleSheet.create({
   emailContainer: {
     marginTop: 9,
     alignSelf: 'center',
+   
   },
   emailLabel: {
     fontSize: 20, // Increase font size
     marginBottom: 10, // Increase bottom margin for spacing
     fontWeight: 'bold', // Make the text bold
-    textAlign: 'center', // Align text to the center
-    color: 'white', // Change text color to blue
-    textDecorationLine: 'underline', // Add underline decoration
+    textAlign: 'center', 
+    color: '#007bff', 
+    textDecorationLine: 'underline', 
   },
   emailButton: {
     backgroundColor: '#007bff',

@@ -1,8 +1,5 @@
 module.exports = {
   expo: {
-    android: {
-      permissions: ["CAMERA", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]
-    },
     name: "my-app",
     slug: "my-app",
     version: "1.0.0",
@@ -36,6 +33,14 @@ module.exports = {
       storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
       messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
       appId: process.env.REACT_APP_APP_ID
-    }
+    },
+    plugins: [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ]
   }
 };

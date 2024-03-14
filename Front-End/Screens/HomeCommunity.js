@@ -1,10 +1,12 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 import campingg from "../assets/community.jpg";
 import test from "../assets/events.jpg";
 import feu from "../assets/feu.jpg";
+import chat from "../assets/chats.jpg"
 
 const HomeCommunity = () => {
   const navigation = useNavigation();
@@ -21,6 +23,9 @@ const HomeCommunity = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       <Image source={campingg} style={styles.topImage} />
 
       <View style={styles.navbarContainer}>
@@ -38,20 +43,17 @@ const HomeCommunity = () => {
       </View>
 
       <View style={styles.boxContainer}>
-        {/* <View style={styles.box}>
-          <Image source={test} style={styles.boxImage} />
-        </View> */}
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
+          {  <Image source={feu} style={styles.boxImage} />}
         </View>
         <View style={styles.box}>
-          <Image source={feu} style={styles.boxImage} />
+          <Image source={chat} style={styles.chatImage} />
         </View>
       </View>
 
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-          Many camping destinations are located in remote or secluded areas that are not easily accessible by foot
+        Many camping destinations are tucked away in remote or secluded areas, their beauty shielded by rugged terrain and winding trails.
         </Text>
       </View>
     </View>
@@ -61,6 +63,12 @@ const HomeCommunity = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 30,
+    left: 20,
+    zIndex: 1,
   },
   topImage: {
     width: '100%',
@@ -72,7 +80,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 10,
     position: 'relative',
-    left: 30,
+    left: 25,
+    top:20
   },
   navbar: {
     flexDirection: 'row',
@@ -97,7 +106,9 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 50,
+    position:"relative",
+    left:18
   },
   box: {
     width: '40%',
@@ -111,26 +122,22 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
     borderRadius: 15,
   },
+  chatImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 15,
+  },
   detailsContainer: {
     paddingHorizontal: 20,
     marginTop: 20,
   },
   detailsText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 22,
     lineHeight: 24,
-  },
-  exploreButton: {
-    backgroundColor: 'blue',
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginHorizontal: 20,
-    alignItems: 'center',
-    marginTop: 20,
-  },
-  exploreButtonText: {
-    color: 'white',
-    fontWeight: 'bold',
+    position:"relative",
+    top:15
   },
 });
 

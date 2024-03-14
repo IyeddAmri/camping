@@ -1,10 +1,7 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import Navbar from './Navbar'; // Assuming you have a Navbar component
-import cam from '../assets/camp.jpg'
-import water from '../assets/Guide.jpg'
-import fire from "../assets/transport.jpg";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const HomePage = () => {
   const navigation = useNavigation();
@@ -17,37 +14,57 @@ const HomePage = () => {
     }
   };
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
-      {/* Top picture */}
-      <Image source={cam} style={styles.topImage} />
+     
+      <TouchableOpacity style={styles.goBackButton} onPress={handleGoBack}>
+        <Icon name="arrow-left" size={24} color="black" /> 
+      </TouchableOpacity>
 
-      {/* Navbar */}
+    
+      <Image source={require('../assets/camp.jpg')} style={styles.topImage} />
+
+   
       <View style={styles.navbarContainer}>
-        <Navbar
-          categories={['Transport', 'Guide']}
-          selectedCategory={null}
-          onSelectCategory={handleCategorySelect}
-        />
+        <View style={styles.navItem}>
+          <Text
+            style={styles.navItemText}
+            onPress={() => handleCategorySelect('Transport')}
+          >
+            Transport
+          </Text>
+        </View>
+        <View style={styles.navItem}>
+          <Text
+            style={styles.navItemText}
+            onPress={() => handleCategorySelect('Guide')}
+          >
+            Guide
+          </Text>
+        </View>
       </View>
 
-      {/* Boxes */}
+     
       <View style={styles.boxContainer}>
-        {/* First box */}
+      
         <View style={styles.box}>
-          <Image source={fire} style={styles.boxImage} />
+          <Image source={require('../assets/transport.jpg')} style={styles.boxImage} />
         </View>
 
-        {/* Second box */}
+        
         <View style={styles.box}>
-        <Image source={water} style={styles.boxImage} />
+          <Image source={require('../assets/Guide.jpg')} style={styles.boxImage} />
         </View>
       </View>
 
-      {/* Details */}
+     
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-        Welcome to the Services Home section ! Here, you'll discover a range of essential services tailored to enhance your camping experience. Whether you're seeking reliable transport options to reach your destination hassle-free or professional guides to lead you through the wilderness with expertise, our Services Home provides all the necessary resources to make your camping trip memorable and stress-free.
+          Welcome to the Services Home section! Here, you'll discover a range of essential services tailored to enhance your camping experience. 
         </Text>
       </View>
     </View>
@@ -58,14 +75,33 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  goBackButton: {
+    position: 'absolute',
+    top: 35,
+    left: 20,
+    zIndex: 1,
+  },
   topImage: {
     width: '100%',
-    height: 300, // Adjust the height as needed
+    height: 300, 
     resizeMode: 'cover',
     height: 250,
   },
   navbarContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
     marginVertical: 10,
+  },
+  navItem: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    backgroundColor: '#ffffff',
+    marginHorizontal: 10,
+  },
+  navItemText: {
+    fontWeight: 'bold',
+    color: '#333',
   },
   boxContainer: {
     flexDirection: 'row',

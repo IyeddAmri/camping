@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useLayoutEffect, useCallback } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity, StyleSheet } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { collection, addDoc, orderBy, query, onSnapshot } from 'firebase/firestore';
 import { signOut } from 'firebase/auth';
 import { auth, firestore } from '../config/firebase'; 
 import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
-
 
 export default function Chat() {
   const [messages, setMessages] = useState([]);
@@ -19,7 +18,7 @@ export default function Chat() {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerRight: () => (
-        <TouchableOpacity style={{ marginRight: 10 }} onPress={onSignOut}>
+        <TouchableOpacity style={styles.logoutButton} onPress={onSignOut}>
           <AntDesign name="logout" size={24} />
         </TouchableOpacity>
       )
@@ -68,13 +67,8 @@ export default function Chat() {
       showAvatarForEveryMessage={false}
       showUserAvatar={false}
       onSend={messages => onSend(messages)}
-      messagesContainerStyle={{
-        backgroundColor: '#fff'
-      }}
-      textInputStyle={{
-        backgroundColor: '#fff',
-        borderRadius: 20
-      }}
+      messagesContainerStyle={styles.messagesContainer}
+      textInputStyle={styles.textInput}
       user={{
         _id: auth.currentUser.uid,
         avatar: 'https://i.pravatar.cc/300'
@@ -82,3 +76,20 @@ export default function Chat() {
     />
   );
 }
+
+const styles = StyleSheet.create({
+  logoutButton: {
+    marginRight: 10,
+  },
+  messagesContainer: {
+    backgroundColor: '#F4EAD5', // Light beige for a natural feel
+  },
+  textInput: {
+    backgroundColor: '#FFFFFF', 
+    borderRadius: 20,
+    marginBottom: 10, 
+    marginLeft: 10,
+    marginRight: 10,
+    padding: 10, 
+  },
+});

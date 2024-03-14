@@ -1,9 +1,11 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 import cam from "../assets/camping.jpg";
 import wol from "../assets/wolf.webp";
+import pp from "../assets/pp.jpg";
 
 const HomePage = () => {
   const navigation = useNavigation();
@@ -14,10 +16,17 @@ const HomePage = () => {
     } else if (category === 'Outdoor Adventures') {
       navigation.navigate('outdoor');
     }  
+    else if (category === 'Radio') {
+      navigation.navigate('radio');
+    }  
   };
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="white" />
+      </TouchableOpacity>
+
       <Image source={cam} style={styles.topImage} />
 
       <View style={styles.navbarContainer}>
@@ -39,13 +48,13 @@ const HomePage = () => {
           <Image source={wol} style={styles.boxImage} />
         </View>
         <View style={styles.box}>
-          {/* You can add another image for the second box here */}
+          <Image source={pp} style={styles.boxImage} />
         </View>
       </View>
 
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-          Welcome to our store! We offer a wide range of products to cater to your needs. Whether you're looking for camping gear, tools, or anything in between, we've got you covered.
+        Welcome to the Activity Section, where we delve into the heart of camping adventure! Here, amidst the rustling of leaves and the crackling of campfires, we explore the myriad ways to immerse yourself in the great outdoors.
         </Text>
       </View>
     </View>
@@ -55,6 +64,12 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
+    zIndex: 1,
   },
   topImage: {
     width: '100%',
@@ -73,10 +88,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     paddingVertical: 10,
     borderRadius: 10,
-    borderWidth: 1,
+   
     borderColor: '#ccc',
     position:"relative",
-    left:10
+    left:10,
   
   },
   navItem: {
@@ -92,7 +107,7 @@ const styles = StyleSheet.create({
   boxContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: 5,
   },
   box: {
     width: '40%',
@@ -111,7 +126,7 @@ const styles = StyleSheet.create({
   },
   detailsText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 20,
     lineHeight: 24,
   },
   exploreButton: {

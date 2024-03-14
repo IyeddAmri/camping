@@ -2,11 +2,12 @@
 
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import axios from 'axios';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
+import axios from 'axios';
+import Wishlist from './Wishlist.jsx';
 
-const campsites = () => {
+const CampsitesScreen = () => {
   const navigation = useNavigation();
   const [campsites, setCampsites] = useState([]);
   const [wishlist, setWishlist] = useState([]);
@@ -14,7 +15,8 @@ const campsites = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/campsites/get');
+        const response = await axios.get('http://192.168.1.16:5000/campsites/get');
+
         const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: campsite.Liked }));
         setCampsites(initialCampsites);
       } catch (error) {
@@ -27,7 +29,7 @@ const campsites = () => {
 
   const toggleLike = async (index, campsiteId) => {
     try {
-      await axios.put(`http://localhost:5000/campsites/like/${campsiteId}`);
+      await axios.put(`http://192.168.1.226:5000/campsites/like/${campsiteId}`);
     } catch (error) {
       console.error('Error liking/unliking campsite on the server:', error);
     }
@@ -51,6 +53,9 @@ const campsites = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       <FlatList
         data={campsites}
         keyExtractor={(item) => item.Name}
@@ -72,6 +77,7 @@ const campsites = () => {
           </View>
         )}
       />
+      <Wishlist wishlist={wishlist} />
     </View>
   );
 };
@@ -81,10 +87,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 20,
+    marginTop:55,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
   },
   campsiteContainer: {
     marginBottom: 20,
     position: 'relative',
+    top:20
   },
   image: {
     width: '100%',

@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   boxContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: 25,
   },
   box: {
     width: '40%',
@@ -82,13 +82,15 @@ const styles = StyleSheet.create({
   },
   detailsText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 20,
     lineHeight: 24,
+    position:"relative",
+    top:20
   },
   exploreButton: {
     backgroundColor: '#18C0C1',
     paddingVertical: 10,
-    borderRadius: 5,
+    borderRadius: 1.25,
     marginHorizontal: 20,
     alignItems: 'center',
     marginTop: 20,
@@ -97,6 +99,7 @@ const styles = StyleSheet.create({
     borderRadius:15,
     position:"relative",
     left:80,
+    top:30
   },
   exploreButtonText: {
     color: 'white',

@@ -54,7 +54,7 @@ const HomePage = () => {
 
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-          Welcome to our store! We offer a wide range of products to cater to your needs. Whether you're looking for camping gear, tools, or anything in between, we've got you covered.
+        Welcome to the Activity Section, where we delve into the heart of camping adventure! Here, amidst the rustling of leaves and the crackling of campfires, we explore the myriad ways to immerse yourself in the great outdoors.
         </Text>
       </View>
     </View>
@@ -88,10 +88,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     paddingVertical: 10,
     borderRadius: 10,
-    borderWidth: 1,
+   
     borderColor: '#ccc',
     position:"relative",
-    left:10
+    left:10,
   
   },
   navItem: {
@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   boxContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginTop: 20,
+    marginTop: 5,
   },
   box: {
     width: '40%',
@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
   },
   detailsText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 20,
     lineHeight: 24,
   },
   exploreButton: {

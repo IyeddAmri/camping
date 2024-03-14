@@ -53,7 +53,7 @@ const HomeCommunity = () => {
 
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-          Many camping destinations are located in remote or secluded areas that are not easily accessible by foot
+        Many camping destinations are tucked away in remote or secluded areas, their beauty shielded by rugged terrain and winding trails.
         </Text>
       </View>
     </View>
@@ -134,10 +134,10 @@ const styles = StyleSheet.create({
   },
   detailsText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 22,
     lineHeight: 24,
     position:"relative",
-    top:30
+    top:15
   },
 });
 

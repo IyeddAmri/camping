@@ -5,7 +5,7 @@ import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import Wishlist from './Wishlist.jsx';
+// import Wishlist from './Wishlist.jsx';
 
 const CampsitesScreen = () => {
   const navigation = useNavigation();
@@ -15,7 +15,7 @@ const CampsitesScreen = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.16:5000/campsites/get');
+        const response = await axios.get('http://localhost:5000/campsites/get');
 
         const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: campsite.Liked }));
         setCampsites(initialCampsites);
@@ -29,7 +29,7 @@ const CampsitesScreen = () => {
 
   const toggleLike = async (index, campsiteId) => {
     try {
-      await axios.put(`http://192.168.1.226:5000/campsites/like/${campsiteId}`);
+      await axios.put(`http://localhost:5000/campsites/like/${campsiteId}`);
     } catch (error) {
       console.error('Error liking/unliking campsite on the server:', error);
     }
@@ -77,7 +77,7 @@ const CampsitesScreen = () => {
           </View>
         )}
       />
-      <Wishlist wishlist={wishlist} />
+      {/* <Wishlist wishlist={wishlist} /> */}
     </View>
   );
 };
@@ -126,4 +126,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default campsites;
+export default CampsitesScreen;

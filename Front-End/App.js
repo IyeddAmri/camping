@@ -27,11 +27,10 @@ import Help from './Screens/Help.js'
 import RateAndReview from './Screens/RateAndReview.js'
 import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
-import WishlistScreen from './Screens/WishlistScreen.js';
-import photogallery from './Screens/photogallery.js';
-import wishlist from './Screens/Wishlist.jsx'
+// import wishlist from './Screens/Wishlist.jsx'
 import radioun from "./Screens/radio.js"
 import ShoppingCartScreen from './Screens/shop.js';
+import PhotoGallery from './Screens/photogallery.js'; 
 // import ObjectDetector from './Screens/aitools'; 
 
 const Stack = createStackNavigator();
@@ -135,21 +134,14 @@ const App = () => {
         <Stack.Screen
           name="serhome"
           component={Serhome}
-          options={{ title: 'Serhome' }}
-        />
-        <Stack.Screen name="Transport" 
-        component={Transport} 
-        options={{ title: 'Transport' }} />
-        <Stack.Screen name="Guide" 
-        component={Guide} 
-        options={{ title: 'Guide' }} />
-          <Stack.Screen
-          name="Emergency"
-          component={Emergency}  
-          options={{ title: 'Emergency' }}
-        />
-
           options={{ headerShown: false }} 
+        />
+         <Stack.Screen
+          name="photogallery"
+          component={PhotoGallery}
+          options={{ title: 'photogallery' }}
+
+        />
 
         <Stack.Screen
           name="Transport"
@@ -169,11 +161,11 @@ const App = () => {
           options={{ headerShown: false }} 
         />
 
-        <Stack.Screen
+        {/* <Stack.Screen
           name='wishlist'
           component={wishlist}
           options={{ title: 'wishlist' }}
-        />
+        /> */}
 
         <Stack.Screen
           name="campsites"
@@ -210,9 +202,7 @@ const App = () => {
           component={ShoppingCartScreen}
           options={{ title: 'Radio' }}
         />
-
-      
-
+       
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     height: 100, // Increase height for multiline input
   },
   priceButton: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: '#18C0C1',
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 10,

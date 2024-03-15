@@ -12,7 +12,7 @@ const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [birthday, setBirthday] = useState('');
-  const [location, setLocation] = useState('Tunis');
+  const [location, setLocation] = useState('location');
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);

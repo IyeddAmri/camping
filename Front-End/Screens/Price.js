@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'; // Assuming you're using Expo
 
-const PriceScreen = () => {
+const PriceScreen = ({ navigation }) => {
   const [selectedPayment, setSelectedPayment] = useState(null);
 
   const handlePaymentSelect = (paymentMethod) => {
     setSelectedPayment(paymentMethod);
   };
 
+  // Handle going back
+  const goBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={goBack}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       <View style={styles.contentBox}>
         <Text style={styles.heading}>Price Details</Text>
         {/* Price details */}
@@ -92,6 +101,12 @@ const styles = StyleSheet.create({
   paymentButtonText: {
     color: '#fff',
     fontSize: 18,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    zIndex: 1, // Ensure the button stays on top
   },
 });
 

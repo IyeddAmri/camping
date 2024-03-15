@@ -67,7 +67,7 @@ const App = () => {
         <Stack.Screen
           name="products"
           component={Product}
-          options={{ title: 'Store' }}
+          options={{ headerShown: false }}
         />
        
         <Stack.Screen

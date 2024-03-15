@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 
 const ProductListScreen = () => {
@@ -19,7 +20,7 @@ const ProductListScreen = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://192.168.1.16:5000/api')
+    axios.get('http://192.168.100.54:5000/api')
       .then(response => {
         setProducts(response.data);
       })
@@ -74,10 +75,17 @@ const ProductListScreen = () => {
     navigation.navigate('shop', { shoppingCart});
   };
 
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={handleGoBack}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       {renderNavbar()}
-      <Text style={styles.heading}>Product List</Text>
+      
       <TouchableOpacity
         style={styles.shoppingCartContainer}
         onPress={handleNavigateToCart}
@@ -100,6 +108,14 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    position:"relative",
+    top:50
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: -18,
+    left: 10,
+    zIndex: 1,
   },
   navbar: {
     flexDirection: 'row',
@@ -144,7 +160,7 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
-    height: 100,
+    height: 90,
     resizeMode: 'cover',
   },
   name: {
@@ -167,7 +183,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   buyButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#18C0C1',
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 5,

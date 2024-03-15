@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons'; // Assuming you're using Expo
 
 const CampingBookingScreen = ({ navigation }) => {
   const [bookingInfo, setBookingInfo] = useState({
@@ -43,8 +44,16 @@ const CampingBookingScreen = ({ navigation }) => {
     navigation.navigate('Price');
   };
 
+  // Handle going back
+  const goBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.backButton} onPress={goBack}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       <Text style={styles.heading}>Book a Camping Location</Text>
       <TextInput
         style={styles.input}
@@ -131,6 +140,12 @@ const styles = StyleSheet.create({
   priceButtonText: {
     color: '#fff',
     fontSize: 18,
+  },
+  backButton: {
+    position: 'absolute',
+    top: 40,
+    left: 20,
+    zIndex: 1, // Ensure the button stays on top
   },
 });
 

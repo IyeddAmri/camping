@@ -1,7 +1,9 @@
+// AdminDashboard.js
 import React, { useState } from 'react';
 import Sidebar from './Sidebar';
-import ProductsPage from './ProductsPage';
 import './AdminDashboard.css'; // Import custom CSS file for styling
+import ProductsPage from './ProductsPage';
+import CampsitesPage from './CampsitePage'; // Import the CampsitesPage component
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -26,6 +28,8 @@ const AdminDashboard = () => {
         );
       case 'products':
         return <ProductsPage />;
+      case 'campsites': // Render the CampsitesPage component when activeComponent is 'campsites'
+        return <CampsitesPage />;
       // Add cases for other components as needed
       default:
         return null;

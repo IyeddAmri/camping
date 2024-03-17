@@ -1,15 +1,15 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 6000;
 
-const productRoutes = require('../routes/productsroute');
+const productRoutes = require('../routes/prodroutes');
 
 
 
 app.use(cors());
 app.use(express.json()); 
-app.use('/api', productRoutes);
+app.use('/prod', productRoutes);
 
 
 app.listen(PORT, () => {

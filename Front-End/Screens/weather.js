@@ -109,8 +109,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   buttonText: {
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
+    fontSize: 16,
   },
   weatherInfo: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',

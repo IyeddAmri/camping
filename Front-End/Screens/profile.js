@@ -15,7 +15,7 @@ export default function Profile() {
           throw new Error('User not authenticated');
         }
 
-        const userDocRef = doc(firestore, 'utilisateur', auth.currentUser.uid);
+        const userDocRef = doc(firestore, 'utilisateurr', auth.currentUser.uid);
         const userDocSnapshot = await getDoc(userDocRef);
 
         if (!userDocSnapshot.exists()) {

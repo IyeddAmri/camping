@@ -12,7 +12,17 @@ import club from "../assets/community.webp"
 import hanout from "../assets/7wint.jpg"
 import po from "../assets/la3b.jpg"
 import ss from "../assets/res.jpg"
-import lo from "../assets/lou8a.png"  
+import lo from "../assets/lou8a.png"
+import dar from "../assets/home.jpg"
+import glayb from "../assets/glb.webp" // Import the glayb image for the tab bar
+import khdm from '../assets/srv.png'
+import tlf from "../assets/klm.png"
+import ur from "../assets/ml.jpg"
+import pr from "../assets/prm.png"
+import prffff from "../assets/prff.jpg"
+import prffImage from '../assets/prff.jpg';
+import Profile from "../Screens/profile"
+ 
 import campsiteImage from "../assets/cmp.jpg"; 
 import storeImage from '../assets/sell.webp';
 import survivalImage from "../assets/survival.jpg"; 
@@ -61,7 +71,7 @@ const HomePage = () => {
     } else if (tabName === 'Settings') {
       navigation.navigate('Settings');
     } else if (tabName === 'Profile') {
-      // Handle navigation to the profile screen
+      navigation.navigate('profile'); // Navigate to the Profile screen
     } else if (category === "Community") {
       navigation.navigate("HomeCommunity")
     }

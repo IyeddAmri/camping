@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { View, Text, TextInput, Button, ScrollView, KeyboardAvoidingView } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import your desired icon library
+import { View, Text, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Chatbot = () => {
   const [input, setInput] = useState('');
@@ -14,20 +14,23 @@ const Chatbot = () => {
 
   const handleMessage = (userInput) => {
     switch (userInput.toLowerCase()) {
-      case 'hello !':
+      case 'hi':
         addMessage('AI', 'Hello! How can I assist you today?');
         break;
       case 'how are you?':
         addMessage('AI', "As an AI, I don't have feelings or emotions, but I'm here and ready to assist you! How can I help you today?");
         break;
-      case 'what is the purpose of your camping application':
+      case 'what is camping tn':
         addMessage('AI', "The purpose of a camping application could vary depending on its features and intended audience, but generally, a camping application is designed to enhance the camping experience for outdoor enthusiasts. Some common features and purposes of camping applications include Campsite Discovery/Booking and Reservations/Navigation and Directions/Campground Information/Campsite Reviews and Ratings");
         setLastQuestion('camping');
         break;
       case 'where can i do a camping':
         if (lastQuestion === 'camping') {
-          addMessage('AI', 'In Tunisia, camping enthusiasts can enjoy diverse landscapes, from the vast Sahara Desert with its iconic sand dunes to the picturesque Mediterranean coastline, where beach camping is popular, while national parks like Ichkeul and Boukornine offer opportunities for camping amidst nature, ensuring a memorable outdoor experience for visitors')
-        } 
+          addMessage('AI', 'In Tunisia, camping enthusiasts can enjoy diverse landscapes, from the vast Sahara Desert with its iconic sand dunes to the picturesque Mediterranean coastline, where beach camping is popular, while national parks like Ichkeul and Boukornine offer opportunities for camping amidst nature, ensuring a memorable outdoor experience for visitors');
+          setLastQuestion('');
+        } else {
+          addMessage('AI', "I'm not sure where you can camp. Could you please ask about the purpose of the camping application first?");
+        }
         break;
       case 'by':
         addMessage('AI', 'Take care!');
@@ -92,16 +95,35 @@ const Chatbot = () => {
       <KeyboardAvoidingView behavior="padding" style={{ padding: 10 }}>
         <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
           <TextInput
-            style={{ flex: 1, borderWidth: 1, borderColor: '#ccc', borderRadius: 20, paddingHorizontal: 15, paddingVertical: 10 }}
+            style={styles.input}
             value={input}
             onChangeText={setInput}
             placeholder="Type your message..."
           />
-          <Button title="Send" onPress={sendMessage} />
+          <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
+            <Icon name="send" size={24} color="#fff" />
+          </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 20,
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    marginRight: 10,
+  },
+  sendButton: {
+    backgroundColor: '#007bff',
+    borderRadius: 20,
+    padding: 10,
+  },
+});
 
 export default Chatbot;

@@ -108,11 +108,11 @@ const SignUpScreen = ({ navigation }) => {
         onValueChange={(itemValue) => setLocation(itemValue)}
         style={styles.input}
       >
-        <Picker.Item label="khanget el ragouba" value="Tunis" />
-        <Picker.Item label="barnousa" value="Sfax" />
-        <Picker.Item label="dahmani" value="Sousse" />
+        <Picker.Item label="Tunis" value="Tunis" />
+        <Picker.Item label="Sfax" value="Sfax" />
+        <Picker.Item label="Sousse" value="Sousse" />
         <Picker.Item label="kef" value="Kairouan" />
-        <Picker.Item label="boulifa" value="Bizerte" />
+        <Picker.Item label="Bizerte" value="Bizerte" />
       </Picker>
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <TouchableOpacity onPress={handleSignUp} style={styles.button}>

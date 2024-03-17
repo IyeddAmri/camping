@@ -28,11 +28,8 @@ import RateAndReview from './Screens/RateAndReview.js'
 import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
 import Chatbot from './Screens/Chatbot.js';
-// import wishlist from './Screens/Wishlist.jsx'
 import radioun from "./Screens/radio.js"
 import ShoppingCartScreen from './Screens/shop.js';
-// import PhotoGallery from './Screens/photogallery.js'; 
-// import ObjectDetector from './Screens/aitools'; 
 
 const Stack = createStackNavigator();
 

@@ -27,7 +27,8 @@ import Help from './Screens/Help.js'
 import RateAndReview from './Screens/RateAndReview.js'
 import messenger from "./Screens/chat.js"
 import Checklist from './Screens/Checklist.js'
-import wishlist from './Screens/Wishlist.jsx'
+import Chatbot from './Screens/Chatbot.js';
+// import wishlist from './Screens/Wishlist.jsx'
 import radioun from "./Screens/radio.js"
 import ShoppingCartScreen from './Screens/shop.js';
 import camp from "./Screens/CampingBookingScreen.js";
@@ -87,6 +88,11 @@ const App = () => {
           component={GamesScreen}
           options={{ title: 'Games' }} 
         />
+        <Stack.Screen
+          name="Chatbot"
+          component={Chatbot}
+          options={{ title: 'Chatbot' }} 
+        />
 
         <Stack.Screen
           name="outdoor"
@@ -137,6 +143,12 @@ const App = () => {
           component={Serhome}
           options={{ headerShown: false }} 
         />
+         {/* <Stack.Screen
+          name="photogallery"
+          component={PhotoGallery}
+          options={{ title: 'photogallery' }}
+
+        /> */}
 
         <Stack.Screen
           name="Transport"
@@ -156,11 +168,11 @@ const App = () => {
           options={{ headerShown: false }} 
         />
 
-        <Stack.Screen
+        {/* <Stack.Screen
           name='wishlist'
           component={wishlist}
           options={{ title: 'wishlist' }}
-        />
+        /> */}
 
         <Stack.Screen
           name="campsites"

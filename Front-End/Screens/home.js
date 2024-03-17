@@ -53,8 +53,9 @@ const HomePage = () => {
       // Handle navigation to the wishlist screen
     } else if (tabName === 'Services') {
       navigation.navigate('serhome'); // Navigate to the Services screen
-    } else if (tabName === 'Inbox') {
-      // Handle navigation to the inbox screen
+    } else if (tabName === 'Chatbot') {
+      navigation.navigate('Chatbot');
+      // Handle navigation to the Chatbot screen
     } else if (tabName === 'Emergency') {
       navigation.navigate('Emergency'); // Navigate to the Emergency screen
     } else if (tabName === 'Settings') {
@@ -144,8 +145,8 @@ const HomePage = () => {
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Services')}>
           <MaterialIcons name="room-service" size={24} color="black" /> 
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Inbox')}>
-          <MaterialIcons name="inbox" size={24} color="black" /> 
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Chatbot')}>
+          <MaterialIcons name="Chatbot" size={24} color="black" /> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Emergency')}>
           <MaterialIcons name="warning" size={24} color="black" /> 
@@ -257,8 +258,8 @@ const styles = StyleSheet.create({
   servicesIcon: {
     // Services icon styles
   },
-  inboxIcon: {
-    // Inbox icon styles
+  ChatbotIcon: {
+    // Chatbot icon styles
   },
   emergencyIcon: {
     // Emergency icon styles

@@ -1,9 +1,11 @@
+// campsites.js
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-import Wishlist from './Wishlist.jsx';
+// import Wishlist from './Wishlist.jsx';
 
 const CampsitesScreen = () => {
   const navigation = useNavigation();
@@ -27,7 +29,7 @@ const CampsitesScreen = () => {
 
   const toggleLike = async (index, campsiteId) => {
     try {
-      await axios.put(`http://192.168.1.226:5000/campsites/like/${campsiteId}`);
+      await axios.put(`http://localhost:5000/campsites/like/${campsiteId}`);
     } catch (error) {
       console.error('Error liking/unliking campsite on the server:', error);
     }
@@ -38,6 +40,7 @@ const CampsitesScreen = () => {
 
       if (updatedCampsites[index].liked) {
         setWishlist((prevWishlist) => [...prevWishlist, updatedCampsites[index]]);
+        navigation.navigate('Wishlist', { wishlist: [...wishlist, updatedCampsites[index]] });
       } else {
         setWishlist((prevWishlist) =>
           prevWishlist.filter((item) => item.Name !== updatedCampsites[index].Name)
@@ -74,7 +77,7 @@ const CampsitesScreen = () => {
           </View>
         )}
       />
-      <Wishlist wishlist={wishlist} />
+      {/* <Wishlist wishlist={wishlist} /> */}
     </View>
   );
 };

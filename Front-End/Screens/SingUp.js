@@ -33,10 +33,9 @@ const SignUpScreen = ({ navigation }) => {
         return;
       }
 
-      // Create user in Firebase Authentication
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
-      // Save additional user information to Firestore
+      
       const userData = {
         email: email,
         username: username,

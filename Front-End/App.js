@@ -26,7 +26,7 @@ import chat from "./Screens/chat.js";
 import Profile  from "./Screens/profile.js";
 import Help from './Screens/Help.js';
 import RateAndReview from './Screens/RateAndReview.js';
-import Checklist from './Screens/Checklist.js';
+
 import Chatbot from './Screens/Chatbot.js';
 import radioun from "./Screens/radio.js";
 import ShoppingCartScreen from './Screens/shop.js';
@@ -201,6 +201,11 @@ const App = () => {
           name="Price"
           component={PriceScreen}
           options={{ headerShown: false }}
+        />
+  <Stack.Screen
+          name="profile" 
+          component={Profile}
+          options={{ title: 'Profile' }} 
         />
 
       </Stack.Navigator>

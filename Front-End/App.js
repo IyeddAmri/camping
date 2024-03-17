@@ -23,10 +23,15 @@ import HomeCommunity from "./Screens/HomeCommunity";
 import SignUp from "./Screens/SingUp.js";
 import settings from './Screens/settings';
 import chat from "./Screens/chat.js";
-//import wishlist from "./Screens/Wishlist.jsx";
 import Profile  from "./Screens/profile.js";
-
-//import messenger from "./Screens/chat.js";
+import Help from './Screens/Help.js';
+import RateAndReview from './Screens/RateAndReview.js';
+import Checklist from './Screens/Checklist.js';
+import Chatbot from './Screens/Chatbot.js';
+import radioun from "./Screens/radio.js";
+import ShoppingCartScreen from './Screens/shop.js';
+import camp from "./Screens/CampingBookingScreen.js";
+import PriceScreen from './Screens/Price.js';
 
 const Stack = createStackNavigator();
 
@@ -35,112 +40,127 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name='Signin'
-          component={Signin}
-          options={{ title: 'Login'}}
-        />
-        <Stack.Screen
           name="Onboarding"
           component={Onboarding}
           options={{ headerShown: false }} 
         />
+
         <Stack.Screen 
-          name="SignUp" 
+          name="Signin" 
+          component={Signin}
+        />
+
+        <Stack.Screen
+          name="SignUp"
           component={SignUp}
           options={{ title: 'Sign Up' }} 
         />
+
         <Stack.Screen
           name="HomePage"
           component={HomePage}
-          options={{ title: 'Home' }}
+          options={{ headerShown: false }} 
         />
+
         <Stack.Screen
           name="products"
           component={Product}
-          options={{ title: 'Store' }}
+          options={{ headerShown: false }}
         />
+
         <Stack.Screen
           name="storehome"
           component={StoreHome}
-          options={{ title: 'Store' }}
+          options={{ headerShown: false }} 
         />
-        <Stack.Screen 
-          name="profile"
-          component={Profile}
-          options={{title :'Profile'}}
-        />
+
         <Stack.Screen
           name="activities"
           component={activity}
-          options={{ title: 'Activities' }}
+          options={{ headerShown: false }} 
         />
+
         <Stack.Screen
           name="Games"
           component={GamesScreen}
           options={{ title: 'Games' }} 
         />
+
+        <Stack.Screen
+          name="Chatbot"
+          component={Chatbot}
+          options={{ title: 'Chatbot' }} 
+        />
+
         <Stack.Screen
           name="outdoor"
           component={outdoor}
           options={{ title: 'OutDoor' }} 
         />
+
         <Stack.Screen
           name="HomeCommunity"
           component={HomeCommunity}
-          options={{ title: 'HomeCommunity' }}
+          options={{ headerShown: false }} 
         />
+
         <Stack.Screen
           name="EventList"
           component={eventList}
           options={{ title: 'Community' }}
         />
+
         <Stack.Screen
           name="EventDetails"
           component={EventDetails}
           options={{ title: 'Event Details'}}
         />
+
         <Stack.Screen
           name="Settings"
           component={settings}
-          options={{ title: 'Settings' }}
+          options={{ headerShown: false }} 
         />
+
+        <Stack.Screen name="Help" component={Help} />
+        <Stack.Screen name="RateAndReview" component={RateAndReview} />
+
         <Stack.Screen
           name="reshome"
           component={Reshome}
-          options={{ title: 'Resources' }}
+          options={{ headerShown: false }} 
         />
+
         <Stack.Screen
           name="resources"
           component={Resourcess}
           options={{ title: 'Resourcesss' }}
         /> 
+
         <Stack.Screen
           name="serhome"
           component={Serhome}
           options={{ title: 'Serhome' }}
         />
+
         <Stack.Screen 
           name="Transport" 
           component={Transport} 
           options={{ title: 'Transport' }} 
         />
+
         <Stack.Screen 
           name="Guide" 
           component={Guide} 
           options={{ title: 'Guide' }} 
         />
+
         <Stack.Screen
           name="Emergency"
           component={Emergency}  
           options={{ title: 'Emergency' }}
         />
-        {/* 
-        <Stack.Screen
-          name='wishlist'
-          component={wishlist} 
-          options={{ title: 'wishlist' }}
-        />
-        */}
+
         <Stack.Screen
           name="campsites"
           component={campsite}  
@@ -153,18 +173,36 @@ const App = () => {
           options={{ title: 'chat' }}
         />
         
-        {/*
-        <Stack.Screen
-          name="Checklist"
-          component={Checklist}
-          options={{ title: 'Checklist' }}
-        />
-        */}
         <Stack.Screen
           name="weather"
           component={ta9s}
           options={{ title: 'Weather' }}
         />
+       
+        <Stack.Screen
+          name="radio"
+          component={radioun}
+          options={{ title: 'Radio' }}
+        />
+
+        <Stack.Screen
+          name="shop"
+          component={ShoppingCartScreen}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="CampingBookingScreen"
+          component={camp}
+          options={{ headerShown: false }}
+        />
+
+        <Stack.Screen
+          name="Price"
+          component={PriceScreen}
+          options={{ headerShown: false }}
+        />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

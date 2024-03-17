@@ -1,6 +1,8 @@
 import { getAuth, signInWithEmailAndPassword as signInWithEmail } from "firebase/auth";
 import { getFirestore, collection, doc, setDoc, getDoc } from "firebase/firestore"; 
 
+import { getFirestore } from "firebase/firestore";
+import {getStorage} from "firebase/storage";
 import Constants from "expo-constants";
 import { initializeApp } from "firebase/app";
 
@@ -24,6 +26,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
+export const storage = getStorage(app); 
 
 
 

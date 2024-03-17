@@ -84,7 +84,7 @@ const SignUpScreen = ({ navigation }) => {
           secureTextEntry={!showPassword}
         />
         <TouchableOpacity onPress={handleTogglePasswordVisibility} style={styles.eyeIcon}>
-          <Icon name={showPassword ? 'eye-slash' : 'eye'} size={20} color="#000" />
+          <Icon name={showPassword ? 'eye-slash' : 'eye'} size={20} color="#ccc" />
         </TouchableOpacity>
       </View>
       <View style={styles.passwordContainer}>
@@ -96,7 +96,7 @@ const SignUpScreen = ({ navigation }) => {
           secureTextEntry={!showRepeatPassword}
         />
         <TouchableOpacity onPress={handleToggleRepeatPasswordVisibility} style={styles.eyeIcon}>
-          <Icon name={showRepeatPassword ? 'eye-slash' : 'eye'} size={20} color="#000" />
+          <Icon name={showRepeatPassword ? 'eye-slash' : 'eye'} size={20} color="#ccc" />
         </TouchableOpacity>
       </View>
       <TextInput

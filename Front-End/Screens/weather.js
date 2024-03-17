@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { View, TextInput, TouchableOpacity, Text, ImageBackground, StyleSheet } from 'react-native';
-
-// Import images
-import sunnyImage from '../assets/skhoun.webp';
-import rainyImage from '../assets/cloud.avif';
-import cloudyImage from '../assets/runny.webp';
-import unknownImage from '../assets/weather.jpg';
+import { Ionicons } from '@expo/vector-icons';
+import sunnyImage from '../assets/ss.webp';
+import rainyImage from '../assets/cc.jpg';
+import cloudyImage from '../assets/ww.webp';
+import unknownImage from '../assets/wlp.jpg';
 
 const weatherImages = {
   clear: sunnyImage,
@@ -14,7 +13,7 @@ const weatherImages = {
   unknown: unknownImage,
 };
 
-const WeatherInfo = () => {
+const WeatherInfo = ({ navigation }) => {
   const [city, setCity] = useState('');
   const [weatherInfo, setWeatherInfo] = useState(null);
 
@@ -55,6 +54,9 @@ const WeatherInfo = () => {
       source={weatherInfo ? weatherInfo.conditionImage : unknownImage}
       style={styles.weatherContainer}
     >
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       <TextInput
         placeholder='Enter city name'
         value={city}
@@ -83,6 +85,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     resizeMode: 'cover',
     padding: 20,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 35,
+    left: 20,
+    zIndex: 1,
   },
   input: {
     width: '80%',

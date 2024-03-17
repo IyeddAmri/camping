@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 import cam from '../assets/explore.jpg';
 import water from '../assets/water.webp';
@@ -12,13 +13,21 @@ const HomePage = () => {
   const handleCategoryPress = (category) => {
     if (category === 'Survival Tips') {
       navigation.navigate('resources');
-    }else if (category === 'Checklist') {
+    } else if (category === 'Checklist') {
       navigation.navigate('Checklist');
+    }
+    else if (category === 'Ai Tools') {
+      navigation.navigate('ai');
     }
   };
 
   return (
     <View style={styles.container}>
+      {/* Go back button */}
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
+
       {/* Top picture */}
       <Image source={cam} style={styles.topImage} />
 
@@ -53,7 +62,7 @@ const HomePage = () => {
       {/* Details */}
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-        Welcome to the Resources section ! Here, you'll find a curated collection of essential tools and information to enhance your camping experience. From survival tips to handy AI tools and comprehensive checklists, this section is designed to equip you with everything you need for a safe, enjoyable, and hassle-free adventure in the great outdoors. Explore, learn, and make the most out of your camping trip with our carefully selected resources.
+          Welcome to the Resources section! Here, you'll find a curated collection of essential tools and information to enhance your camping experience.
         </Text>
       </View>
     </View>
@@ -63,6 +72,12 @@ const HomePage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 30,
+    left: 20,
+    zIndex: 1,
   },
   topImage: {
     width: '100%',
@@ -113,7 +128,7 @@ const styles = StyleSheet.create({
   },
   detailsText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 14,
     lineHeight: 24,
   },
 });

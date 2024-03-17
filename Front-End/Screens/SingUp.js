@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, StyleSheet, ImageBackground, TouchableOpacity, Text } from 'react-native';
+import { View, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Text, Picker } from 'react-native';
+
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { Picker } from '@react-native-picker/picker';
 import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
-import { auth } from '../config/firebase';
+import { auth, firestore } from '../config/firebase'; // Assuming 'firestore' is your Firestore instance
 import Icon from 'react-native-vector-icons/FontAwesome'; // Import the eye icon
 
 const SignUpScreen = ({ navigation }) => {
@@ -12,7 +12,8 @@ const SignUpScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [birthday, setBirthday] = useState('');
-  const [location, setLocation] = useState('location');
+  const [location, setLocation] = useState('');
+
   const [error, setError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const [showRepeatPassword, setShowRepeatPassword] = useState(false);
@@ -42,11 +43,12 @@ const SignUpScreen = ({ navigation }) => {
         birthday: birthday,
         location: location
       };
-      await setDoc(doc('users', userCredential.user.uid), userData);
+      await setDoc(doc(firestore, 'utilisateurr', userCredential.user.uid), userData);
 
       console.log('User signed up successfully:', userCredential.user);
     } catch (error) {
       console.error('Error signing up:', error.message);
+      setError(error.message); // Set error state
     }
     navigation.navigate('Signin');
   };
@@ -108,11 +110,31 @@ const SignUpScreen = ({ navigation }) => {
         onValueChange={(itemValue) => setLocation(itemValue)}
         style={styles.input}
       >
-        <Picker.Item label="khanget el ragouba" value="Tunis" />
-        <Picker.Item label="barnousa" value="Sfax" />
-        <Picker.Item label="dahmani" value="Sousse" />
-        <Picker.Item label="kef" value="Kairouan" />
-        <Picker.Item label="boulifa" value="Bizerte" />
+      <Picker.Item label="Ariana" value="Ariana" />
+  <Picker.Item label="Beja" value="Beja" />
+  <Picker.Item label="Ben Arous" value="Ben Arous" />
+  <Picker.Item label="Bizerte" value="Bizerte" />
+  <Picker.Item label="Gabes" value="Gabes" />
+  <Picker.Item label="Gafsa" value="Gafsa" />
+  <Picker.Item label="Jendouba" value="Jendouba" />
+  <Picker.Item label="Kairouan" value="Kairouan" />
+  <Picker.Item label="Kasserine" value="Kasserine" />
+  <Picker.Item label="Kebili" value="Kebili" />
+  <Picker.Item label="Kef" value="Kef" />
+  <Picker.Item label="Mahdia" value="Mahdia" />
+  <Picker.Item label="Manouba" value="Manouba" />
+  <Picker.Item label="Medenine" value="Medenine" />
+  <Picker.Item label="Monastir" value="Monastir" />
+  <Picker.Item label="Nabeul" value="Nabeul" />
+  <Picker.Item label="Sfax" value="Sfax" />
+  <Picker.Item label="Sidi Bouzid" value="Sidi Bouzid" />
+  <Picker.Item label="Siliana" value="Siliana" />
+  <Picker.Item label="Sousse" value="Sousse" />
+  <Picker.Item label="Tataouine" value="Tataouine" />
+  <Picker.Item label="Tozeur" value="Tozeur" />
+  <Picker.Item label="Tunis" value="Tunis" />
+  <Picker.Item label="Zaghouan" value="Zaghouan" />
+
       </Picker>
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <TouchableOpacity onPress={handleSignUp} style={styles.button}>
@@ -195,4 +217,3 @@ const styles = StyleSheet.create({
 });
 
 export default SignUpScreen;
-

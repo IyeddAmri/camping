@@ -15,7 +15,7 @@ export default function Profile() {
           throw new Error('User not authenticated');
         }
 
-        const userDocRef = doc(firestore, 'users', auth.currentUser.uid);
+        const userDocRef = doc(firestore, 'utilisateur', auth.currentUser.uid);
         const userDocSnapshot = await getDoc(userDocRef);
 
         if (!userDocSnapshot.exists()) {
@@ -34,42 +34,71 @@ export default function Profile() {
     fetchUserData();
   }, []);
 
-  return (
-    <View style={styles.container}>
-      {loading ? (
-        <Text>Loading user data...</Text>
-      ) : error ? (
-        <Text>Error: {error}</Text>
-      ) : (
-        <View>
-          <Text style={styles.label}>Username:</Text>
-          <Text style={styles.value}>{userData.username}</Text>
-          <Text style={styles.label}>Email:</Text>
-          <Text style={styles.value}>{userData.email}</Text>
-          <Text style={styles.label}>Location:</Text>
-          <Text style={styles.value}>{userData.location}</Text>
-          <Text style={styles.label}>Birthday:</Text>
-          <Text style={styles.value}>{userData.birthday}</Text>
-        </View>
-      )}
-    </View>
-  );
-}
+  const UserProfile = ({ loading, error, userData }) => {
+    return (
+      <View style={styles.container}>
+        {loading ? (
+          <Text style={styles.loadingText}>Loading user data...</Text>
+        ) : error ? (
+          <Text style={styles.errorText}>Error: {error}</Text>
+        ) : (
+          <View style={styles.userDataContainer}>
+            <View style={styles.userDetail}>
+              <Text style={styles.label}>Username:</Text>
+              <Text style={styles.value}>{userData.username}</Text>
+            </View>
+            <View style={styles.userDetail}>
+              <Text style={styles.label}>Email:</Text>
+              <Text style={styles.value}>{userData.email}</Text>
+            </View>
+            <View style={styles.userDetail}>
+              <Text style={styles.label}>Location:</Text>
+              <Text style={styles.value}>{userData.location}</Text>
+            </View>
+            <View style={styles.userDetail}>
+              <Text style={styles.label}>Birthday:</Text>
+              <Text style={styles.value}>{userData.birthday}</Text>
+            </View>
+          </View>
+        )}
+      </View>
+    );
+  }
+  
+  const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      paddingHorizontal: 20,
+      backgroundColor: '#F5F5F5',
+    },
+    userDataContainer: {
+      backgroundColor: '#FFFFFF',
+      borderRadius: 10,
+      padding: 20,
+      elevation: 5,
+    },
+    userDetail: {
+      marginBottom: 10,
+    },
+    label: {
+      fontSize: 18,
+      fontWeight: 'bold',
+      color: '#333333',
+    },
+    value: {
+      fontSize: 16,
+      color: '#666666',
+    },
+    loadingText: {
+      fontSize: 16,
+      color: '#666666',
+    },
+    errorText: {
+      fontSize: 16,
+      color: 'red',
+    },
+  });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-  },
-  label: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 5,
-  },
-  value: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-});
+  export default UserProfile;

@@ -87,7 +87,7 @@ const SignInScreen = ({ navigation }) => {
       </View>
     </View>
   );
-};
+}; console.log("done")
 const styles = StyleSheet.create({
   container: {
     flex: 1,

@@ -8,7 +8,7 @@ const Transport = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.13:5000/trans/getAll');
+        const response = await axios.get('http://192.168.43.44:5000/trans/getAll');
         setTransportData(response.data);
       } catch (error) {
         console.error('Error fetching transport data:', error);
@@ -17,7 +17,7 @@ const Transport = () => {
 
     fetchData();
   }, []);
-
+  console.log("done")
   const sendEmail = () => {
     const emailAddress = 'your.email@example.com'; // Replace with your email address
     const subject = 'Transport Reservation';

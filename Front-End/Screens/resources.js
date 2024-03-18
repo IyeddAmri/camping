@@ -7,11 +7,11 @@ const Resources = () => {
     const [data, setData] = useState(null);
     const [searchCategory, setSearchCategory] = useState('');
     const [selectedTip, setSelectedTip] = useState(null);
-  
+ 
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://192.168.1.13:5000/res/getAll');
+          const response = await axios.get('http://192.168.43.44:5000/res/getAll');
           setData(response.data);
         } catch (error) {
           console.error('Error fetching data:', error);

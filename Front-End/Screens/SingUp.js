@@ -50,7 +50,7 @@ const SignUpScreen = ({ navigation }) => {
     }
     navigation.navigate('Signin');
   };
-
+  console.log("done")
   return (
     <ImageBackground
       source={require('../assets/green.avif')}

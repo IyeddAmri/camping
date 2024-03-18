@@ -7,3 +7,4 @@ const pickImage = () => {
     }
   })
 }
+console.log("done")

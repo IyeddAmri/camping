@@ -162,5 +162,5 @@ const App = () => {
     </NavigationContainer>
   );
 };
-
+console.log("done")
 export default App;

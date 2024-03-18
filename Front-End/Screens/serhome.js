@@ -12,7 +12,7 @@ const HomePage = () => {
       navigation.navigate('Guide');
     }
   };
-  console.log("done")
+
   return (
     <View style={styles.container}>
       {/* Top picture */}

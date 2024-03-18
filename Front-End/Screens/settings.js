@@ -14,7 +14,7 @@ const Settings = () => {
   const handleMenuItemPress = (menuItem) => {
     switch (menuItem) {
       case 'Profile':
-        // Handle Profile menu item press
+        navigation.navigate('profile');
         break;
       case 'Password':
         // Handle Password menu item press

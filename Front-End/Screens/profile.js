@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: 20,
     backgroundColor: '#F5F5F5',
+    
   },
   userDataContainer: {
     backgroundColor: '#FFFFFF',

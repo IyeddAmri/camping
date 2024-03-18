@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Text, Picker } from 'react-native';
+import { View, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Text} from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions

@@ -20,7 +20,7 @@ const Resources = () => {
   
       fetchData();
     }, []);
-    console.log("done")
+  
     const filteredData = data ? data.filter(resource =>
       resource.Category.toLowerCase().includes(searchCategory.toLowerCase())
     ) : [];

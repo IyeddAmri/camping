@@ -17,7 +17,7 @@ const Guide = () => {
 
     fetchData();
   }, []);
-
+  console.log("done")
   return (
     <View style={styles.backgroundContainer}>
       <ImageBackground

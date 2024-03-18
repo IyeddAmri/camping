@@ -19,7 +19,7 @@ const HomeCommunity = () => {
       navigation.navigate('photogallery');
     }
   };
-
+  console.log("done")
   return (
     <View style={styles.container}>
       <Image source={campingg} style={styles.topImage} />

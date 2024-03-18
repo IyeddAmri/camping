@@ -11,7 +11,7 @@ const HomePage = () => {
   const handleExploreMore = () => {
     navigation.navigate('products'); 
   };
-  console.log("done")
+
   return (
     <View style={styles.container}>
       {}

@@ -39,7 +39,7 @@ const HomePage = () => {
       navigation.navigate('weather');
     }
   };
-  console.log("done")
+
   const handleTabPress = (tabName) => {
     if (tabName === 'Home') {
       // Handle navigation to the home screen

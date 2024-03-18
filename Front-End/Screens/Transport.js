@@ -17,7 +17,7 @@ const Transport = () => {
 
     fetchData();
   }, []);
-  console.log("done")
+
   const sendEmail = () => {
     const emailAddress = 'your.email@example.com'; // Replace with your email address
     const subject = 'Transport Reservation';

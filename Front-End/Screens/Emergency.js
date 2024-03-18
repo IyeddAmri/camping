@@ -16,7 +16,7 @@ const Emergency = () => {
     // Example first aid tips
     alert("First Aid Tips:\n\n1. For cuts and scrapes, clean the wound with soap and water, then apply a sterile bandage.\n2. If someone is experiencing heatstroke, move them to a cooler place, give them water, and apply cool compresses to their body.\n3. For sprains, elevate the affected limb and apply ice packs wrapped in cloth.");
   };
-  console.log("done")
+
   return (
     <View style={styles.container}>
       <ImageBackground source={{ uri: 'https://i.pinimg.com/564x/d9/af/b6/d9afb60d83eca7f92cfa44316c904337.jpg' }} style={styles.backgroundImage}>

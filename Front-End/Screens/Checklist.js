@@ -58,7 +58,7 @@ const Checklist = () => {
   const closeModal = () => {
     setShowModal(false);
   };
-  console.log("done")
+
   return (
     <ImageBackground source={backgroundImage} style={styles.background}>
       <Animatable.View ref={checklistRef} style={[styles.container, { opacity: fadeAnim }]}>

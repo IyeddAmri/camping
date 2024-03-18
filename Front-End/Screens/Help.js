@@ -37,7 +37,7 @@ const Help = () => {
     </ScrollView>
   );
 };
-
+console.log("done")
 const styles = StyleSheet.create({
   container: {
     flexGrow: 1,

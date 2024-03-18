@@ -15,7 +15,7 @@ const HomePage = () => {
       navigation.navigate('outdoor');
     }  
   };
-  console.log("done")
+
   return (
     <View style={styles.container}>
       <Image source={cam} style={styles.topImage} />

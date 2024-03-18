@@ -46,7 +46,7 @@ const CampsitesScreen = () => {
       return updatedCampsites;
     });
   };
-
+  console.log("done")
   return (
     <View style={styles.container}>
       <FlatList

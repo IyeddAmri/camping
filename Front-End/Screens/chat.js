@@ -76,7 +76,7 @@ export default function Chat() {
     />
   );
 }
-
+console.log("done")
 const styles = StyleSheet.create({
   logoutButton: {
     marginRight: 10,

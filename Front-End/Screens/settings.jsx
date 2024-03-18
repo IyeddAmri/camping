@@ -36,7 +36,7 @@ const Settings = () => {
         break;
     }
   };
-  console.log("done")
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.premiumBox}>

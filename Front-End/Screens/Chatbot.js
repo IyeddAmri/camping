@@ -32,7 +32,7 @@ const Chatbot = () => {
           addMessage('AI', "I'm not sure where you can camp. Could you please ask about the purpose of the camping application first?");
         }
         break;
-      case 'by':
+      case 'bye':
         addMessage('AI', 'Take care!');
         break;
       default:

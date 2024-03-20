@@ -30,6 +30,9 @@ import Checklist from './Screens/Checklist.js'
 import Chatbot from './Screens/Chatbot.js';
 import radioun from "./Screens/radio.js"
 import ShoppingCartScreen from './Screens/shop.js';
+import camp from "./Screens/CampingBookingScreen.js";
+import PriceScreen from './Screens/Price.js';
+// import ObjectDetector from './Screens/aitools'; 
 
 const Stack = createStackNavigator();
 
@@ -64,7 +67,7 @@ const App = () => {
         <Stack.Screen
           name="products"
           component={Product}
-          options={{ title: 'Store' }}
+          options={{ headerShown: false }}
         />
        
         <Stack.Screen
@@ -203,9 +206,19 @@ const App = () => {
         <Stack.Screen
           name="shop"
           component={ShoppingCartScreen}
-          options={{ title: 'Radio' }}
+          options={{ headerShown: false }}
         />
-       
+        <Stack.Screen
+        name="CampingBookingScreen"
+        component={camp}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Price"
+        component={PriceScreen}
+        options={{ headerShown: false }}
+      />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

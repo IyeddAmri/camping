@@ -79,6 +79,12 @@ const HomePage = () => {
 
   const icons = [maps, ta9ss, camp, club, hanout, po, ss, lo];
 
+  const handleBookingNavigation = () => {
+    navigation.navigate('CampingBookingScreen');
+  };
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.searchBarContainer}>
@@ -89,7 +95,7 @@ const HomePage = () => {
           onChangeText={setSearchQuery}
           onSubmitEditing={handleSearch}
         />
-        <TouchableOpacity style={styles.bookingLogoContainer}>
+        <TouchableOpacity style={styles.bookingLogoContainer} onPress={handleBookingNavigation}>
           <FontAwesome name="hotel" size={24} color="black" /> 
         </TouchableOpacity>
       </View>

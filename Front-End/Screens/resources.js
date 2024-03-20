@@ -20,7 +20,7 @@ const Resources = () => {
   
       fetchData();
     }, []);
-    console.log("...")
+  
     const filteredData = data ? data.filter(resource =>
       resource.Category.toLowerCase().includes(searchCategory.toLowerCase())
     ) : [];
@@ -28,7 +28,7 @@ const Resources = () => {
     const handleTipClick = (tip) => {
       setSelectedTip(tip);
     };
-  
+    console.log("...")
     const handleCloseDetails = () => {
       setSelectedTip(null);
     };

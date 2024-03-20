@@ -30,7 +30,7 @@ const RateAndReview = () => {
       'Your rating has been submitted. We appreciate your feedback!'
     );
   };
-
+  console.log("...")
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.button} onPress={handleRateAndReviewPress}>

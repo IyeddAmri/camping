@@ -28,7 +28,7 @@ const Resources = () => {
     const handleTipClick = (tip) => {
       setSelectedTip(tip);
     };
-    console.log("...")
+  
     const handleCloseDetails = () => {
       setSelectedTip(null);
     };

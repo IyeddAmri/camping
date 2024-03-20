@@ -37,9 +37,10 @@ const SignInScreen = ({ navigation }) => {
       setError('');
       console.error( error.message);
     }
-  };
+  };console.log("...")
 
   return (
+    
     <View style={styles.container}>
       <View style={styles.imageContainer}>
         {/* Replace the URL with the actual URL of your image */}

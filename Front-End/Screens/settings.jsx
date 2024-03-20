@@ -35,7 +35,7 @@ const Settings = () => {
         // Handle default case if necessary
         break;
     }
-  };console.log("...")
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>

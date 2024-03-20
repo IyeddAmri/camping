@@ -37,7 +37,7 @@ const SignInScreen = ({ navigation }) => {
       setError('');
       console.error( error.message);
     }
-  };console.log("...")
+  };
 
   return (
     

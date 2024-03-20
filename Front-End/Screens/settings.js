@@ -31,8 +31,8 @@ const Settings = () => {
       case 'Help':
         navigation.navigate('Help');
         break;
-      case 'LogOut':
-        // Handle LogOut menu item press
+        case 'LogOut':
+          navigation.navigate('Signin');
         break;
       default:
         // Handle default case if necessary

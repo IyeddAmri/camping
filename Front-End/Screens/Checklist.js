@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   checkedIndicator: {
     width: 14,
     height: 14,
-    backgroundColor: 'green',
+    backgroundColor: '#fff',
     borderRadius: 2,
   },
   itemText: {

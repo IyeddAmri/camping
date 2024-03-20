@@ -19,7 +19,7 @@ const ProductsPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://192.168.1.16:5000/api');
+      const response = await axios.get('http://localhost:5000/api');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -34,7 +34,7 @@ const ProductsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://192.168.1.16:5000/api/add', newProduct);
+      await axios.post('http://localhost:5000/api/add', newProduct);
       fetchProducts();
       setNewProduct({
         Name: '',

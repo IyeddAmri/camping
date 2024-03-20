@@ -4,7 +4,7 @@ import Sidebar from './Sidebar';
 import './AdminDashboard.css'; // Import custom CSS file for styling
 import ProductsPage from './ProductsPage';
 import CampsitesPage from './CampsitePage'; // Import the CampsitesPage component
-
+import Users from './users';
 const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [activeComponent, setActiveComponent] = useState('dashboard');
@@ -31,6 +31,8 @@ const AdminDashboard = () => {
       case 'campsites': // Render the CampsitesPage component when activeComponent is 'campsites'
         return <CampsitesPage />;
       // Add cases for other components as needed
+      case 'users': // Render the CampsitesPage component when activeComponent is 'campsites'
+      return <Users />
       default:
         return null;
     }
@@ -40,7 +42,7 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <header className="header">
         <div className="logo" onClick={toggleSidebar}>
-          <img src="E:\RBK\Nouveau dossier\camping\admin\frontend\my-app\assets\ic_round_hamburger_menu-512.webp" alt="Menu" />
+          <img src="ic_round_hamburger_menu-512.webp" alt="Menu" />
         </div>
         <div className="header-title">
           <h1>Admin Dashboard</h1>

@@ -24,7 +24,7 @@ const SignUpScreen = ({ navigation }) => {
   const handleToggleRepeatPasswordVisibility = () => {
     setShowRepeatPassword(!showRepeatPassword);
   };
-
+console.log("...")
   const handleSignUp = async () => {
     try {
       if (password !== repeatPassword) {

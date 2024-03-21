@@ -54,7 +54,7 @@ const CampsitesPage = () => {
   const handleUpdate = async (campsiteID) => {
     try {
       const updatedCampsite = { ...newCampsite };
-      await axios.put(`http://192.168.1.16:5000/campsites/put/${campsiteID}`, updatedCampsite);
+      await axios.put(`http://localhost:5000/campsites/put/${campsiteID}`, updatedCampsite);
       fetchCampsites();
       setNewCampsite({
         Name: '',
@@ -105,8 +105,8 @@ const CampsitesPage = () => {
               <p>Price: ${campsite.Price} per night</p>
             </div>
             <div>
-              <button onClick={() => handleUpdate(campsite.CampsiteID)}>Update</button>
-              <button onClick={() => handleDelete(campsite.CampsiteID)}>Delete</button>
+              <button onClick={() => handleUpdate(campsite.CampsiteID)} className="update-button">Update</button>
+              <button onClick={() => handleDelete(campsite.CampsiteID)} className="delete-button">Delete</button>
             </div>
           </div>
         ))}

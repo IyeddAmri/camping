@@ -20,7 +20,7 @@ const CampsitesPage = () => {
 
   const fetchCampsites = async () => {
     try {
-      const response = await axios.get('http://192.168.1.16:5000/campsites/get');
+      const response = await axios.get('http://localhost:5000/campsites/get');
       setCampsites(response.data);
     } catch (error) {
       console.error('Error fetching campsites:', error);
@@ -35,7 +35,7 @@ const CampsitesPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://192.168.1.16:5000/campsites/add', newCampsite);
+      await axios.post('http://localhost:5000/campsites/add', newCampsite);
       fetchCampsites();
       setNewCampsite({
         Name: '',

@@ -8,7 +8,7 @@ const Guide = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.100.54:5000/guide/getAll');
+        const response = await axios.get('http://192.168.110.188:5000/guide/getAll');
         setGuides(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);

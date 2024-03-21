@@ -23,7 +23,21 @@ const AdminDashboard = () => {
         return (
           <main className="content">
             <h2>Welcome to the Admin Dashboard!</h2>
-            <p>This is an admin dashboard page.</p>
+            <div className="description-boxes">
+              <div className="description-box" onClick={() => changeView('products')}>
+                <h3>Manage Products</h3>
+                <p>View, add, edit, or delete products in your inventory.</p>
+              </div>
+              <div className="description-box" onClick={() => changeView('campsites')}>
+                <h3>Manage Campsites</h3>
+                <p>Manage information and bookings for different campsites.</p>
+              </div>
+              <div className="description-box" onClick={() => changeView('settings')}>
+                <h3>Customize Settings</h3>
+                <p>Adjust settings related to user permissions, appearance, and more.</p>
+              </div>
+              {/* Add more description boxes for other features */}
+            </div>
           </main>
         );
       case 'products':
@@ -40,7 +54,7 @@ const AdminDashboard = () => {
     <div className="admin-dashboard">
       <header className="header">
         <div className="logo" onClick={toggleSidebar}>
-          <img src="E:\RBK\Nouveau dossier\camping\admin\frontend\my-app\assets\ic_round_hamburger_menu-512.webp" alt="Menu" />
+          <img src="admin\frontend\my-app\assets\logo.png" alt="Menu" />
         </div>
         <div className="header-title">
           <h1>Admin Dashboard</h1>

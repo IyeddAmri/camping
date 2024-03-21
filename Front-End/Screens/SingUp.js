@@ -110,6 +110,7 @@ const SignUpScreen = ({ navigation }) => {
         onValueChange={(itemValue) => setLocation(itemValue)}
         style={styles.input}
       >
+
       <Picker.Item label="Ariana" value="Ariana" />
   <Picker.Item label="Beja" value="Beja" />
   <Picker.Item label="Ben Arous" value="Ben Arous" />

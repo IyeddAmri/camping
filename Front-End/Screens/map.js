@@ -5,11 +5,11 @@ import MapView, { Marker } from 'react-native-map-clustering';
 const CampingMap = () => {
   // Generate random places in Tunisia for testing
   const generateRandomPlaces = () => {
-    // This is just a sample of random coordinates in Tunisia
+    
     const places = [
       { latitude: 36.8065, longitude: 10.1815 },
       { latitude: 36.8995, longitude: 10.1894 },
-      { latitude: 36.8188, longitude: 10.1653 },
+     
     
     ];
     return places.map((place, index) => (
@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CampingMap;
+export default Campingmap;

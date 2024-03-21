@@ -72,7 +72,7 @@ const CampsitesPage = () => {
 
   const handleDelete = async (campsiteID) => {
     try {
-      await axios.delete(`http://192.168.1.16:5000/campsites/${campsiteID}`);
+      await axios.delete(`http://localhost:5000/campsites/${campsiteID}`);
       fetchCampsites();
     } catch (error) {
       console.error('Error deleting campsite:', error);

@@ -105,8 +105,8 @@ const CampsitesPage = () => {
               <p>Price: ${campsite.Price} per night</p>
             </div>
             <div>
-              <button onClick={() => handleUpdate(campsite.CampsiteID)}>Update</button>
-              <button onClick={() => handleDelete(campsite.CampsiteID)}>Delete</button>
+              <button onClick={() => handleUpdate(campsite.CampsiteID)} className="update-button">Update</button>
+              <button onClick={() => handleDelete(campsite.CampsiteID)} className="delete-button">Delete</button>
             </div>
           </div>
         ))}

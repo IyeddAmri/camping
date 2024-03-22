@@ -14,7 +14,7 @@ const HomePage = () => {
     if (category === 'Survival Tips') {
       navigation.navigate('resources');
     } else if (category === 'Checklist') {
-      navigation.navigate('checklist');
+      navigation.navigate('Checklist');
     }
     else if (category === 'Ai Tools') {
       navigation.navigate('ai');

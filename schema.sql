@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`campsites` (
   `Liked` TINYINT(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`CampsiteID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 5
+AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -133,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`events` (
     FOREIGN KEY (`ActivityID`)
     REFERENCES `camping`.`activities` (`ActivityID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 7
+AUTO_INCREMENT = 32
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `camping`.`products` (
   `Category` VARCHAR(255) NULL DEFAULT NULL,
   PRIMARY KEY (`ProductID`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 47
+AUTO_INCREMENT = 57
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 

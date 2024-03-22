@@ -32,7 +32,7 @@ import radioun from "./Screens/radio.js";
 import ShoppingCartScreen from './Screens/shop.js';
 import camp from "./Screens/CampingBookingScreen.js";
 import PriceScreen from './Screens/Price.js';
-import Checklist from './Screens/checklist.js';
+import checklist from './Screens/Checklist'
 
 const Stack = createStackNavigator();
 
@@ -209,8 +209,8 @@ const App = () => {
           options={{ title: 'Profile' }} 
         />
         <Stack.Screen
-        name="checklist"
-        component={Checklist}
+        name="Checklist"
+        component={checklist}
         options={{ headerShown: false }}
       />
       </Stack.Navigator>

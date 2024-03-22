@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     color: '#fff',
   },
   title: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 20,
     color: '#fff',
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   itemContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 10,
+    marginBottom: 5,
   },
   checkbox: {
     width: 24,
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
   checkedIndicator: {
     width: 14,
     height: 14,
-    backgroundColor: 'green',
+    backgroundColor: '#fff',
     borderRadius: 2,
   },
   itemText: {

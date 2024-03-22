@@ -66,7 +66,7 @@ const SignInScreen = ({ navigation }) => {
             secureTextEntry={!showPassword}
           />
           <TouchableOpacity onPress={handleTogglePasswordVisibility} style={styles.eyeIcon}>
-            <Icon name={showPassword ? 'eye-slash' : 'eye'} size={20} color="#000" />
+            <Icon name={showPassword ? 'eye-slash' : 'eye'} size={20} color="#ccc" />
           </TouchableOpacity>
         </View>
         {error ? <Text style={styles.error}>{error}</Text> : null}

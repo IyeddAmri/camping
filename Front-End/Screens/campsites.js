@@ -1,18 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import axios from 'axios'; 
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import Wishlist from './Wishlist.jsx';
+import axios from 'axios';
+
 const CampsitesScreen = () => {
   const navigation = useNavigation();
   const [campsites, setCampsites] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.226:5000/campsites/get');
+<<<<<<< HEAD
+        const response = await axios.get('http://192.168.110.188:5000/campsites/get');
+=======
+        const response = await axios.get('http://localhost:5000/campsites/get');
+>>>>>>> 7ba6c1cc7e243c2dc69c4c7d55b274c782c2b15c
 
         const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: campsite.Liked }));
         setCampsites(initialCampsites);
@@ -26,7 +29,7 @@ const CampsitesScreen = () => {
 
   const toggleLike = async (index, campsiteId) => {
     try {
-      await axios.put(`http://192.168.1.226:5000/campsites/like/${campsiteId}`);
+      await axios.put(`http://localhost:5000/campsites/like/${campsiteId}`);
     } catch (error) {
       console.error('Error liking/unliking campsite on the server:', error);
     }
@@ -34,21 +37,38 @@ const CampsitesScreen = () => {
     setCampsites((prevCampsites) => {
       const updatedCampsites = [...prevCampsites];
       updatedCampsites[index].liked = !updatedCampsites[index].liked;
-
-      if (updatedCampsites[index].liked) {
-        setWishlist((prevWishlist) => [...prevWishlist, updatedCampsites[index]]);
-      } else {
-        setWishlist((prevWishlist) =>
-          prevWishlist.filter((item) => item.Name !== updatedCampsites[index].Name)
-        );
-      }
-
       return updatedCampsites;
     });
   };
 
+  // Function to render star icons based on the rating value
+  const renderStars = (rating) => {
+    const filledStars = Math.floor(rating);
+    const halfStar = rating % 1 !== 0;
+    const emptyStars = 5 - filledStars - (halfStar ? 1 : 0);
+
+    const stars = [];
+
+    for (let i = 0; i < filledStars; i++) {
+      stars.push(<Ionicons key={i} name="star" size={16} color="gold" />);
+    }
+
+    if (halfStar) {
+      stars.push(<Ionicons key="half-star" name="star-half" size={16} color="gold" />);
+    }
+
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<Ionicons key={`empty-${i}`} name="star-outline" size={16} color="gold" />);
+    }
+
+    return stars;
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       <FlatList
         data={campsites}
         keyExtractor={(item) => item.Name}
@@ -66,25 +86,31 @@ const CampsitesScreen = () => {
             </View>
             <Text style={styles.location}>{item.LocationName}</Text>
             <Text style={styles.price}>Price: ${item.Price}</Text>
-            <Text style={styles.rating}>Rating: {item.Rating}</Text>
+            <View style={styles.rating}>{renderStars(item.Rating)}</View>
           </View>
         )}
       />
-<Wishlist wishlist={wishlist} />
     </View>
   );
 };
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
     padding: 20,
+    marginTop: 55,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 10,
+    left: 10,
+    zIndex: 1,
   },
   campsiteContainer: {
     marginBottom: 20,
     position: 'relative',
+    top: 20,
   },
   image: {
     width: '100%',
@@ -108,7 +134,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   rating: {
-    fontSize: 16,
+    flexDirection: 'row',
   },
 });
 

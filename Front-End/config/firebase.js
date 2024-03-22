@@ -1,6 +1,8 @@
-
 import { getAuth, signInWithEmailAndPassword as signInWithEmail } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, doc, setDoc, getDoc } from "firebase/firestore"; 
+
+
+import {getStorage} from "firebase/storage";
 import Constants from "expo-constants";
 import { initializeApp } from "firebase/app";
 
@@ -9,6 +11,7 @@ import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDDI4r_TsU6qafH222kDPgsuBvaMMJZiZU",
+
   authDomain: "o5rej2.firebaseapp.com",
   projectId: "o5rej2",
   storageBucket: "o5rej2.appspot.com",
@@ -23,6 +26,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const firestore = getFirestore(app);
+export const storage = getStorage(app); 
 
 
 
@@ -36,7 +40,6 @@ const signInWithEmailAndPassword = async (email, password) => {
   }
 };
 
-export { auth ,initializeApp, firestore, signInWithEmailAndPassword };
-
+export { auth, initializeApp, firestore, collection, doc, setDoc, getDoc, signInWithEmailAndPassword };
 
 

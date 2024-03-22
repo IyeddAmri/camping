@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, TextInput, TouchableOpacity, Image, Text } from 'react-native';
 import Navbar from './Navbar';
 import { useNavigation } from '@react-navigation/native'; 
@@ -12,7 +12,17 @@ import club from "../assets/community.webp"
 import hanout from "../assets/7wint.jpg"
 import po from "../assets/la3b.jpg"
 import ss from "../assets/res.jpg"
-import lo from "../assets/lou8a.png"  
+import lo from "../assets/lou8a.png"
+import dar from "../assets/home.jpg"
+import glayb from "../assets/glb.webp" // Import the glayb image for the tab bar
+import khdm from '../assets/srv.png'
+import tlf from "../assets/klm.png"
+import ur from "../assets/ml.jpg"
+import pr from "../assets/prm.png"
+import prffff from "../assets/prff.jpg"
+import prffImage from '../assets/prff.jpg';
+import Profile from "../Screens/profile"
+ 
 import campsiteImage from "../assets/cmp.jpg"; 
 import storeImage from '../assets/sell.webp';
 import survivalImage from "../assets/survival.jpg"; 
@@ -20,7 +30,9 @@ import aiImage from "../assets/ai.jpg";
 
 const HomePage = () => {
   const navigation = useNavigation(); 
-  
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredCategories, setFilteredCategories] = useState([]);
+
   const handleCategoryPress = (category) => {
     if (category === 'Store') {
       navigation.navigate('storehome');
@@ -38,6 +50,9 @@ const HomePage = () => {
     else if (category === 'Weather') {
       navigation.navigate('weather');
     }
+    else if (category === 'Map') {
+      navigation.navigate('map');
+    }
   };
 
   const handleTabPress = (tabName) => {
@@ -48,21 +63,37 @@ const HomePage = () => {
       // Handle navigation to the wishlist screen
     } else if (tabName === 'Services') {
       navigation.navigate('serhome'); // Navigate to the Services screen
-    } else if (tabName === 'Inbox') {
-      // Handle navigation to the inbox screen
+    } else if (tabName === 'Chatbot') {
+      navigation.navigate('Chatbot');
+      // Handle navigation to the Chatbot screen
     } else if (tabName === 'Emergency') {
       navigation.navigate('Emergency'); // Navigate to the Emergency screen
     } else if (tabName === 'Settings') {
       navigation.navigate('Settings');
     } else if (tabName === 'Profile') {
-      // Handle navigation to the profile screen
+      navigation.navigate('profile'); // Navigate to the Profile screen
     } else if (category === "Community") {
       navigation.navigate("HomeCommunity")
     }
   };
 
- 
+  const handleSearch = () => {
+    // Filter categories based on searchQuery
+    const filtered = allCategories.filter(category =>
+      category.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredCategories(filtered);
+  };
+
+  const allCategories = ['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language'];
+
   const icons = [maps, ta9ss, camp, club, hanout, po, ss, lo];
+
+  const handleBookingNavigation = () => {
+    navigation.navigate('CampingBookingScreen');
+  };
+
+
 
   return (
     <View style={styles.container}>
@@ -70,15 +101,18 @@ const HomePage = () => {
         <TextInput
           style={styles.searchBar}
           placeholder="Search"
+          value={searchQuery}
+          onChangeText={setSearchQuery}
+          onSubmitEditing={handleSearch}
         />
-        <TouchableOpacity style={styles.bookingLogoContainer}>
+        <TouchableOpacity style={styles.bookingLogoContainer} onPress={handleBookingNavigation}>
           <FontAwesome name="hotel" size={24} color="black" /> 
         </TouchableOpacity>
       </View>
       
       <View style={styles.navbarContainer}>
         <Navbar
-          categories={['Map', 'Weather', 'Campsites', 'Community', 'Store', 'Activities', 'Resources', 'Language']}
+          categories={filteredCategories.length ? filteredCategories : allCategories}
           selectedCategory={null}
           onSelectCategory={handleCategoryPress}
           icons={icons} 
@@ -121,8 +155,8 @@ const HomePage = () => {
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Services')}>
           <MaterialIcons name="room-service" size={24} color="black" /> 
         </TouchableOpacity>
-        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Inbox')}>
-          <MaterialIcons name="inbox" size={24} color="black" /> 
+        <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Chatbot')}>
+          <MaterialIcons name="Chatbot" size={24} color="black" /> 
         </TouchableOpacity>
         <TouchableOpacity style={styles.tabItem} onPress={() => handleTabPress('Emergency')}>
           <MaterialIcons name="warning" size={24} color="black" /> 
@@ -147,7 +181,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 10,
-    marginTop: 10,
+    marginTop: 50,
   },
   searchBar: {
     flex: 1,
@@ -234,8 +268,8 @@ const styles = StyleSheet.create({
   servicesIcon: {
     // Services icon styles
   },
-  inboxIcon: {
-    // Inbox icon styles
+  ChatbotIcon: {
+    // Chatbot icon styles
   },
   emergencyIcon: {
     // Emergency icon styles

@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 import axios from 'axios';
 
 const ProductListScreen = () => {
   const navigation = useNavigation();
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [shoppingCart, setShoppingCart] = useState([]);
+
   const categories = [
     "Shelter, Rest, & Dining",
     "Apparel & Accessories",
@@ -17,7 +20,7 @@ const ProductListScreen = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://192.168.3.188:5000/api')
+    axios.get('http://192.168.110.188:5000/api')
       .then(response => {
         setProducts(response.data);
       })
@@ -30,8 +33,9 @@ const ProductListScreen = () => {
     products.filter(product => product.Category === selectedCategory) :
     products;
 
-  const handleBuy = (productId) => {
-    console.log(`Buying product with ID: ${productId}`);
+  const handleBuy = (ProductID) => {
+    const productToAdd = products.find(product => product.id === ProductID);
+    setShoppingCart(prevCart => [...prevCart, productToAdd]);
   };
 
   const renderNavbar = () => (
@@ -60,22 +64,35 @@ const ProductListScreen = () => {
         <Image source={{ uri: item.ImageURL }} style={styles.image} />
         <Text style={styles.name}>{item.Name}</Text>
         <Text style={styles.price}>Price: {item.Price}</Text>
-        <TouchableOpacity style={styles.buyButton} onPress={() => handleBuy(item.id)}>
+        <View style={styles.buyButton}>
           <Text style={styles.buyButtonText}>Buy</Text>
-        </TouchableOpacity>
+        </View>
       </View>
     </TouchableOpacity>
   );
 
+  const handleNavigateToCart = () => {
+    navigation.navigate('shop', { shoppingCart});
+  };
+
+  const handleGoBack = () => {
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={handleGoBack}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       {renderNavbar()}
-      <Text style={styles.heading}>Product List</Text>
-      <View style={styles.shoppingCartContainer}>
-        <TouchableOpacity onPress={() => console.log("Shopping Cart Pressed")}>
-          <Text style={styles.shoppingCartIcon}>🛒</Text>
-        </TouchableOpacity>
-      </View>
+      
+      <TouchableOpacity
+        style={styles.shoppingCartContainer}
+        onPress={handleNavigateToCart}
+      >
+        <Text style={styles.shoppingCartIcon}>🛒</Text>
+        <Text>{shoppingCart.length}</Text>
+      </TouchableOpacity>
       <FlatList
         data={filteredProducts}
         keyExtractor={(item) => item.Name}
@@ -91,13 +108,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    position:"relative",
+    top:50
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: -18,
+    left: 10,
+    zIndex: 1,
   },
   navbar: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: '#f0f0f0',
     paddingVertical: 10,
-    height:60
+    height: 60,
   },
   navItem: {
     paddingHorizontal: 25,
@@ -106,7 +131,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     marginRight: 10,
-    
   },
   selectedNavItem: {
     backgroundColor: '#ccc',
@@ -129,14 +153,14 @@ const styles = StyleSheet.create({
   productItem: {
     flex: 1,
     aspectRatio: 0.9, 
-    margin: 5,
+    margin: 15,
     borderRadius: 20,
     backgroundColor: '#f9f9f9',
     overflow: 'hidden',
   },
   image: {
     width: '100%',
-    height: 100,
+    height: 90,
     resizeMode: 'cover',
   },
   name: {
@@ -159,13 +183,13 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   buyButton: {
-    backgroundColor: 'blue',
+    backgroundColor: '#18C0C1',
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 5,
     position: 'absolute',
     bottom: 10,
-    right: 10,
+    right: 5,
   },
   buyButtonText: {
     color: 'white',

@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
 
 import campingg from "../assets/community.jpg";
 import test from "../assets/events.jpg";
@@ -22,6 +23,9 @@ const HomeCommunity = () => {
 
   return (
     <View style={styles.container}>
+      <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
       <Image source={campingg} style={styles.topImage} />
 
       <View style={styles.navbarContainer}>
@@ -49,7 +53,7 @@ const HomeCommunity = () => {
 
       <View style={styles.detailsContainer}>
         <Text style={styles.detailsText}>
-          Many camping destinations are located in remote or secluded areas that are not easily accessible by foot
+        Many camping destinations are tucked away in remote or secluded areas, their beauty shielded by rugged terrain and winding trails.
         </Text>
       </View>
     </View>
@@ -59,6 +63,12 @@ const HomeCommunity = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  goBackButton: {
+    position: 'absolute',
+    top: 30,
+    left: 20,
+    zIndex: 1,
   },
   topImage: {
     width: '100%',
@@ -70,7 +80,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     marginHorizontal: 10,
     position: 'relative',
-    left: 30,
+    left: 25,
+    top:20
   },
   navbar: {
     flexDirection: 'row',
@@ -95,7 +106,9 @@ const styles = StyleSheet.create({
   },
   boxContainer: {
     flexDirection: 'row',
-    marginTop: 20,
+    marginTop: 50,
+    position:"relative",
+    left:18
   },
   box: {
     width: '40%',
@@ -121,8 +134,10 @@ const styles = StyleSheet.create({
   },
   detailsText: {
     textAlign: 'center',
-    fontSize: 16,
+    fontSize: 22,
     lineHeight: 24,
+    position:"relative",
+    top:15
   },
 });
 

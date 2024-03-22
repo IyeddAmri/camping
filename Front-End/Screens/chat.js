@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useLayoutEffect, useCallback } from 'react';
+ import React, { useState, useEffect, useLayoutEffect, useCallback } from 'react';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import { GiftedChat } from 'react-native-gifted-chat';
 import { collection, addDoc, orderBy, query, onSnapshot } from 'firebase/firestore';

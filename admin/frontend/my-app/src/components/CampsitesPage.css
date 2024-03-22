@@ -1,0 +1,39 @@
+/* CampsitesPage.css */
+
+.campsites-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .campsite {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+  }
+  
+  .campsite img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+  .campsite-details h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .campsite-details p {
+    margin-bottom: 5px;
+  }
+  /* CampsitesPage.css */
+.update-button {
+  background-color: green;
+  color: white;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+}

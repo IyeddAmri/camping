@@ -4,47 +4,47 @@
   padding: 20px;
 }
 
-.add-product-form {
-  margin-bottom: 20px;
-}
-
-.products-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.product-box {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
+.add-product-form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 15px;
-  display: flex;
-  flex-direction: column;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
 }
 
-.product-image img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+.add-product-form input:focus {
+  outline: none;
+  border-color: #007bff; /* Change focus border color */
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25); /* Add focus shadow */
 }
 
-.product-details h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
+.add-product-form input::placeholder {
+  color: #999; /* Placeholder text color */
 }
 
-.product-buttons button {
-  margin-top: 10px;
-  cursor: pointer;
-}
-/* ProductsPage.css */
-.update-button {
-  background-color: green;
-  color: white;
+.add-product-form input[type="number"]::-webkit-inner-spin-button,
+.add-product-form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none; /* Remove number input spinner */
+  margin: 0; /* Remove default margin */
 }
 
-.delete-button {
-  background-color: red;
-  color: white;
+.add-product-form input[type="number"] {
+  -moz-appearance: textfield; /* Firefox number input spinner */
+}
+
+.add-product-form input[type="number"]::-webkit-outer-spin-button,
+.add-product-form input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none; /* Safari number input spinner */
+}
+
+.add-product-form input[type="number"]:hover,
+.add-product-form input[type="number"]:focus {
+  border-color: #007bff; /* Change border color on hover/focus */
+}
+
+.add-product-form input[type="number"]::-webkit-outer-spin-button,
+.add-product-form input[type="number"]::-webkit-inner-spin-button {
+  display: none; /* Remove number input spinner */
 }

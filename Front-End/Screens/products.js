@@ -20,7 +20,7 @@ const ProductListScreen = () => {
   ];
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api')
+    axios.get('http://192.168.176.188:5000/api')
       .then(response => {
         setProducts(response.data);
       })

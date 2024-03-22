@@ -20,7 +20,7 @@ export default function Chat() {
       headerRight: () => (
         <TouchableOpacity style={styles.logoutButton} onPress={onSignOut}>
           <AntDesign name="logout" size={24} />
-        </TouchableOpacity
+        </TouchableOpacity>
       )
     });
   }, [navigation]);

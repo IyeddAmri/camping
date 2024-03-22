@@ -27,4 +27,13 @@
   .campsite-details p {
     margin-bottom: 5px;
   }
-  
+  /* CampsitesPage.css */
+.update-button {
+  background-color: green;
+  color: white;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+}

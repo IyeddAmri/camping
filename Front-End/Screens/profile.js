@@ -104,6 +104,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, TouchableOpacity, Animated, Easing } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons'; // Importing icons from FontAwesome
 
 import { auth, firestore, doc, getDoc } from '../config/firebase';
 
@@ -145,6 +146,15 @@ export default function Profile() {
     fetchUserData();
   }, []);
 
+  const handleLogout = async () => {
+    try {
+      await auth.signOut();
+      // Redirect or navigate to the login screen after logout
+    } catch (error) {
+      console.error('Error signing out:', error.message);
+    }
+  };
+
   return (
     <View style={styles.container}>
       {loading ? (
@@ -154,23 +164,28 @@ export default function Profile() {
       ) : (
         <Animated.View style={[styles.userDataContainer, { opacity: fadeAnim }]}>
           <View style={styles.userDetail}>
+            <FontAwesome name="user" size={20} color="#333333" style={styles.icon} />
             <Text style={styles.label}>Username:</Text>
             <Text style={styles.value}>{userData.username}</Text>
           </View>
           <View style={styles.userDetail}>
+            <FontAwesome name="envelope" size={20} color="#333333" style={styles.icon} />
             <Text style={styles.label}>Email:</Text>
             <Text style={styles.value}>{userData.email}</Text>
           </View>
           <View style={styles.userDetail}>
+            <FontAwesome name="map-marker" size={20} color="#333333" style={styles.icon} />
             <Text style={styles.label}>Location:</Text>
             <Text style={styles.value}>{userData.location}</Text>
           </View>
           <View style={styles.userDetail}>
+            <FontAwesome name="birthday-cake" size={20} color="#333333" style={styles.icon} />
             <Text style={styles.label}>Birthday:</Text>
             <Text style={styles.value}>{userData.birthday}</Text>
           </View>
-          <TouchableOpacity style={styles.editButton}>
-            <Text style={styles.editButtonText}>Edit Profile</Text>
+          <TouchableOpacity style={styles.logoutLabel} onPress={handleLogout}>
+            <FontAwesome name="sign-out" size={20} color="#ff4500" style={styles.icon} />
+            <Text style={styles.logoutText}>Logout</Text>
           </TouchableOpacity>
         </Animated.View>
       )}
@@ -193,7 +208,12 @@ const styles = StyleSheet.create({
     width: '80%',
   },
   userDetail: {
+    flexDirection: 'row',
+    alignItems: 'center',
     marginBottom: 10,
+  },
+  icon: {
+    marginRight: 10,
   },
   label: {
     fontSize: 18,
@@ -204,25 +224,18 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#666666',
   },
-  loadingText: {
-    fontSize: 16,
-    color: '#666666',
-  },
   errorText: {
     fontSize: 16,
     color: 'red',
   },
-  editButton: {
-    backgroundColor: '#007bff',
-    paddingVertical: 10,
-    borderRadius: 5,
-    marginTop: 20,
+  logoutLabel: {
+    flexDirection: 'row',
     alignItems: 'center',
+    marginTop: 20,
   },
-  editButtonText: {
-    color: '#FFFFFF',
+  logoutText: {
+    color: '#ff4500',
     fontSize: 16,
     fontWeight: 'bold',
   },
 });
-

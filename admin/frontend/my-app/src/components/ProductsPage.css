@@ -38,3 +38,13 @@
   margin-top: 10px;
   cursor: pointer;
 }
+/* ProductsPage.css */
+.update-button {
+  background-color: green;
+  color: white;
+}
+
+.delete-button {
+  background-color: red;
+  color: white;
+}

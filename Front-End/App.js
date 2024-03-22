@@ -26,7 +26,7 @@ import chat from "./Screens/chat.js";
 import Profile  from "./Screens/profile.js";
 import Help from './Screens/Help.js';
 import RateAndReview from './Screens/RateAndReview.js';
-
+import Checklist from './Screens/Checklist.js';
 import Chatbot from './Screens/Chatbot.js';
 import radioun from "./Screens/radio.js";
 import ShoppingCartScreen from './Screens/shop.js';
@@ -140,7 +140,7 @@ const App = () => {
         <Stack.Screen
           name="serhome"
           component={Serhome}
-          options={{ title: 'Serhome' }}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen 
@@ -164,7 +164,7 @@ const App = () => {
         <Stack.Screen
           name="campsites"
           component={campsite}  
-          options={{ title: 'campsites' }}
+          options={{ headerShown: false }}
         />
         
         <Stack.Screen
@@ -176,7 +176,7 @@ const App = () => {
         <Stack.Screen
           name="weather"
           component={ta9s}
-          options={{ title: 'Weather' }}
+          options={{ headerShown: false }}
         />
        
         <Stack.Screen
@@ -207,7 +207,11 @@ const App = () => {
           component={Profile}
           options={{ title: 'Profile' }} 
         />
-
+        <Stack.Screen
+        name="checklist"
+        component={Checklist}
+        options={{ headerShown: false }}
+      />
       </Stack.Navigator>
     </NavigationContainer>
   );

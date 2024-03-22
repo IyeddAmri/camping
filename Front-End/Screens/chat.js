@@ -20,7 +20,7 @@ export default function Chat() {
       headerRight: () => (
         <TouchableOpacity style={styles.logoutButton} onPress={onSignOut}>
           <AntDesign name="logout" size={24} />
-        </TouchableOpacity>
+        </TouchableOpacity
       )
     });
   }, [navigation]);
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   messagesContainer: {
-    backgroundColor: '#F4EAD5', // Light beige for a natural feel
+    backgroundColor: '#F4EAD5', 
   },
   textInput: {
     backgroundColor: '#FFFFFF', 

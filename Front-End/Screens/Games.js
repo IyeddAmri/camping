@@ -9,7 +9,7 @@ const GamesScreen = () => {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const response = await axios.get('http://192.168.110.188:5000/activities');
+        const response = await axios.get('http://localhost:5000/activities');
         
         const gamesActivities = response.data.filter(activity => activity.Category === 'Games');
         setActivities(gamesActivities);

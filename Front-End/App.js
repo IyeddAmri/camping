@@ -26,13 +26,13 @@ import chat from "./Screens/chat.js";
 import Profile  from "./Screens/profile.js";
 import Help from './Screens/Help.js';
 import RateAndReview from './Screens/RateAndReview.js';
-
+import Checklist from './Screens/Checklist.js';
 import Chatbot from './Screens/Chatbot.js';
 import radioun from "./Screens/radio.js";
 import ShoppingCartScreen from './Screens/shop.js';
 import camp from "./Screens/CampingBookingScreen.js";
 import PriceScreen from './Screens/Price.js';
-import Checklist from './Screens/checklist.js';
+import checklist from './Screens/Checklist'
 
 const Stack = createStackNavigator();
 
@@ -209,8 +209,8 @@ const App = () => {
           options={{ title: 'Profile' }} 
         />
         <Stack.Screen
-        name="checklist"
-        component={Checklist}
+        name="Checklist"
+        component={checklist}
         options={{ headerShown: false }}
       />
       </Stack.Navigator>

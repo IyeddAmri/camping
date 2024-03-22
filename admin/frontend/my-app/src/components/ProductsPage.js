@@ -71,13 +71,31 @@ const ProductsPage = () => {
     <div className="products-page">
       <h2>Products</h2>
       <form onSubmit={handleSubmit} className="add-product-form">
-        <input type="text" name="Name" value={newProduct.Name} onChange={handleInputChange} placeholder="Name" required />
-        <input type="text" name="Description" value={newProduct.Description} onChange={handleInputChange} placeholder="Description" required />
-        <input type="number" name="Price" value={newProduct.Price} onChange={handleInputChange} placeholder="Price" required />
-        <input type="number" name="Availability" value={newProduct.Availability} onChange={handleInputChange} placeholder="Availability" required />
-        <input type="text" name="ImageURL" value={newProduct.ImageURL} onChange={handleInputChange} placeholder="Image URL" required />
-        <input type="text" name="Category" value={newProduct.Category} onChange={handleInputChange} placeholder="Category" required />
-        <button type="submit">Add Product</button>
+        <div className="form-group">
+          <label htmlFor="Name">Name:</label>
+          <input type="text" name="Name" value={newProduct.Name} onChange={handleInputChange} placeholder="Name" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Description">Description:</label>
+          <input type="text" name="Description" value={newProduct.Description} onChange={handleInputChange} placeholder="Description" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Price">Price:</label>
+          <input type="number" name="Price" value={newProduct.Price} onChange={handleInputChange} placeholder="Price" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Availability">Availability:</label>
+          <input type="number" name="Availability" value={newProduct.Availability} onChange={handleInputChange} placeholder="Availability" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="ImageURL">Image URL:</label>
+          <input type="text" name="ImageURL" value={newProduct.ImageURL} onChange={handleInputChange} placeholder="Image URL" required />
+        </div>
+        <div className="form-group">
+          <label htmlFor="Category">Category:</label>
+          <input type="text" name="Category" value={newProduct.Category} onChange={handleInputChange} placeholder="Category" required />
+        </div>
+        <button type="submit" className="submit-button">Add Product</button>
       </form>
       <div className="products-container">
         {products.map(product => (

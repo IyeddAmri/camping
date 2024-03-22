@@ -44,4 +44,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Campingmap;
+export default Camping map;

@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   infoText: {
     marginTop: 20,
     fontSize: 16,
-    color: '#777',
+    color: 'white',
     fontStyle: 'italic',
     textAlign: 'center',
   },

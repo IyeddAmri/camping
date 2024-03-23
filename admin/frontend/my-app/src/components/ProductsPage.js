@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './ProductsPage.css'; // Import custom CSS file for styling
+import './ProductsPage.css'; 
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -19,7 +19,7 @@ const ProductsPage = () => {
 
   const fetchProducts = async () => {
     try {
-      const response = await axios.get('http://192.168.1.16:5000/api');
+      const response = await axios.get('http://localhost:5000/api');
       setProducts(response.data);
     } catch (error) {
       console.error('Error fetching products:', error);
@@ -34,7 +34,7 @@ const ProductsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://192.168.1.16:5000/api/add', newProduct);
+      await axios.post('http://localhost:5000/api/add', newProduct);
       fetchProducts();
       setNewProduct({
         Name: '',
@@ -50,11 +50,21 @@ const ProductsPage = () => {
   };
 
   const handleUpdate = async (productId) => {
-    // Implementation for updating the product
+    try {
+      await axios.put(`http://localhost:5000/api/update/${productId}`, newProduct);
+      fetchProducts();
+    } catch (error) {
+      console.error('Error updating product:', error);
+    }
   };
 
   const handleDelete = async (productId) => {
-    // Implementation for deleting the product
+    try {
+      await axios.delete(`http://localhost:5000/api/products/${productId}`);
+      fetchProducts();
+    } catch (error) {
+      console.error('Error deleting product:', error);  
+    }
   };
 
   return (
@@ -82,8 +92,8 @@ const ProductsPage = () => {
               <p>Availability: {product.Availability}</p>
               <p>Category: {product.Category}</p>
               <div className="product-buttons">
-                <button onClick={() => handleUpdate(product.ProductID)}>Update</button>
-                <button onClick={() => handleDelete(product.ProductID)}>Delete</button>
+                <button onClick={() => handleUpdate(product.ProductID)} className="update-button">Update</button>
+                <button onClick={() => handleDelete(product.ProductID)} className="delete-button">Delete</button>
               </div>
             </div>
           </div>

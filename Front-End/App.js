@@ -27,12 +27,14 @@ import Profile  from "./Screens/profile.js";
 import Help from './Screens/Help.js';
 import RateAndReview from './Screens/RateAndReview.js';
 import map from './Screens/Map.js';
+import Checklist from './Screens/Checklist.js';
 import Chatbot from './Screens/Chatbot.js';
 import radioun from "./Screens/radio.js";
 import ShoppingCartScreen from './Screens/shop.js';
 import camp from "./Screens/CampingBookingScreen.js";
 import PriceScreen from './Screens/Price.js';
 import Map from './Screens/Map.js';
+import checklist from './Screens/Checklist'
 
 const Stack = createStackNavigator();
 
@@ -146,7 +148,7 @@ const App = () => {
         <Stack.Screen
           name="serhome"
           component={Serhome}
-          options={{ title: 'Serhome' }}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen 
@@ -170,7 +172,7 @@ const App = () => {
         <Stack.Screen
           name="campsites"
           component={campsite}  
-          options={{ title: 'campsites' }}
+          options={{ headerShown: false }}
         />
         
         <Stack.Screen
@@ -182,7 +184,7 @@ const App = () => {
         <Stack.Screen
           name="weather"
           component={ta9s}
-          options={{ title: 'Weather' }}
+          options={{ headerShown: false }}
         />
        
         <Stack.Screen
@@ -213,7 +215,11 @@ const App = () => {
           component={Profile}
           options={{ title: 'Profile' }} 
         />
-
+        <Stack.Screen
+        name="Checklist"
+        component={checklist}
+        options={{ headerShown: false }}
+      />
       </Stack.Navigator>
     </NavigationContainer>
   );

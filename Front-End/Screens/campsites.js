@@ -1,21 +1,17 @@
-// campsites.js
-
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
-// import Wishlist from './Wishlist.jsx';
 
 const CampsitesScreen = () => {
   const navigation = useNavigation();
   const [campsites, setCampsites] = useState([]);
-  const [wishlist, setWishlist] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://192.168.1.16:5000/campsites/get');
+        const response = await axios.get('http://localhost:5000/campsites/get');
 
         const initialCampsites = response.data.map((campsite) => ({ ...campsite, liked: campsite.Liked }));
         setCampsites(initialCampsites);
@@ -37,18 +33,31 @@ const CampsitesScreen = () => {
     setCampsites((prevCampsites) => {
       const updatedCampsites = [...prevCampsites];
       updatedCampsites[index].liked = !updatedCampsites[index].liked;
-
-      if (updatedCampsites[index].liked) {
-        setWishlist((prevWishlist) => [...prevWishlist, updatedCampsites[index]]);
-        navigation.navigate('Wishlist', { wishlist: [...wishlist, updatedCampsites[index]] });
-      } else {
-        setWishlist((prevWishlist) =>
-          prevWishlist.filter((item) => item.Name !== updatedCampsites[index].Name)
-        );
-      }
-
       return updatedCampsites;
     });
+  };
+
+  // Function to render star icons based on the rating value
+  const renderStars = (rating) => {
+    const filledStars = Math.floor(rating);
+    const halfStar = rating % 1 !== 0;
+    const emptyStars = 5 - filledStars - (halfStar ? 1 : 0);
+
+    const stars = [];
+
+    for (let i = 0; i < filledStars; i++) {
+      stars.push(<Ionicons key={i} name="star" size={16} color="gold" />);
+    }
+
+    if (halfStar) {
+      stars.push(<Ionicons key="half-star" name="star-half" size={16} color="gold" />);
+    }
+
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<Ionicons key={`empty-${i}`} name="star-outline" size={16} color="gold" />);
+    }
+
+    return stars;
   };
 
   return (
@@ -73,11 +82,10 @@ const CampsitesScreen = () => {
             </View>
             <Text style={styles.location}>{item.LocationName}</Text>
             <Text style={styles.price}>Price: ${item.Price}</Text>
-            <Text style={styles.rating}>Rating: {item.Rating}</Text>
+            <View style={styles.rating}>{renderStars(item.Rating)}</View>
           </View>
         )}
       />
-      {/* <Wishlist wishlist={wishlist} /> */}
     </View>
   );
 };
@@ -87,7 +95,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     padding: 20,
-    marginTop:55,
+    marginTop: 55,
   },
   goBackButton: {
     position: 'absolute',
@@ -98,7 +106,7 @@ const styles = StyleSheet.create({
   campsiteContainer: {
     marginBottom: 20,
     position: 'relative',
-    top:20
+    top: 20,
   },
   image: {
     width: '100%',
@@ -122,7 +130,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   rating: {
-    fontSize: 16,
+    flexDirection: 'row',
   },
 });
 

@@ -32,7 +32,7 @@ import radioun from "./Screens/radio.js";
 import ShoppingCartScreen from './Screens/shop.js';
 import camp from "./Screens/CampingBookingScreen.js";
 import PriceScreen from './Screens/Price.js';
-import MapScreen from './Screens/Map.js';
+import Map from './Screens/Map.js';
 
 const Stack = createStackNavigator();
 
@@ -41,8 +41,8 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
       <Stack.Screen 
-  name="MapScreen"
-  component={MapScreen}
+  name="Map"
+  component={Map}
   options={{title:'Map'}}
 />
           <Stack.Screen

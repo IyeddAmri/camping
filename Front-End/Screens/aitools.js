@@ -28,3 +28,12 @@ export function ObjectDetector() {
     const imageTensor = tf.node.decodeImage(new Uint8Array(raw), 3);
     return imageTensor;
   };
+
+  const onSelectImage = async () => {
+    setLoading(true);
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: false,
+      aspect: [4, 3],
+      quality: 1,
+    });

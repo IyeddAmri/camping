@@ -14,17 +14,28 @@ const fetchData = async () => {
   try {
     const response = await axios.request(options);
     console.log(response.data);
+  
+    return response.data;
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching data:', error);
+  
+    throw error;
   }
 };
 
 const App = () => {
   useEffect(() => {
-    fetchData();
+   
+    (async () => {
+      try {
+        await fetchData();
+      } catch (error) {
+       
+      }
+    })();
   }, []);
 
-  return null; // Since we're just fetching data, we don't need to render anything
+  return null; 
 };
 
 export default App;

@@ -3,7 +3,7 @@ const mockData = {
       id: "search_6QNVPZBKo24jcB2p8y471M9O",
       status: "Success",
       created_at: "2024-03-05T21:27:31Z",
-      // Add more fields as needed
+      
     },
     search_parameters: {
       engine: "google_maps",

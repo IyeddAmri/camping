@@ -62,4 +62,16 @@ export function ObjectDetector() {
           <View
             style={{
               borderWidth: 2,
-              borderColor: 'green
+              borderColor: 'green',
+              position: 'absolute',
+              left: prediction.bbox[0],
+              top: prediction.bbox[1],
+              width: prediction.bbox[2] - prediction.bbox[0],
+              height: prediction.bbox[3] - prediction.bbox[1],
+            }}
+          />
+        </View>
+      ))}
+    </View>
+  );
+}

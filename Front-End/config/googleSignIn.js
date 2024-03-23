@@ -8,3 +8,8 @@ const GoogleSignIn = async () => {
     return result.user;
   } catch (error) {
     console.error("Google Sign In Error:", error.message);
+    throw error;
+  }
+};
+
+export default GoogleSignIn;

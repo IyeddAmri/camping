@@ -14,14 +14,25 @@ const fetchData = async () => {
   try {
     const response = await axios.request(options);
     console.log(response.data);
+    // You might want to return the data here if you want to use it outside of this function
+    return response.data;
   } catch (error) {
-    console.error(error);
+    console.error('Error fetching data:', error);
+    // You might want to throw the error again if you want the calling code to handle it
+    throw error;
   }
 };
 
 const App = () => {
   useEffect(() => {
-    fetchData();
+    // Wrap the fetchData function in an async IIFE to use async/await syntax inside useEffect
+    (async () => {
+      try {
+        await fetchData();
+      } catch (error) {
+       
+      }
+    })();
   }, []);
 
   return null; 

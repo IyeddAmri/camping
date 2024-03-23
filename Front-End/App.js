@@ -135,13 +135,13 @@ const App = () => {
         <Stack.Screen
           name="resources"
           component={Resourcess}
-          options={{ title: 'Resourcesss' }}
+          options={{ title: 'Resources' }}
         /> 
 
         <Stack.Screen
           name="serhome"
           component={Serhome}
-          options={{ headerShown: false }}
+          options={{ headerShown: fals }}
         />
 
         <Stack.Screen 

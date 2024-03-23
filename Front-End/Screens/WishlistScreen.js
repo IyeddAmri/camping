@@ -45,3 +45,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 1,
     borderColor: '#ccc',
+    padding: 10,
+  },
+  itemText: {
+    marginBottom: 10,
+    fontSize: 16,
+  },
+  image: {
+    width: '100%',

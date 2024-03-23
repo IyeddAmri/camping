@@ -112,7 +112,7 @@ const Chatbot = () => {
 const styles = StyleSheet.create({
   input: {
     flex: 1,
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: '#ccc',
     borderRadius: 20,
     paddingHorizontal: 15,

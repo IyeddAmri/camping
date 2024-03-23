@@ -19,12 +19,3 @@ const fetchData = async () => {
   }
 };
 
-const App = () => {
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return null; 
-};
-
-export default App;

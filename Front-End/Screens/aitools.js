@@ -45,3 +45,9 @@ export function ObjectDetector() {
       setLoading(false);
     }
   };
+
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      {imageUri && (
+        <Image source={{ uri: imageUri }} style={{ width: 300, height: 300 }} />
+      )}

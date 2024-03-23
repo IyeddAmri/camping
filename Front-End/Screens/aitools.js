@@ -37,3 +37,11 @@ export function ObjectDetector() {
       aspect: [4, 3],
       quality: 1,
     });
+
+    if (!result.cancelled) {
+      setImageUri(result.uri);
+      detectObjectsOnImage(result.uri);
+    } else {
+      setLoading(false);
+    }
+  };

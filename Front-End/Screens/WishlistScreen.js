@@ -16,3 +16,19 @@ const WishlistScreen = ({ route }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Wishlist</Text>
       <FlatList
+        data={wishlist}
+        keyExtractor={(item) => item.Name}
+        renderItem={renderItem}
+        contentContainerStyle={styles.flatListContent}
+        showsVerticalScrollIndicator={false} // Hide vertical scroll indicator
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    padding: 20,
+  },

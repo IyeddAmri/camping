@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, ImageBackground, TouchableOpacity, Text, Picker } from 'react-native';
 
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { doc, setDoc } from 'firebase/firestore'; // Import Firestore functions
-import { auth, firestore } from '../config/firebase'; // Assuming 'firestore' is your Firestore instance
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import the eye icon
+import { doc, setDoc } from 'firebase/firestore'; 
+import { auth, firestore } from '../config/firebase'; 
+import Icon from 'react-native-vector-icons/FontAwesome'; 
 
 const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
@@ -47,7 +47,7 @@ const SignUpScreen = ({ navigation }) => {
       console.log('User signed up successfully:', userCredential.user);
     } catch (error) {
       console.error('Error signing up:', error.message);
-      setError(error.message); // Set error state
+      setError(error.message); 
     }
     navigation.navigate('Signin');
   };

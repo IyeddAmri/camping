@@ -17,8 +17,8 @@ const ShoppingCartScreen = ({ route, navigation }) => {
       </TouchableOpacity>
       
       {/* Render the shopping cart items */}
-      {shoppingCart.map(item => (
-        <View key={item.ProductID} style={styles.itemContainer}>
+      {shoppingCart.map((item, index) => (
+        <View key={`${item.ProductID}-${index}`} style={styles.itemContainer}>
           <View style={styles.productBox}>
             <Text style={styles.name}>{item.Name}</Text>
             <Text style={styles.description}>{item.Description}</Text>

@@ -60,32 +60,37 @@ const CampsitesScreen = () => {
     return stars;
   };
 
+  // Filter out the first 5 campsites
+  const filteredCampsites = campsites.slice(5);
+
   return (
     <View style={styles.container}>
       <TouchableOpacity style={styles.goBackButton} onPress={() => navigation.goBack()}>
         <Ionicons name="arrow-back" size={24} color="black" />
       </TouchableOpacity>
-      <FlatList
-        data={campsites}
-        keyExtractor={(item) => item.Name}
-        renderItem={({ item, index }) => (
-          <View style={styles.campsiteContainer}>
-            <Image source={{ uri: item.ImageURL }} style={styles.image} />
-            <View style={styles.loveIconContainer}>
-              <TouchableOpacity onPress={() => toggleLike(index, item.CampsiteID)}>
-                <Ionicons
-                  name={item.liked ? 'heart' : 'heart-outline'}
-                  size={24}
-                  color={item.liked ? 'red' : 'black'}
-                />
-              </TouchableOpacity>
+      {filteredCampsites.length > 0 && ( // Render FlatList only if there are campsites available after filtering
+        <FlatList
+          data={filteredCampsites}
+          keyExtractor={(item) => item.CampsiteID.toString()} // Use CampsiteID as the key
+          renderItem={({ item, index }) => (
+            <View style={styles.campsiteContainer}>
+              <Image source={{ uri: item.ImageURL }} style={styles.image} />
+              <View style={styles.loveIconContainer}>
+                <TouchableOpacity onPress={() => toggleLike(index + 5, item.CampsiteID)}>
+                  <Ionicons
+                    name={item.liked ? 'heart' : 'heart-outline'}
+                    size={24}
+                    color={item.liked ? 'red' : 'black'}
+                  />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.location}>{item.LocationName}</Text>
+              <Text style={styles.price}>Price: ${item.Price}</Text>
+              <View style={styles.rating}>{renderStars(item.Rating)}</View>
             </View>
-            <Text style={styles.location}>{item.LocationName}</Text>
-            <Text style={styles.price}>Price: ${item.Price}</Text>
-            <View style={styles.rating}>{renderStars(item.Rating)}</View>
-          </View>
-        )}
-      />
+          )}
+        />
+      )}
     </View>
   );
 };

@@ -11,3 +11,8 @@ const WishlistScreen = ({ route }) => {
       <Text style={styles.itemText}>{item.Description}</Text>
     </View>
   );
+
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Wishlist</Text>
+      <FlatList

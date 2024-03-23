@@ -20,11 +20,9 @@ const RateAndReview = () => {
   };
 
   const handleRating = (rating) => {
-    // Handle the rating as desired, such as sending it to analytics
-    console.log(`User rated the app ${rating} stars`);
-    // You can also send the rating to your server for tracking purposes
     
-    // Display a confirmation message or navigate to another screen
+    console.log(`User rated the app ${rating} stars`);
+    
     Alert.alert(
       'Thank You!',
       'Your rating has been submitted. We appreciate your feedback!'

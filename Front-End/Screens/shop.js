@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 
 const ShoppingCartScreen = ({ route, navigation }) => {
-  // Access the shopping cart items passed as route parameters
+  
   const { shoppingCart } = route.params;
 
   const handleGoBack = () => {

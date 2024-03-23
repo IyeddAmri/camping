@@ -1,9 +1,9 @@
 import React, { useRef, useState } from "react";
-import { View, Text, Image, Button } from "react-native";
+import { View, Text, Image, Button ,picker} from "react-native";
 import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import * as FileSystem from 'expo-file-system';
-import * as ImagePicker from 'expo-image-picker'; // Import ImagePicker module
+import * as ImagePicker from 'expo-image-picker';
 
 export function ObjectDetector() {
   const [imageUri, setImageUri] = useState(null);
@@ -25,7 +25,7 @@ export function ObjectDetector() {
     });
     const imgBuffer = tf.util.encodeString(imgB64, 'base64').buffer;
     const raw = new Uint8Array(imgBuffer);
-    const imageTensor = tf.node.decodeJpeg(raw);
+    const imageTensor = tf.node.decodeImage(new Uint8Array(raw), 3);
     return imageTensor;
   };
 
@@ -66,8 +66,8 @@ export function ObjectDetector() {
               position: 'absolute',
               left: prediction.bbox[0],
               top: prediction.bbox[1],
-              width: prediction.bbox[2],
-              height: prediction.bbox[3],
+              width: prediction.bbox[2] - prediction.bbox[0],
+              height: prediction.bbox[3] - prediction.bbox[1],
             }}
           />
         </View>

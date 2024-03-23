@@ -141,7 +141,7 @@ const App = () => {
         <Stack.Screen
           name="serhome"
           component={Serhome}
-          options={{ headerShown: fals }}
+          options={{ headerShown: false }}
         />
 
         <Stack.Screen 

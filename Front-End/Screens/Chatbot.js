@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
   },
   sendButton: {
     backgroundColor: '#007bff',
-    borderRadius: 20,
+    borderRadius: 200,
     padding: 10,
   },
 });

@@ -32,3 +32,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
   },
+  title: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  flatListContent: {
+    paddingBottom: 20,
+  },
+  wishlistItem: {
+    marginBottom: 20,
+    borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',

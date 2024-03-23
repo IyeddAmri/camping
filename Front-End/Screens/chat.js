@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   messagesContainer: {
-    backgroundColor: '#F4EAD5', // Light beige 
+    backgroundColor: '#F4EAD5',
   },
   textInput: {
     backgroundColor: '#FFFFFF', 

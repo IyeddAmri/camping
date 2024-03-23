@@ -1,6 +1,8 @@
 {
-    "searchPlaceholder": "Rechercher",
-    "bookingLogoText": "Logo de réservation",
-    "categories": ["Carte", "Météo", "Camps", "Communauté", "Magasin", "Activités", "Ressources", "Langue"]
-  }
-  
+  "searchPlaceholder": "Rechercher",
+  "bookingLogoText": "Logo de réservation",
+  "categories": ["Carte", "Météo", "Camps", "Communauté", "Magasin", "Activités", "Ressources", "Langue"],
+  "additionalKey1": "Value1",
+  "additionalKey2": "Value2",
+  "additionalKey3": "Value3"
+}

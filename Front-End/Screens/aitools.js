@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { View, Text, Image, Button } from "react-native";
+import { View, Text, Image, Button ,picker} from "react-native";
 import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import * as FileSystem from 'expo-file-system';
@@ -38,7 +38,6 @@ export function ObjectDetector() {
       quality: 1,
     });
 
-    
     if (!result.cancelled) {
       setImageUri(result.uri);
       detectObjectsOnImage(result.uri);
@@ -67,8 +66,8 @@ export function ObjectDetector() {
               position: 'absolute',
               left: prediction.bbox[0],
               top: prediction.bbox[1],
-              width: prediction.bbox[2],
-              height: prediction.bbox[3],
+              width: prediction.bbox[2] - prediction.bbox[0],
+              height: prediction.bbox[3] - prediction.bbox[1],
             }}
           />
         </View>

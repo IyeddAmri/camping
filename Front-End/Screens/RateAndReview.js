@@ -45,6 +45,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    
   },
   button: {
     flexDirection: 'row',
@@ -72,6 +73,7 @@ const styles = StyleSheet.create({
     color: '#333', // Dark gray color
     textAlign: 'center',
   },
+  
 });
 
 export default RateAndReview;

@@ -391,7 +391,7 @@ const HomePage = () => {
           onSubmitEditing={handleSearch}
         />
         <TouchableOpacity style={styles.bookingLogoContainer} onPress={handleBookingNavigation}>
-          <FontAwesome name="hotel" size={24} color="black" /> 
+          <MaterialIcons name="local-hotel" size={24} color="black" /> 
         </TouchableOpacity>
       </View>
       

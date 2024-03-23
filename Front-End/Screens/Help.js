@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   },
   email: {
     textDecorationLine: 'underline',
-    color: 'pruple',
+    color: 'purple', // Corrected color spelling
   },
   sectionTitle: {
     fontSize: 20,

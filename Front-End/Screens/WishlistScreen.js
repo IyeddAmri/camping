@@ -53,3 +53,9 @@ const styles = StyleSheet.create({
   },
   image: {
     width: '100%',
+    height: 200, // Adjust the height as needed
+    borderRadius: 10,
+  },
+});
+
+export default WishlistScreen

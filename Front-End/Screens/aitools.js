@@ -51,3 +51,15 @@ export function ObjectDetector() {
       {imageUri && (
         <Image source={{ uri: imageUri }} style={{ width: 300, height: 300 }} />
       )}
+      {isLoading ? (
+        <Text>Recognizing...</Text>
+      ) : (
+        <Button title="Select Image" onPress={onSelectImage} />
+      )}
+      {predictions.map((prediction, idx) => (
+        <View key={idx}>
+          <Text>{`${prediction.class} ${Math.round(prediction.score * 100)}%`}</Text>
+          <View
+            style={{
+              borderWidth: 2,
+              borderColor: 'green

@@ -26,12 +26,13 @@ import chat from "./Screens/chat.js";
 import Profile  from "./Screens/profile.js";
 import Help from './Screens/Help.js';
 import RateAndReview from './Screens/RateAndReview.js';
-import map from './Screens/map.js'
+import map from './Screens/Map.js';
 import Chatbot from './Screens/Chatbot.js';
 import radioun from "./Screens/radio.js";
 import ShoppingCartScreen from './Screens/shop.js';
 import camp from "./Screens/CampingBookingScreen.js";
 import PriceScreen from './Screens/Price.js';
+import MapScreen from './Screens/Map.js';
 
 const Stack = createStackNavigator();
 
@@ -39,11 +40,11 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen 
-          name="map"
-          component={map}
-          options={{title:'map'}}
-          />
+      <Stack.Screen 
+  name="MapScreen"
+  component={MapScreen}
+  options={{title:'Map'}}
+/>
           <Stack.Screen
           name="Onboarding"
           component={Onboarding}

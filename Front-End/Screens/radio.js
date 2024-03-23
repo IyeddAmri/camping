@@ -25,7 +25,7 @@ const fetchData = async () => {
 
 const App = () => {
   useEffect(() => {
-    // Wrap the fetchData function in an async IIFE to use async/await syntax inside useEffect
+   
     (async () => {
       try {
         await fetchData();

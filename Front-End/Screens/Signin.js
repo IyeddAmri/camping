@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { signInWithEmailAndPassword } from '../config/firebase';
-import { GoogleSignIn, FacebookSignIn } from '../config/googleSignIn'; // Import GoogleSignIn and FacebookSignIn functions from your authentication providers
-import Icon from 'react-native-vector-icons/FontAwesome'; // Import the eye icon
+import { GoogleSignIn, FacebookSignIn } from '../config/googleSignIn'; 
+import Icon from 'react-native-vector-icons/FontAwesome'; 
 
 const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');

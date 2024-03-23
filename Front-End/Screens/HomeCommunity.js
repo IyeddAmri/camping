@@ -94,7 +94,40 @@ const styles = StyleSheet.create({
     position:"relative",
     right:25
   },
-
+  navItem: {
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: 20,
+    backgroundColor: '#ffffff',
+  },
+  navItemText: {
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  boxContainer: {
+    flexDirection: 'row',
+    marginTop: 50,
+    position:"relative",
+    left:18
+  },
+  box: {
+    width: '40%',
+    borderRadius: 15,
+    overflow: 'hidden',
+    marginHorizontal: 10,
+  },
+  boxImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 15,
+  },
+  chatImage: {
+    width: '100%',
+    height: 200,
+    resizeMode: 'cover',
+    borderRadius: 15,
+  },
   detailsContainer: {
     paddingHorizontal: 20,
     marginTop: 20,

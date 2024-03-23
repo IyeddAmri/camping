@@ -24,7 +24,7 @@ const App = () => {
     fetchData();
   }, []);
 
-  return null; // Since we're just fetching data, we don't need to render anything
+  return null; 
 };
 
 export default App;

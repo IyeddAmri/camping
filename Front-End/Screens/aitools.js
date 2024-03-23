@@ -3,7 +3,7 @@ import { View, Text, Image, Button } from "react-native";
 import * as tf from "@tensorflow/tfjs";
 import * as cocoSsd from "@tensorflow-models/coco-ssd";
 import * as FileSystem from 'expo-file-system';
-import * as ImagePicker from 'expo-image-picker'; // Import ImagePicker module
+import * as ImagePicker from 'expo-image-picker';
 
 export function ObjectDetector() {
   const [imageUri, setImageUri] = useState(null);
@@ -25,7 +25,7 @@ export function ObjectDetector() {
     });
     const imgBuffer = tf.util.encodeString(imgB64, 'base64').buffer;
     const raw = new Uint8Array(imgBuffer);
-    const imageTensor = tf.node.decodeJpeg(raw);
+    const imageTensor = tf.node.decodeImage(new Uint8Array(raw), 3);
     return imageTensor;
   };
 
@@ -38,6 +38,7 @@ export function ObjectDetector() {
       quality: 1,
     });
 
+    
     if (!result.cancelled) {
       setImageUri(result.uri);
       detectObjectsOnImage(result.uri);

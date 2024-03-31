@@ -31,7 +31,7 @@ import radioun from "./Screens/radio.js";
 import ShoppingCartScreen from './Screens/shop.js';
 import camp from "./Screens/CampingBookingScreen.js";
 import PriceScreen from './Screens/Price.js';
-import map from './Screens/map.js';
+import map from './Screens/Map.js';
 import Checklist from './Screens/Checklist.js';
 
 const Stack = createStackNavigator();
